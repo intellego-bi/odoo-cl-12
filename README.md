@@ -22,7 +22,7 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 
     * Chart of Accounts (Manufacturing Industry)
     * Currency Rate Inverted (for CLP)
-    * Currency Rate update from SBIF (UF, UTM, USD and EUR for CLP)
+    * Currency Rate update from SBIF (UF, UTM, USD and EUR for CLP) with parametric API Key
     * Payroll for Chilean localization.
 
 **Generic Add-ons for Odoo 12**
@@ -42,7 +42,6 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 **Work In Progress: Chilean Localization**
 
     * Working (shift) Schedule on Employee Contract
-    * API Key parameter for SBIF Currency Rate Update
     * Legal Financial Statements
 
 **Wishlist: Chilean Localization**
