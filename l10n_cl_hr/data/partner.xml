@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model='res.partner' id='sii'>
+                <field name='name'>SII</field>
+                <!--<field name='document_number'>60.803.000-K</field>-->
+				<field name='vat'>60.803.000-K</field>
+				<field name='website'>www.sii.cl</field>
+				<field name='is_company'>True</field>
+				<field name='customer'>False</field>				
+				<field name='supplier'>True</field>
+				<field name='country_id'>46</field>
+				<!--<field name='image'>http://www.sii.cl/sobre_el_sii/logoSII250x108.jpg</field>-->
+				<field name='commercial_company_name'>Servicio de Impuestos Internos (SII)</field>
+        </record> 
+    
+        <record model='res.partner' id='previred'>
+                <field name='name'>PREVIRED</field>
+                <!--<field name='document_number'>96.929.390-0</field>-->
+				<field name='vat'>96.929.390-0</field>
+				<field name='phone'>+562 2654 4000</field>
+				<field name='website'>www.previred.com</field>
+				<field name='is_company'>True</field>
+				<field name='customer'>False</field>
+                <field name='supplier'>True</field>				
+				<field name='country_id'>46</field>				
+				<!--<field name='image'>"http://www.gochpa.cl/imagebrowser/p005_0_6.png"</field>-->
+				<field name='commercial_company_name'>Previred.com</field>
+        </record> 
+
+
+
+    </data>
+</odoo>

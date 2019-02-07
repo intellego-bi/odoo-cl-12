@@ -1,0 +1,563 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* l10n_cl_hr_termination_settlement
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: odoo@intellego-bi.com\n"
+"POT-Creation-Date: 2018-12-01 18:12+0000\n"
+"PO-Revision-Date: 2018-12-01 18:12+0000\n"
+"Last-Translator: Rodolfo Bermúdez Neubauer<odoo@intellego-bi.com>\n"
+"Language-Team: Intellego-BI.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__last_2_month_salary
+msgid "2nd Last Salary "
+msgstr "Salario Anterior (2ndo mes)"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__last_3_month_salary
+msgid "3rd Last Salary "
+msgstr "Salario Anterior (3er mes)"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/employee_gratuity.py:50
+#: code:addons/l10n_cl_hr_termination_settlement/models/hr_settlements.py:100
+#: code:addons/l10n_cl_hr_termination_settlement/models/other_settlements.py:54
+#, python-format
+msgid "A Settlement request is already processed for this employee"
+msgstr "Ya se ha procesado una solicitud de término para este empleado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/employee_gratuity.py:124
+#: code:addons/l10n_cl_hr_termination_settlement/models/other_settlements.py:111
+#, python-format
+msgid "Allowance value should be numeric !!"
+msgstr "El valor debe ser numérico"
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,state:0
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteo de archivos adjuntos"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__average_salary
+msgid "Average Salary (past 3 months)"
+msgstr "Salario Promedio (últ. 3 meses)"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Datos Generales"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__notice_days
+msgid "Days of Notice before termination"
+msgstr "Días de Preaviso"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__allowance
+msgid "Dearness Allowance"
+msgstr "Otros Conceptos Finiquito"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__department_id
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Department"
+msgstr "Departamento"
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,reason:0
+msgid "Despido Injustificado (Art. 161)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,reason:0
+msgid "Despido Justificado (Art. 160)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__dias_vaca_prop
+msgid "Días Feriado Proporcional"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__dias_vaca_pend
+msgid "Días de Vacaciones Pendientes"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Empleado"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__employee_id
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_tree
+msgid "Employee Gratuity"
+msgstr "Finiquitos"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Employee Settlements"
+msgstr "Finiquitos"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/employee_gratuity.py:90
+#: code:addons/l10n_cl_hr_termination_settlement/models/other_settlements.py:105
+#, python-format
+msgid "Employee Working Period is less than 1 Year"
+msgstr "El empleaado no ha trabajado por más de un año con la empresa"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_payslip_input__hr_settlements_id
+msgid "Final Settlements"
+msgstr "Liquidación de Finiquito"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.actions.act_window,name:l10n_cl_hr_termination_settlement.action_hr_settlements
+msgid "Finiquito"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__notice_fact
+msgid "Fracción de pago Aviso Previo"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__gratuity_amount
+msgid "Gratuity Payable"
+msgstr "Finiquito a Pagar"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__gratuity_amount
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__ias_amount
+msgid "Gratuity is calculated based on 							the equation Last salary * Number of years of service"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model,name:l10n_cl_hr_termination_settlement.model_hr_settlements
+msgid "HR Settlement"
+msgstr "Finiquito RRHH"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Historia"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__iap_amount
+msgid "Indeminización Aviso Previo (IAP)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__ias_amount
+msgid "Indeminización Años Servicio (IAS)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__ifp_amount
+msgid "Indeminización Feriado Proporcional"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Indemnización Aviso Previo (IAP)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Indemnización Años Servicio (IAS)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Indemnización Feriado Proporcional (IFP)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__joined_date
+msgid "Joined Date"
+msgstr "Fecha de Vinculación"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements____last_update
+msgid "Last Modified on"
+msgstr "Modificado el"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__last_month_salary
+msgid "Last Salary"
+msgstr "Último Salario"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__write_date
+msgid "Last Updated on"
+msgstr "Actualizado el"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.ui.menu,name:l10n_cl_hr_termination_settlement.final_settlements
+msgid "Liquida Finiquito"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__ifp_amount
+msgid "Liquidación de Feriádo Proprcional por Vacaciones pendientes"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/employee_gratuity.py:20
+#: code:addons/l10n_cl_hr_termination_settlement/models/hr_settlements.py:48
+#: code:addons/l10n_cl_hr_termination_settlement/models/other_settlements.py:22
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/hr_settlements.py:209
+#: code:addons/l10n_cl_hr_termination_settlement/models/hr_settlements.py:327
+#, python-format
+msgid "No existe Solicitud de Término aprobada para este Empleado"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_has_error_counter
+msgid "Number of error"
+msgstr "Número de error"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/employee_gratuity.py:91
+#, python-format
+msgid "Only an Employee with minimum 1 year of working, will get the Gratuity"
+msgstr "Debe haber trabajado más de un año con la empresa para obtener este beneficio"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/other_settlements.py:106
+#, python-format
+msgid "Only an Employee with minimum 1 years of working, will get the Settlement advantage"
+msgstr "Debe haber trabajado más de un año con la empresa para obtener este beneficio"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Otras Indemnizaciones Finiquito (FIN)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,activity_state:0
+msgid "Overdue"
+msgstr "Vencido"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__iap_amount
+msgid "Pago aviso previo despido 							correspondiente a 30 días"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model,name:l10n_cl_hr_termination_settlement.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Nómina"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model,name:l10n_cl_hr_termination_settlement.model_hr_payslip_input
+msgid "Payslip Input"
+msgstr "Entrada de Nómina"
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,activity_state:0
+msgid "Planned"
+msgstr "Planificado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__name
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,reason:0
+msgid "Renuncia Trabajador (Art. 159)"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/hr_payroll_finiquito.py:56
+#, python-format
+msgid "Salary Slip of %s for %s"
+msgstr "Liquidación de %s a %s"
+
+#. module: l10n_cl_hr_termination_settlement
+#: code:addons/l10n_cl_hr_termination_settlement/models/hr_settlements.py:210
+#: code:addons/l10n_cl_hr_termination_settlement/models/hr_settlements.py:328
+#, python-format
+msgid "Se debe crear y aprobar una Solcitud de Término para poder calcular Finiquito"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Set to Draft"
+msgstr "Cambiar a borrador"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__settle_date
+msgid "Settlement Date"
+msgstr "Fecha de Término"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__reason
+msgid "Settlement Reason"
+msgstr "Motivo de Término"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__resignation_id
+msgid "Solicitud de Término"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__state
+msgid "State"
+msgstr "Estado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__activity_state
+msgid "Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr "Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,activity_state:0
+msgid "Today"
+msgstr "Hoy"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_tree
+msgid "Total"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__worked_days
+msgid "Total Work Days"
+msgstr "Total Días Trabajados"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__worked_months
+msgid "Total Work Months"
+msgstr "Total Meses Trabajados"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__worked_years
+msgid "Total Work Years"
+msgstr "Total Años Trabajados"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model_terms:ir.ui.view,arch_db:l10n_cl_hr_termination_settlement.hr_settlements_form
+msgid "Validate"
+msgstr "Validar"
+
+#. module: l10n_cl_hr_termination_settlement
+#: selection:hr.settlements,state:0
+msgid "Validated"
+msgstr "Validado"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__valor_uf
+msgid "Valor UF"
+msgstr ""
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,field_description:l10n_cl_hr_termination_settlement.field_hr_settlements__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: l10n_cl_hr_termination_settlement
+#: model:ir.model.fields,help:l10n_cl_hr_termination_settlement.field_hr_settlements__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+

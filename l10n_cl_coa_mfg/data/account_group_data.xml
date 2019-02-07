@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Main Account Groups -->
+
+        <record id="cl_bs" model="account.group">
+            <field name="name">Balance General</field>
+        </record>
+
+        <record id="cl_pl" model="account.group">
+            <field name="name">Estado de Resultados</field>
+        </record>
+
+        <record id="cl_co" model="account.group">
+            <field name="name">Cuentas de Orden</field>
+        </record>
+
+        <!-- General Accounting Account Groups : 1 digit -->
+
+        <record id="cl_bs_1" model="account.group">
+            <field name="name">Activos</field>
+            <field name="code_prefix">1</field>
+		    <field name="parent_id" ref="cl_bs"/>
+        </record>
+
+        <record id="cl_bs_2" model="account.group">
+            <field name="name">Pasivos</field>
+            <field name="code_prefix">2</field>
+		    <field name="parent_id" ref="cl_bs"/>
+        </record>
+
+        <record id="cl_bs_3" model="account.group">
+            <field name="name">Patrimonio</field>
+            <field name="code_prefix">3</field>
+		    <field name="parent_id" ref="cl_bs"/>
+        </record>
+
+        <record id="cl_pl_4" model="account.group">
+            <field name="name">Ingresos</field>
+            <field name="code_prefix">4</field>
+		    <field name="parent_id" ref="cl_pl"/>
+        </record>
+
+        <record id="cl_pl_5" model="account.group">
+            <field name="name">Costos</field>
+            <field name="code_prefix">5</field>
+		    <field name="parent_id" ref="cl_pl"/>
+        </record>
+
+        <record id="cl_pl_6" model="account.group">
+            <field name="name">Gastos</field>
+            <field name="code_prefix">6</field>
+		    <field name="parent_id" ref="cl_pl"/>
+        </record>
+
+        <!-- Account Groups : Balance Sheet : 2 digits -->
+
+        <record id="cl_bs_11" model="account.group">
+            <field name="name">Activo Corriente</field>
+            <field name="code_prefix">11</field>
+		    <field name="parent_id" ref="cl_bs_1"/>
+        </record>
+
+        <record id="cl_bs_12" model="account.group">
+            <field name="name">Activo No-Corriente</field>
+            <field name="code_prefix">12</field>
+		    <field name="parent_id" ref="cl_bs_1"/>
+        </record>
+
+        <record id="cl_bs_13" model="account.group">
+            <field name="name">Otros Activos</field>
+            <field name="code_prefix">13</field>
+		    <field name="parent_id" ref="cl_bs_1"/>
+        </record>
+
+        <record id="cl_bs_21" model="account.group">
+            <field name="name">Pasivo Corriente</field>
+            <field name="code_prefix">21</field>
+		    <field name="parent_id" ref="cl_bs_2"/>
+        </record>
+
+        <record id="cl_bs_22" model="account.group">
+            <field name="name">Pasivo Largo Plazo</field>
+            <field name="code_prefix">21</field>
+		    <field name="parent_id" ref="cl_bs_2"/>
+        </record>
+
+        <record id="cl_bs_31" model="account.group">
+            <field name="name">Capital</field>
+            <field name="code_prefix">31</field>
+		    <field name="parent_id" ref="cl_bs_3"/>
+        </record>
+
+        <record id="cl_bs_32" model="account.group">
+            <field name="name">Utilidades</field>
+            <field name="code_prefix">32</field>
+		    <field name="parent_id" ref="cl_bs_3"/>
+        </record>
+
+        <!-- Account Groups : Profit and Loss : 2 digits -->
+
+        <record id="cl_pl_41" model="account.group">
+            <field name="name">Ingreso Operacional</field>
+            <field name="code_prefix">41</field>
+		    <field name="parent_id" ref="cl_pl_4"/>
+        </record>
+
+        <record id="cl_pl_42" model="account.group">
+            <field name="name">Ingreso No-Operacional</field>
+            <field name="code_prefix">42</field>
+		    <field name="parent_id" ref="cl_pl_4"/>
+        </record>
+
+        <record id="cl_pl_51" model="account.group">
+            <field name="name">Costo de Ventas</field>
+            <field name="code_prefix">51</field>
+		    <field name="parent_id" ref="cl_pl_5"/>
+        </record>
+
+        <record id="cl_pl_52" model="account.group">
+            <field name="name">Costo de Producción</field>
+            <field name="code_prefix">52</field>
+		    <field name="parent_id" ref="cl_pl_5"/>
+        </record>
+
+        <record id="cl_pl_61" model="account.group">
+            <field name="name">Gastos Operacionales</field>
+            <field name="code_prefix">61</field>
+		    <field name="parent_id" ref="cl_pl_6"/>
+        </record>
+
+        <record id="cl_pl_62" model="account.group">
+            <field name="name">Gastos No-Operacionales</field>
+            <field name="code_prefix">62</field>
+		    <field name="parent_id" ref="cl_pl_6"/>
+        </record>
+
+        <!-- Account Groups : Non-disclosed Accounts : 2 digits -->
+
+        <record id="cl_co_71" model="account.group">
+            <field name="name">Cuentas de Orden - Derechos</field>
+            <field name="code_prefix">71</field>
+		    <field name="parent_id" ref="cl_co"/>
+        </record>
+
+        <record id="cl_co_72" model="account.group">
+            <field name="name">Cuentas de Orden - Obligaciones</field>
+            <field name="code_prefix">72</field>
+		    <field name="parent_id" ref="cl_co"/>
+        </record>
+
+		
+        <!-- Detail Account Groups : Balance Sheet : 3 digits -->
+
+        <record id="cl_bs_121" model="account.group">
+            <field name="name">Activos Fijos</field>
+            <field name="code_prefix">121</field>
+		    <field name="parent_id" ref="cl_bs_12"/>
+        </record>
+
+        <record id="cl_bs_122" model="account.group">
+            <field name="name">Depreciación Acumulada Activos Fijos</field>
+            <field name="code_prefix">121</field>
+		    <field name="parent_id" ref="cl_bs_12"/>
+        </record>
+
+		
+        <!-- Detail Account Groups : Profit and Loss : 3 digits -->
+
+        <record id="cl_pl_521" model="account.group">
+            <field name="name">Costos Directos de Producción</field>
+            <field name="code_prefix">521</field>
+		    <field name="parent_id" ref="cl_pl_52"/>
+        </record>
+
+        <record id="cl_pl_522" model="account.group">
+            <field name="name">Costos Indirectos de Producción</field>
+            <field name="code_prefix">522</field>
+		    <field name="parent_id" ref="cl_pl_52"/>
+        </record>
+
+        <record id="cl_pl_611" model="account.group">
+            <field name="name">Gastos de Administración</field>
+            <field name="code_prefix">611</field>
+		    <field name="parent_id" ref="cl_pl_61"/>
+        </record>
+
+        <record id="cl_pl_612" model="account.group">
+            <field name="name">Gastos de Comercialización</field>
+            <field name="code_prefix">612</field>
+		    <field name="parent_id" ref="cl_pl_61"/>
+        </record>
+
+        <record id="cl_pl_613" model="account.group">
+            <field name="name">Gastos de Instalaciones</field>
+            <field name="code_prefix">613</field>
+		    <field name="parent_id" ref="cl_pl_61"/>
+        </record>
+
+        <record id="cl_pl_614" model="account.group">
+            <field name="name">Gastos Corporativos</field>
+            <field name="code_prefix">614</field>
+		    <field name="parent_id" ref="cl_pl_61"/>
+        </record>
+
+        <record id="cl_pl_621" model="account.group">
+            <field name="name">Gastos Financieros</field>
+            <field name="code_prefix">621</field>
+		    <field name="parent_id" ref="cl_pl_62"/>
+        </record>
+
+        <record id="cl_pl_622" model="account.group">
+            <field name="name">Gastos por Corrección Monetaria</field>
+            <field name="code_prefix">622</field>
+		    <field name="parent_id" ref="cl_pl_62"/>
+        </record>
+
+        <record id="cl_pl_623" model="account.group">
+            <field name="name">Gastos por Diferencia de Cambio</field>
+            <field name="code_prefix">623</field>
+		    <field name="parent_id" ref="cl_pl_62"/>
+        </record>
+
+        <record id="cl_pl_624" model="account.group">
+            <field name="name">Gastos Tributarios</field>
+            <field name="code_prefix">624</field>
+		    <field name="parent_id" ref="cl_pl_62"/>
+        </record>
+
+        <record id="cl_pl_629" model="account.group">
+            <field name="name">Otros Gastos No-operacionales</field>
+            <field name="code_prefix">629</field>
+		    <field name="parent_id" ref="cl_pl_62"/>
+        </record>
+
+
+        <!-- Detail Account Groups : Balance Sheet : 4 digits -->
+
+        <!-- Activo Circulante : Prefijo = 11 -->
+		
+        <record id="cl_bs_1100" model="account.group">
+            <field name="name">Caja / Efectivo</field>
+            <field name="code_prefix">1100</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1110" model="account.group">
+            <field name="name">Bancos</field>
+            <field name="code_prefix">1110</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1111" model="account.group">
+            <field name="name">Inversion Financiera y Valores Negociables</field>
+            <field name="code_prefix">1111</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1120" model="account.group">
+            <field name="name">Deudores por Ventas</field>
+            <field name="code_prefix">1120</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1121" model="account.group">
+            <field name="name">Documentos por Cobrar</field>
+            <field name="code_prefix">1121</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1122" model="account.group">
+            <field name="name">Documentos y Cuentas por Cobrar a EERR</field>
+            <field name="code_prefix">1122</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1129" model="account.group">
+            <field name="name">Estimación de Incobrables (Provisión)</field>
+            <field name="code_prefix">1129</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1130" model="account.group">
+            <field name="name">Pagos Anticipados</field>
+            <field name="code_prefix">1130</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1140" model="account.group">
+            <field name="name">Cuentas por Cobrar al Personal</field>
+            <field name="code_prefix">1140</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1150" model="account.group">
+            <field name="name">Impuestos por Recuperar</field>
+            <field name="code_prefix">1150</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1160" model="account.group">
+            <field name="name">Inventarios y Existencias</field>
+            <field name="code_prefix">1160</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1170" model="account.group">
+            <field name="name">Gastos Anticipados</field>
+            <field name="code_prefix">1170</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1180" model="account.group">
+            <field name="name">Pagos Provisionales Mensuales (PPM)</field>
+            <field name="code_prefix">1180</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <record id="cl_bs_1190" model="account.group">
+            <field name="name">Otros Activos Circulantes</field>
+            <field name="code_prefix">1190</field>
+		    <field name="parent_id" ref="cl_bs_11"/>
+        </record>
+
+        <!-- Activo Fijo : Prefijo = 121 -->
+		
+        <record id="cl_bs_1211" model="account.group">
+            <field name="name">Terrenos</field>
+            <field name="code_prefix">1211</field>
+		    <field name="parent_id" ref="cl_bs_121"/>
+        </record>
+		
+        <record id="cl_bs_1212" model="account.group">
+            <field name="name">Construcciones y Obras de Infraestructura</field>
+            <field name="code_prefix">1212</field>
+		    <field name="parent_id" ref="cl_bs_121"/>
+        </record>
+		
+        <record id="cl_bs_1213" model="account.group">
+            <field name="name">Maquinarias y Equipos</field>
+            <field name="code_prefix">1213</field>
+		    <field name="parent_id" ref="cl_bs_121"/>
+        </record>
+		
+        <record id="cl_bs_1214" model="account.group">
+            <field name="name">Muebles y Útiles</field>
+            <field name="code_prefix">1214</field>
+		    <field name="parent_id" ref="cl_bs_121"/>
+        </record>
+		
+        <record id="cl_bs_1215" model="account.group">
+            <field name="name">Activos en Leasing</field>
+            <field name="code_prefix">1215</field>
+		    <field name="parent_id" ref="cl_bs_121"/>
+        </record>
+		
+        <record id="cl_bs_1216" model="account.group">
+            <field name="name">Otros Activos Fijos</field>
+            <field name="code_prefix">1216</field>
+		    <field name="parent_id" ref="cl_bs_121"/>
+        </record>
+
+        <!-- Depreciación Acumulada Activo Fijo : Prefijo = 122 -->
+
+        <record id="cl_bs_1222" model="account.group">
+            <field name="name">Depreciación Acum. Const. y Obras</field>
+            <field name="code_prefix">1222</field>
+		    <field name="parent_id" ref="cl_bs_122"/>
+        </record>
+		
+        <record id="cl_bs_1223" model="account.group">
+            <field name="name">Depreciación Acum. Maquinarias y Equipos</field>
+            <field name="code_prefix">1223</field>
+		    <field name="parent_id" ref="cl_bs_122"/>
+        </record>
+		
+        <record id="cl_bs_1224" model="account.group">
+            <field name="name">Depreciación Acum. Muebles y Útiles</field>
+            <field name="code_prefix">1224</field>
+		    <field name="parent_id" ref="cl_bs_122"/>
+        </record>
+		
+        <record id="cl_bs_1225" model="account.group">
+            <field name="name">Depreciación Acum. Activos en Leasing</field>
+            <field name="code_prefix">1225</field>
+		    <field name="parent_id" ref="cl_bs_122"/>
+        </record>
+		
+        <record id="cl_bs_1226" model="account.group">
+            <field name="name">Depreciación Acum. Otros Activos Fijos</field>
+            <field name="code_prefix">1226</field>
+		    <field name="parent_id" ref="cl_bs_122"/>
+        </record>
+
+        <!-- Otros Activos : Prefijo = 13 -->
+
+        <record id="cl_bs_1310" model="account.group">
+            <field name="name">Cuentas Particulares</field>
+            <field name="code_prefix">1310</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1320" model="account.group">
+            <field name="name">Inversión en Empresas Relacionadas</field>
+            <field name="code_prefix">1320</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1330" model="account.group">
+            <field name="name">Inversión en otras Sociedades</field>
+            <field name="code_prefix">1330</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1340" model="account.group">
+            <field name="name">Deudores Largo Plazo</field>
+            <field name="code_prefix">1340</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1350" model="account.group">
+            <field name="name">Documentos y Cuentas por Cobrar EERR L/P</field>
+            <field name="code_prefix">1350</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1360" model="account.group">
+            <field name="name">Impuestos Diferidos (a favor) L/P</field>
+            <field name="code_prefix">1360</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1370" model="account.group">
+            <field name="name">Activos Intangibles</field>
+            <field name="code_prefix">1370</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1375" model="account.group">
+            <field name="name">Amortización Acum. Activos Intangibles</field>
+            <field name="code_prefix">1375</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+        <record id="cl_bs_1390" model="account.group">
+            <field name="name">Otros Activos No-Corrientes</field>
+            <field name="code_prefix">1390</field>
+		    <field name="parent_id" ref="cl_bs_13"/>
+        </record>
+
+
+        <!-- Pasivo Corriente : Prefijo = 21 -->
+
+        <record id="cl_bs_2110" model="account.group">
+            <field name="name">Obligaciones con Bancos e Instituciones Financieras</field>
+            <field name="code_prefix">2110</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2120" model="account.group">
+            <field name="name">Cuentas y Documentos por Pagar</field>
+            <field name="code_prefix">2120</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2130" model="account.group">
+            <field name="name">Cuentas y Documentos por Pagar EERR C/P</field>
+            <field name="code_prefix">2130</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2140" model="account.group">
+            <field name="name">Anticipos de Clientes</field>
+            <field name="code_prefix">2140</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2150" model="account.group">
+            <field name="name">Impuestos por Pagar</field>
+            <field name="code_prefix">2150</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2160" model="account.group">
+            <field name="name">Remuneraciones por Pagar</field>
+            <field name="code_prefix">2160</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2170" model="account.group">
+            <field name="name">Entidades Previsionales por Pagar</field>
+            <field name="code_prefix">2170</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2180" model="account.group">
+            <field name="name">Acreedores por Leasing porción C/P</field>
+            <field name="code_prefix">2180</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <record id="cl_bs_2190" model="account.group">
+            <field name="name">Otros Pasivos Circulantes</field>
+            <field name="code_prefix">2190</field>
+		    <field name="parent_id" ref="cl_bs_21"/>
+        </record>
+
+        <!-- Pasivo Largo Plazo : Prefijo = 22 -->
+
+        <record id="cl_bs_2210" model="account.group">
+            <field name="name">Obligaciones con Bancos e Instituciones Financieras L/P</field>
+            <field name="code_prefix">2210</field>
+		    <field name="parent_id" ref="cl_bs_22"/>
+        </record>
+
+        <record id="cl_bs_2220" model="account.group">
+            <field name="name">Cuentas y Documentos por Pagar L/P</field>
+            <field name="code_prefix">2220</field>
+		    <field name="parent_id" ref="cl_bs_22"/>
+        </record>
+
+        <record id="cl_bs_2230" model="account.group">
+            <field name="name">Cuentas y Documentos por Pagar EERR L/P</field>
+            <field name="code_prefix">2230</field>
+		    <field name="parent_id" ref="cl_bs_22"/>
+        </record>
+
+        <record id="cl_bs_2260" model="account.group">
+            <field name="name">Impuestos Diferidos (en contra) L/P</field>
+            <field name="code_prefix">2260</field>
+		    <field name="parent_id" ref="cl_bs_22"/>
+        </record>
+
+        <record id="cl_bs_2280" model="account.group">
+            <field name="name">Acreedores por Leasing porción L/P</field>
+            <field name="code_prefix">2280</field>
+		    <field name="parent_id" ref="cl_bs_22"/>
+        </record>
+
+        <record id="cl_bs_2290" model="account.group">
+            <field name="name">Otros Pasivos L/P</field>
+            <field name="code_prefix">2290</field>
+		    <field name="parent_id" ref="cl_bs_22"/>
+        </record>
+
+        <!-- Capital : Prefijo = 31 -->
+
+        <record id="cl_bs_3110" model="account.group">
+            <field name="name">Capital Social</field>
+            <field name="code_prefix">3110</field>
+		    <field name="parent_id" ref="cl_bs_31"/>
+        </record>
+
+        <record id="cl_bs_3120" model="account.group">
+            <field name="name">Reservas y Revalorización de Capital</field>
+            <field name="code_prefix">3120</field>
+		    <field name="parent_id" ref="cl_bs_31"/>
+        </record>
+
+        <!-- Utilidades por Distribuir : Prefijo = 32 -->
+
+        <record id="cl_bs_3210" model="account.group">
+            <field name="name">Utilidades por Distribuir</field>
+            <field name="code_prefix">3210</field>
+		    <field name="parent_id" ref="cl_bs_32"/>
+        </record>
+
+
+
+        <!-- Detail Account Groups : Profit and Loss : 4 digits -->
+
+        <!-- Ingreso Operacional : Prefijo = 41 -->
+		
+        <record id="cl_pl_4111" model="account.group">
+            <field name="name">Ingresos por Ventas del Giro</field>
+            <field name="code_prefix">4111</field>
+		    <field name="parent_id" ref="cl_pl_41"/>
+        </record>
+		
+        <record id="cl_pl_4121" model="account.group">
+            <field name="name">Comisiones por Ventas (menos)</field>
+            <field name="code_prefix">4121</field>
+		    <field name="parent_id" ref="cl_pl_41"/>
+        </record>
+
+        <!-- Ingreso No-Operacional : Prefijo = 42 -->
+		
+        <record id="cl_pl_4211" model="account.group">
+            <field name="name">Ingresos Financieros</field>
+            <field name="code_prefix">4211</field>
+		    <field name="parent_id" ref="cl_pl_42"/>
+        </record>
+		
+        <record id="cl_pl_4221" model="account.group">
+            <field name="name">Ingresos por Corrección Monetaria</field>
+            <field name="code_prefix">4221</field>
+		    <field name="parent_id" ref="cl_pl_42"/>
+        </record>
+		
+        <record id="cl_pl_4231" model="account.group">
+            <field name="name">Ingresos por Diferencia de Cambio</field>
+            <field name="code_prefix">4231</field>
+		    <field name="parent_id" ref="cl_pl_42"/>
+        </record>
+		
+        <record id="cl_pl_4291" model="account.group">
+            <field name="name">Otros Ingresos No-Operacionales</field>
+            <field name="code_prefix">4291</field>
+		    <field name="parent_id" ref="cl_pl_42"/>
+        </record>
+
+        <!-- Costos de Ventas : Prefijo = 51 -->
+
+        <record id="cl_pl_5111" model="account.group">
+            <field name="name">Costo de Ventas</field>
+            <field name="code_prefix">5111</field>
+		    <field name="parent_id" ref="cl_pl_51"/>
+        </record>
+
+
+        <!-- Costos Directos de Producción : Prefijo = 521 -->
+
+        <record id="cl_pl_5211" model="account.group">
+            <field name="name">Mano de Obra Producción</field>
+            <field name="code_prefix">5211</field>
+		    <field name="parent_id" ref="cl_pl_521"/>
+        </record>
+
+        <record id="cl_pl_5212" model="account.group">
+            <field name="name">Materiales e Insumos de Consumo</field>
+            <field name="code_prefix">5212</field>
+		    <field name="parent_id" ref="cl_pl_521"/>
+        </record>
+
+        <!-- Costos Indirectos de Producción : Prefijo = 522 -->
+
+        <record id="cl_pl_5221" model="account.group">
+            <field name="name">Costos de Operación Máquinas</field>
+            <field name="code_prefix">5221</field>
+		    <field name="parent_id" ref="cl_pl_522"/>
+        </record>
+
+        <record id="cl_pl_5222" model="account.group">
+            <field name="name">Otros Costos No-Distribuidos</field>
+            <field name="code_prefix">5222</field>
+		    <field name="parent_id" ref="cl_pl_522"/>
+        </record>
+
+        <!-- Gastos de Administración : Prefijo = 611 -->
+
+        <record id="cl_pl_6111" model="account.group">
+            <field name="name">Remuneraciones Admón y Venta</field>
+            <field name="code_prefix">6111</field>
+		    <field name="parent_id" ref="cl_pl_611"/>
+        </record>
+
+        <record id="cl_pl_6112" model="account.group">
+            <field name="name">Materiales e Insumos Admón.</field>
+            <field name="code_prefix">6112</field>
+		    <field name="parent_id" ref="cl_pl_611"/>
+        </record>
+
+        <record id="cl_pl_6113" model="account.group">
+            <field name="name">Honorarios y Servicios Admón.</field>
+            <field name="code_prefix">6113</field>
+		    <field name="parent_id" ref="cl_pl_611"/>
+        </record>
+
+        <record id="cl_pl_6114" model="account.group">
+            <field name="name">Viáticos y Viajes Admón.</field>
+            <field name="code_prefix">6114</field>
+		    <field name="parent_id" ref="cl_pl_611"/>
+        </record>
+
+        <record id="cl_pl_6115" model="account.group">
+            <field name="name">Informática y Telecomunicaciones Admón.</field>
+            <field name="code_prefix">6115</field>
+		    <field name="parent_id" ref="cl_pl_611"/>
+        </record>
+
+        <record id="cl_pl_6119" model="account.group">
+            <field name="name">Otros Gastos Admón.</field>
+            <field name="code_prefix">6119</field>
+		    <field name="parent_id" ref="cl_pl_611"/>
+        </record>
+
+        <!-- Gastos de Comercialización : Prefijo = 612 -->
+
+        <record id="cl_pl_6121" model="account.group">
+            <field name="name">Personal de Ventas</field>
+            <field name="code_prefix">6121</field>
+		    <field name="parent_id" ref="cl_pl_612"/>
+        </record>
+
+        <record id="cl_pl_6122" model="account.group">
+            <field name="name">Materiales e Insumos Ccial.</field>
+            <field name="code_prefix">6122</field>
+		    <field name="parent_id" ref="cl_pl_612"/>
+        </record>
+
+        <record id="cl_pl_6123" model="account.group">
+            <field name="name">Honorarios y Servicios Ccial.</field>
+            <field name="code_prefix">6123</field>
+		    <field name="parent_id" ref="cl_pl_612"/>
+        </record>
+
+        <record id="cl_pl_6124" model="account.group">
+            <field name="name">Viáticos y Viajes Ccial.</field>
+            <field name="code_prefix">6124</field>
+		    <field name="parent_id" ref="cl_pl_612"/>
+        </record>
+
+        <record id="cl_pl_6125" model="account.group">
+            <field name="name">Informática y Telecomunicaciones Ccial.</field>
+            <field name="code_prefix">6125</field>
+		    <field name="parent_id" ref="cl_pl_612"/>
+        </record>
+
+        <record id="cl_pl_6126" model="account.group">
+            <field name="name">Publicidad y Marketing Ccial.</field>
+            <field name="code_prefix">6126</field>
+		    <field name="parent_id" ref="cl_pl_612"/>
+        </record>
+
+        <record id="cl_pl_6129" model="account.group">
+            <field name="name">Otros Gastos Ccial.</field>
+            <field name="code_prefix">6129</field>
+		    <field name="parent_id" ref="cl_pl_612"/>
+        </record>
+
+        <!-- Gastos de Instalaciones : Prefijo = 613 -->
+
+        <record id="cl_pl_6131" model="account.group">
+            <field name="name">Mantención y Reparación Instalaciones</field>
+            <field name="code_prefix">6131</field>
+		    <field name="parent_id" ref="cl_pl_613"/>
+        </record>
+
+        <record id="cl_pl_6132" model="account.group">
+            <field name="name">Arriendos Instalaciones</field>
+            <field name="code_prefix">6132</field>
+		    <field name="parent_id" ref="cl_pl_613"/>
+        </record>
+
+        <record id="cl_pl_6133" model="account.group">
+            <field name="name">Servicios para Instalaciones</field>
+            <field name="code_prefix">6133</field>
+		    <field name="parent_id" ref="cl_pl_613"/>
+        </record>
+
+        <record id="cl_pl_6139" model="account.group">
+            <field name="name">Depreciación</field>
+            <field name="code_prefix">6139</field>
+		    <field name="parent_id" ref="cl_pl_613"/>
+        </record>
+
+        <!-- Gastos Corporativos : Prefijo = 614 -->
+
+        <record id="cl_pl_6141" model="account.group">
+            <field name="name">Sueldos y Honorarios Corporativos</field>
+            <field name="code_prefix">6141</field>
+		    <field name="parent_id" ref="cl_pl_614"/>
+        </record>
+
+        <record id="cl_pl_6142" model="account.group">
+            <field name="name">Gastos Directorio</field>
+            <field name="code_prefix">6142</field>
+		    <field name="parent_id" ref="cl_pl_614"/>
+        </record>
+
+        <!-- Gastos Financieros : Prefijo = 621 -->
+
+        <record id="cl_pl_6211" model="account.group">
+            <field name="name">Gastos Financieros</field>
+            <field name="code_prefix">6211</field>
+		    <field name="parent_id" ref="cl_pl_621"/>
+        </record>
+
+        <!-- Gastos Corrección Monetaria : Prefijo = 622 -->
+
+        <record id="cl_pl_6221" model="account.group">
+            <field name="name">Gastos Financieros</field>
+            <field name="code_prefix">6221</field>
+		    <field name="parent_id" ref="cl_pl_622"/>
+        </record>
+
+        <!-- Gastos Diferencia de Cambio : Prefijo = 623 -->
+
+        <record id="cl_pl_6231" model="account.group">
+            <field name="name">Gastos Diferencia de Cambio</field>
+            <field name="code_prefix">6231</field>
+		    <field name="parent_id" ref="cl_pl_623"/>
+        </record>
+
+        <!-- Gastos Tributarios : Prefijo = 624 -->
+
+        <record id="cl_pl_6241" model="account.group">
+            <field name="name">Gastos Tributarios</field>
+            <field name="code_prefix">6241</field>
+		    <field name="parent_id" ref="cl_pl_624"/>
+        </record>
+
+        <!-- Otros Gastos No-Operacionales : Prefijo = 629 -->
+
+        <record id="cl_pl_6291" model="account.group">
+            <field name="name">Otros Gastos No-Operacionales</field>
+            <field name="code_prefix">6291</field>
+		    <field name="parent_id" ref="cl_pl_629"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Account Groups : Non-disclosed Accounts : 4 digits -->
+
+        <record id="cl_co_7100" model="account.group">
+            <field name="name">Cuentas de Orden - Derechos</field>
+            <field name="code_prefix">7100</field>
+		    <field name="parent_id" ref="cl_co"/>
+        </record>
+
+        <record id="cl_co_7200" model="account.group">
+            <field name="name">Cuentas de Orden - Obligaciones</field>
+            <field name="code_prefix">7200</field>
+		    <field name="parent_id" ref="cl_co"/>
+        </record>
+
+    </data>
+</odoo>

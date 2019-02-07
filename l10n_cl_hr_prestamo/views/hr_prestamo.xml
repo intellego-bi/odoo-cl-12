@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Loan Tree view -->
+    <record id="hr_prestamo_tree_view" model="ir.ui.view">
+        <field name="name">hr.prestamo.tree</field>
+        <field name="model">hr.prestamo</field>
+        <field name="arch" type="xml">
+            <tree string="Loan Requests">
+                <field name="department_id"/>
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="payment_date"/>
+                <field name="state"/>
+                <field name="currency_id"/>
+                <field name="prestamo_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="prestamo_pending_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="prestamo_pending_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Loan Form view-->
+    <record id="hr_prestamo_form_view" model="ir.ui.view">
+        <field name="name">hr.prestamo.form</field>
+        <field name="model">hr.prestamo</field>
+        <field name="arch" type="xml">
+            <form string="Loan Request">
+                <header>
+                    <button name="action_submit" type="object" string="Submit" states="draft" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="waiting_approval_1" />
+                    <button name="action_approve" type="object" string="Approve" states="waiting_approval_1" class="oe_highlight" groups="hr.group_hr_manager,hr.group_hr_user"/>
+                    <button name="action_double_approve" type="object" string="Approve" states="waiting_approval_2" class="oe_highlight" groups="account.group_account_user,account.group_account_manager"/>
+                    <button name="action_refuse" type="object" string="Refuse" states="draft,waiting_approval_1,waiting_approval_2" class="oe_highlight" groups="hr.group_hr_manager,hr.group_hr_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting_approval_1,waiting_approval_2,approve,cancel" />
+                </header>
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <!--<div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>-->
+                    <div class="oe_title oe_left">
+                        <h1><strong>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </strong></h1>
+                    </div>
+                    <group>
+                        <group string="Requesting Employee">
+                            <field name="employee_id" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="department_id" readonly="True"/>
+                            <!--<field name="job_position" readonly="True" options="{'no_create': True}"/>-->
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                            <!--<field name="currency_id" options="{'no_create': True}" groups="base.group_multi_company"/>-->
+                                
+                        </group>
+                        <group string="Loan Request">
+                            <field name="currency_id" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="prestamo_amount" widget="monetary" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="installment" attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="payment_date" attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>                            
+                        </group>
+                        <group string="Accounting Entry" attrs="{'invisible':[('state', '=', 'draft')]}" groups="account.group_account_manager">
+                            <field name="emp_account_id" attrs="{'readonly': [('state', '!=', 'draft')]}" groups="account.group_account_manager"/>
+                            <field name="treasury_account_id"  attrs="{'readonly': [('state', '!=', 'draft')]}" groups="account.group_account_manager"/>
+                            <field name="journal_id" attrs="{'readonly': [('state', '!=', 'draft')]}" groups="account.group_account_manager"/>
+                            <field name="move_id" attrs="{'invisible': [('state', '!=', 'approve')]}" groups="account.group_account_manager"/>
+                        </group>
+
+                        <!--<group col="4">
+                        <field name="employee_id" options="{'no_create': True}" attrs="{'readonly':[('state','=','approve')]}"/>
+                        <field name="date"/>
+                        <field name="department_id"/>
+                        <field name="job_position" options="{'no_create': True}"/>
+                        <field name="prestamo_amount" attrs="{'readonly':[('state','=','approve')]}" widget="monetary"/>
+                        <field name="installment" attrs="{'readonly':[('state','=','approve')]}"/>
+                        <field name="payment_date" attrs="{'readonly':[('state','=','approve')]}"/>
+                        <field name="journal_id" readonly="1" attrs="{'invisible':[('state', '=','draft')]}"/>
+                        <field name="emp_account_id" readonly="1" attrs="{'invisible':[('state', '=','draft')]}"/>
+                        <field name="treasury_account_id" readonly="1" attrs="{'invisible':[('state', '=','draft')]}"/>
+                        <field name="move_id" readonly="1" attrs="{'invisible': [('state', '!=', 'approve')]}" groups="account.group_account_manager"/>
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                        <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                        </group>-->
+                        <group col="4" string="Pending Loans" attrs="{'invisible': [('prestamo_pending_count', '=', '0')]}">
+                            <field name="prestamo_pending_amount" readonly="1" attrs="{'invisible': [('prestamo_pending_count', '=', '0')]}" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="prestamo_pending_count" readonly="1" attrs="{'invisible': [('prestamo_pending_count', '=', '0')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Installments">
+                            <field name="prestamo_lines" attrs="{'readonly':[('state','=','approve')]}">
+                                <tree string="Installments" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}" attrs="{'readonly':[('payslip_id', '>=','1')]}"/>
+	                                <field name="currency_id" invisible="True"/>
+                                    <field name="paid" readonly="1" widget="toggle_button"/>
+                                    <field name="payslip_id" readonly="1"/>
+                                    <field name="move_id" readonly="1"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" >
+                                <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_paid_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="balance_amount" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                            <button type="object" name="compute_installment" string="Compute Installment"  colspan="2" attrs="{'invisible':[('state','=','approve')]}"
+                            groups="hr.group_hr_manager,hr.group_hr_user" class="oe_stat_button"
+                            icon="fa-clock-o"/>
+                            <div class="oe_clear"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--loan search view-->
+    <record id="view_prestamo_request_search_form" model="ir.ui.view">
+        <field name="name">hr.prestamo.search.form</field>
+        <field name="model">hr.prestamo</field>
+        <field name="arch" type="xml">
+           <search string="Tasks">
+                <field name="employee_id" string="Employee"/>
+                <field name="department_id" string="Department"/>
+                    <filter string="Employee" name="employee_id" context="{'group_by':'employee_id'}"/>
+                    <filter string="Department" name="department_id" context="{'group_by':'department_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_prestamo_request" model="ir.actions.act_window">
+        <field name="name">Loan Requests</field>
+        <field name="res_model">hr.prestamo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_prestamo_request_search_form"/>
+         <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create Employee Loan Requests</p>
+                <p>Here you can create Employee Loan Requests that can be repaid through automatic deductions in payroll processing</p>
+        </field>
+    </record>
+
+    <!-- Shortcuts -->
+    <record id="act_hr_employee_prestamo_request" model="ir.actions.act_window">
+        <field name="name">Employee Loans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.prestamo</field>
+        <field name="src_model">hr.employee</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+        <field name="domain">[('employee_id','=',active_id)]</field>
+        <field name="view_id" eval="hr_prestamo_tree_view"/>
+    </record>
+
+
+    <!-- HR employee inherit Loans -->
+    <record id="view_employee_form_prestamo_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.prestamo.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(act_hr_employee_prestamo_request)d"
+                    type="action"
+                    class="oe_stat_button"
+                    icon="fa-calendar"
+                    groups="hr.group_hr_manager,hr.group_hr_user">
+                    <field name="emp_pending_count" widget="statinfo" string="Unpaid Installments"/>
+                </button>
+                <button name="%(act_hr_employee_prestamo_request)d"
+                    type="action"
+                    class="oe_stat_button"
+                    icon="fa-money"
+                    groups="hr.group_hr_manager,hr.group_hr_user">
+                    <div class="o_form_field o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="emp_pending_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </span>
+                            <span class="o_stat_text">Loaned</span>
+                    </div>                    
+                </button>
+                <!--<button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="action_view_partner_invoices" attrs="{'invisible': [('customer', '=', False)]}" context="{'default_partner_id': active_id}">
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="total_invoiced" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </span>
+                            <span class="o_stat_text">Facturado</span>
+                        </div>
+                    </button>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>

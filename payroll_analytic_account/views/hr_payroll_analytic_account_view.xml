@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        
+    <!-- Adding Account fields to the Salary Rules -->
+
+        <record id="hr_salary_rule_analytic_form_inherit" model="ir.ui.view">
+            <field name="name">hr.salary.rule.analytic.form.inherit</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll_account.hr_salary_rule_form_inherit"/>
+            <field name="arch" type="xml">	
+            	<field name="account_credit" position="after">
+                            <field name="account_analytic_true" />
+                </field>
+            	<field name ="analytic_account_id" position="replace">
+                            <field name="analytic_account_id" attrs="{'invisible': [('account_analytic_true', '==', True)]}"/>
+            	</field>
+            </field>
+        </record>
+
+    <!-- Contract View -->
+
+        <record id="hr_contract_form_analytic_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.view.analytic.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll_account.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <!--<xpath expr="//field[@name='analytic_account_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>-->
+                <xpath expr="//field[@name='analytic_account_id']" position="attributes">
+                    <attribute name="string">Analytic Cost Center</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    <!-- Salary Rule View  -->
+
+        <!-- Extiende Vista Lista REGLAS SALARIALES -->
+        <!-- Agrega Indicador de Cuenta Analítica desde Contrato -->
+        <record model="ir.ui.view" id="cl_view_hr_salary_rule_analytic_list">
+            <field name="name">hr.salary.rule</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="mode">extension</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='register_id']" position="after">
+                    <field name="account_analytic_true" widget="toggle_button"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
