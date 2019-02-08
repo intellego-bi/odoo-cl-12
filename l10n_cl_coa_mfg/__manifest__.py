@@ -30,6 +30,7 @@
     'website': 'https://Intellego-BI.com',
     'maintainer': 'Intellego-BI.com',
     'category': 'Localization',
+    'sequence': 50,
     'depends': ['account'],
     'data': [
         'data/account_data.xml',
