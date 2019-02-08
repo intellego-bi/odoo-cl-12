@@ -119,6 +119,8 @@
       <field name="name">IVA 19% Venta</field>
       <field name="description">IVA 19% Venta</field>
       <field name="amount">19</field>
+      <field name="sii_code">14</field>
+      <field name="sequence" eval="1"/>
       <field name="amount_type">percent</field>
       <field name="type_tax_use">sale</field>
       <field name="refund_account_id" ref="cl_coa_mfg_21501000"/>
@@ -132,6 +134,8 @@
       <field name="name">IVA 19% Compra</field>
       <field name="description">IVA 19% Compra</field>
       <field name="amount">19</field>
+      <field name="sii_code">14</field>
+      <field name="sequence" eval="1"/>
       <field name="amount_type">percent</field>
       <field name="type_tax_use">purchase</field>
       <field name="refund_account_id" ref="cl_coa_mfg_11501000"/>
@@ -140,11 +144,60 @@
       <field name="tax_group_id" ref="tax_group_iva_19"/>
     </record>
 
+    <record id="IVAV_17" model="account.tax.template">
+      <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
+      <field name="name">IVA 19% Venta (Faenamiento Carnes)</field>
+      <field name="description">IVA 19% Venta</field>
+      <field name="amount">19</field>
+      <field name="sii_code">17</field>
+      <field name="amount_type">percent</field>
+      <field name="type_tax_use">sale</field>
+      <field name="sequence" eval="2"/>
+      <field name="refund_account_id" ref="cl_coa_mfg_21501000"/>
+      <field name="account_id" ref="cl_coa_mfg_21501000"/>
+      <field name="tag_ids" eval="[(6,0,[ref('tag_cl_09'), ref('tag_cl_14')])]"/>
+      <field name="sii_type" >R</field>
+      <field name="retencion">5.000</field>
+    </record>
+
+    <record id="IVAV_18" model="account.tax.template">
+      <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
+      <field name="name">IVA 19% Venta (Carnes)</field>
+      <field name="description">IVA 19% Venta</field>
+      <field name="amount">19</field>
+      <field name="sii_code">18</field>
+      <field name="amount_type">percent</field>
+      <field name="type_tax_use">sale</field>
+      <field name="sequence" eval="3"/>
+      <field name="refund_account_id" ref="cl_coa_mfg_21501000"/>
+      <field name="account_id" ref="cl_coa_mfg_21501000"/>
+      <field name="tag_ids" eval="[(6,0,[ref('tag_cl_09'), ref('tag_cl_14')])]"/>
+      <field name="sii_type" >R</field>
+      <field name="retencion">5.000</field>
+    </record>
+
+    <record id="retencion_iva" model="account.tax.template">
+      <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
+      <field name="name">Retención Total IVA</field>
+      <field name="description">Retención</field>
+      <field name="amount">19</field>
+      <field name="sii_code">15</field>
+      <field name="amount_type">percent</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="sequence" eval="4"/>
+      <field name="refund_account_id" ref="cl_coa_mfg_21501000"/>
+      <field name="account_id" ref="cl_coa_mfg_21501000"/>
+      <field name="tag_ids" eval="[(6,0,[ref('tag_cl_05'), ref('tag_cl_18')])]"/>
+      <field name="sii_type" >R</field>
+      <field name="retencion">19.000</field>
+    </record>
+
     <record id="IVAC_0" model="account.tax.template">
       <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
       <field name="name">IVA Exento Compra</field>
       <field name="description">IVA Exento Compra</field>
       <field name="amount">0</field>
+      <field name="sii_code">0</field>
        <field name="sequence" eval="3"/>
       <field name="amount_type">percent</field>
       <field name="type_tax_use">purchase</field>
@@ -156,10 +209,25 @@
       <field name="name">IVA Exento Venta</field>
       <field name="description">IVA Exento Venta</field>
       <field name="amount">0</field>
+      <field name="sii_code">0</field>
       <field name="amount_type">percent</field>
       <field name="type_tax_use">sale</field>
       <field name="sequence" eval="2"/>
       <field name="tag_ids" eval="[(6,0,[ref('tag_cl_09'), ref('tag_cl_14')])]"/>
+    </record>
+
+    <record id="especifico_compra" model="account.tax.template">
+      <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
+      <field name="name">Específico Compra</field>
+      <field name="description">Especifico</field>
+      <field name="amount">63</field>
+      <field name="sii_code">29</field>
+      <field name="amount_type">percent</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="sequence" eval="5"/>
+      <field name="refund_account_id" ref="cl_coa_mfg_11501000"/>
+      <field name="account_id" ref="cl_coa_mfg_11501000"/>
+      <field name="tag_ids" eval="[(6,0,[ref('tag_cl_05'), ref('tag_cl_18')])]"/>
     </record>
 
     <record id="IVAC_AF_19" model="account.tax.template">
@@ -167,6 +235,9 @@
       <field name="name">IVA 19% Activo Fijo</field>
       <field name="description">IVA 19% Activo Fijo</field>
       <field name="amount">19</field>
+      <field name="sii_code">14</field>
+      <field name="activo_fijo" eval="True"/>
+      <field name="sequence" eval="6"/>
       <field name="amount_type">percent</field>
       <field name="type_tax_use">purchase</field>
       <field name="refund_account_id" ref="cl_coa_mfg_11504000"/>
@@ -174,8 +245,46 @@
       <field name="tag_ids" eval="[(6,0,[ref('tag_cl_05'), ref('tag_cl_18')])]"/>
       <field name="tax_group_id" ref="tax_group_iva_19"/>
     </record>
-	
-	
+
+    <record id="ila_compra" model="account.tax.template">
+      <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
+      <field name="name">ILA (Licores, Piscos, Destilados, etc.) Vinos Compras</field>
+      <field name="description">ILA 27%</field>
+      <field name="amount">27</field>
+      <field name="sii_code">24</field>
+      <field name="amount_type">percent</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="sequence" eval="7"/>
+      <field name="refund_account_id" ref="cl_coa_mfg_11504000"/>
+      <field name="account_id" ref="cl_coa_mfg_11504000"/>
+    </record>
+
+    <record id="ila_vinos_compra" model="account.tax.template">
+      <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
+      <field name="name">ILA Vinos Compras</field>
+      <field name="description">ILA 15%</field>
+      <field name="amount">15</field>
+      <field name="sii_code">25</field>
+      <field name="amount_type">percent</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="sequence" eval="8"/>
+      <field name="refund_account_id" ref="cl_coa_mfg_11504000"/>
+      <field name="account_id" ref="cl_coa_mfg_11504000"/>
+    </record>
+
+    <record id="cervezas_compra" model="account.tax.template">
+      <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
+      <field name="name">Cervezas y bebidas alcohólicas Compras</field>
+      <field name="description">15%</field>
+      <field name="amount">15</field>
+      <field name="sii_code">26</field>
+      <field name="amount_type">percent</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="sequence" eval="8"/>
+      <field name="refund_account_id" ref="cl_coa_mfg_11504000"/>
+      <field name="account_id" ref="cl_coa_mfg_11504000"/>
+    </record>
+    
     <record id="I_IU2C" model="account.tax.template">
       <field name="chart_template_id" ref="cl_chart_template_coa_mfg"/>
       <field name="name">Impuesto Único de Segunda Categoría</field>

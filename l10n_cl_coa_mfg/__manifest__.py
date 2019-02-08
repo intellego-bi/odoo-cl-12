@@ -40,5 +40,6 @@
         'data/l10n_cl_chart_data.xml',
         'data/account_tax_data.xml',
         'data/account_chart_template_data.xml',
+        'views/account_tax.xml',
     ],
 }
