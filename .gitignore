@@ -1,0 +1,4 @@
+*.project
+*.pydevproject
+*.eclipse.core.resources.prefs
+*.pyc
