@@ -15,11 +15,14 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 **Intellego-BI.com** - https://intellego-bi.com
  - Rodolfo Bermúdez Neubauer <odoo@intellego-bi.com>
 
+<p>
+<img width="200" alt="Logo Flectra Chile" src="https://avatars2.githubusercontent.com/u/47437110?s=460&v=4" />
+</p>
+
 **Flectra Chile** - https://flectrachile.cl
  - Carlos Lopez Mite <celm1990@hotmail.com>
  - Francisco Lorca <fcolorca1979@gmail.com>
 
- 
  
 <br><br>
 ## Features list
