@@ -15,6 +15,12 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 **Intellego-BI.com** - https://intellego-bi.com
  - Rodolfo Bermúdez Neubauer <odoo@intellego-bi.com>
 
+**Flectra Chile** - https://flectrachile.cl
+ - Carlos Lopez Mite <celm1990@hotmail.com>
+ - Francisco Lorca <fcolorca1979@gmail.com>
+
+ 
+ 
 <br><br>
 ## Features list
 
@@ -41,14 +47,14 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 
 **Work In Progress: Chilean Localization**
 
+    * Electronic Invoicing and EDI with SII (Factura Electrónica)
+    * Witholding Tax (Retención) on Vendor Invoices (Boleta de Honorarios)
+    * Outgoing Batch Payments Interface (pay multiple vendors and/or employess in batch process)
     * Working (shift) Schedule on Employee Contract
     * Legal Financial Statements
 
 **Wishlist: Chilean Localization**
 
-    * Witholding Tax (Retención) on Vendor Invoices (Boleta de Honorarios)
-    * Outgoing Batch Payments Interface (pay multiple vendors in batch)
-    * Electronic Invoicing and EDI with SII (Factura Electrónica)
     * Electronic Bank Statements for chilean banks
     * Automate monthly Previred indicators update 
     * Fixed Assets Accounting
@@ -57,6 +63,7 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 ## Thanks to
  
  - **Odoo Community Association (OCA)** https://odoo-community.org <br>
+ - **Flectra Chile** - https://flectrachile.cl <br>
  - **konos.cl** - http://konos.cl <br>
  - **globalresponse.cl** http://globalresponse.cl <br>
  - **blancomartin.com** http://blancomartin.com <br>
@@ -78,4 +85,4 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
  
  - **Translations** <br>
  - **Clean-up, document and optimize parts of the code** <br>
- - **Deploy and Test on Odoo 12 Community Edition (CE) ** <br>
+ - **Deploy and Test on Odoo 12 Community Edition (CE)** <br>
