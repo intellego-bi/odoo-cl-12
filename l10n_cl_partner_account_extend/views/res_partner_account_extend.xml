@@ -59,9 +59,9 @@
                 <xpath expr="//field[@name='display_name']" position="after">
                     <field name="vat" attrs="{'invisible': [('is_company','=',False)]}"/>
                 </xpath>
-                <xpath expr="//field[@name='email']" position="after">
-                    <field name="total_due" widget="monetary"/>
-                </xpath>
+                <!-- <xpath expr="//field[@name='email']" position="after">
+                    <field name="total_due" widget="monetary"/> 
+                </xpath> -->
             </field>
         </record>
 
