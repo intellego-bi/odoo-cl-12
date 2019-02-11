@@ -29,7 +29,7 @@ class AccCurrConfig(models.TransientModel):
 
     cl_sbif_api_key  = fields.Char(string='SBIF API Key', 
                                    #default='e96f651e08214ed0060771f21d11cdeb3b8b3305', 
-                                   required=True,
+                                   #required=True,
                                    help="You must get your private API Key from https://api.sbif.cl "
                                         "in order to use this service.")
 
