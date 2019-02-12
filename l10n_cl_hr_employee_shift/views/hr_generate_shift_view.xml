@@ -3,7 +3,8 @@
 <odoo>
     <data>
     <!-- explicit wizard view definition -->
-        <record model="ir.ui.view" id="hr_employee_shift.generate_schedule_form">
+        <!--<record model="ir.ui.view" id="hr_employee_shift.generate_schedule_form">-->
+        <record model="ir.ui.view" id="l10n_cl_hr_employee_shift.generate_schedule_form">
             <field name="name">hr_employee_shift_generate_schedule form</field>
             <field name="model">hr.shift.generate</field>
             <field name="arch" type="xml">
@@ -35,7 +36,7 @@
         </record>
 
     <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="hr_employee_shift.generate_schedule_action_window">
+    <record model="ir.actions.act_window" id="l10n_cl_hr_employee_shift.generate_schedule_action_window">
         <field name="name">Employee Shift</field>
         <field name="res_model">hr.shift.generate</field>
         <field name="view_mode">form</field>
@@ -45,10 +46,9 @@
     <!-- menu item -->
     <menuitem name="Shift" id="menu_shift_schedule_generate_id_menu" parent="menu_shift" groups="hr.group_hr_manager"/>
     <menuitem name="Generate Schedule"
-              id="hr_employee_shift.menu_shift_schedule_generate_id"
+              id="l10n_cl_hr_employee_shift.menu_shift_schedule_generate_id"
               parent="menu_shift_schedule_generate_id_menu"
-              action="hr_employee_shift.generate_schedule_action_window"
+              action="l10n_cl_hr_employee_shift.generate_schedule_action_window"
               groups="hr.group_hr_manager"/>
-
   </data>
 </odoo>
