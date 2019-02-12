@@ -138,7 +138,7 @@
                   groups="hr.group_hr_manager" sequence="46"
                   web_icon="l10n_cl_hr_employee_shift,static/description/shift_icon.png"/>
                   <!--web_icon="hr_employee_shift,static/description/shift_icon.png"/>-->
-        <menuitem name="Configuration" id="shift_configuration" parent="hr_employee_shift.menu_shift"/>
+        <menuitem name="Configuration" id="shift_configuration" parent="l10n_cl_hr_employee_shift.menu_shift"/>
         <menuitem name="Shifts" id="menu_conf_shift" parent="shift_configuration"
               action="resource.action_resource_calendar_form"/>
 
