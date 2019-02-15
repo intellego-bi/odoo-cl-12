@@ -75,8 +75,8 @@
     <field name="context">{'bank_payment_line_main_view': True}</field>
 </record>
 
-<menuitem id="bank_payment_line_menu" action="bank_payment_line_action"
-    parent="payment_root" sequence="50" groups="group_account_payment"/>
+<!--<menuitem id="bank_payment_line_menu" action="bank_payment_line_action"
+    parent="payment_root" sequence="50" groups="group_account_payment"/>-->
 
 
 </odoo>

@@ -161,11 +161,11 @@
     <field name="context">{'default_payment_type': 'inbound'}</field>
 </record>
 
-<menuitem id="payment_root" name="Payments" parent="account.menu_finance"
+<!--<menuitem id="payment_root" name="Payments" parent="account.menu_finance"
     sequence="4"/>
 
 <menuitem id="account_payment_order_outbound_menu" action="account_payment_order_outbound_action"
-    parent="payment_root" sequence="10"/>
+    parent="payment_root" sequence="10"/> -->
 
 <!--<menuitem id="account_payment_order_inbound_menu" action="account_payment_order_inbound_action"
     parent="payment_root" sequence="20"/>-->
