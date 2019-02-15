@@ -64,6 +64,11 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_payment_root
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: l10n_cl_pagos
 #: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_form
 msgid "Related Payment Lines"
 msgstr "Líneas de Pago Relacionadas"
