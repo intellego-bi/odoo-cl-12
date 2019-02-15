@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<odoo>
+    <data>
+        <menuitem id="menu_cl_acc_master_data"  name="Datos Maestros" parent="account.account_account_menu" sequence="2"/>
+        <menuitem id="menu_cl_acc_fixed_assets" name="Fixed Assets"   parent="account.menu_finance"         sequence="2"/>
+
+        <menuitem id="cl_acc_fixed_assets" action="action_account_asset_asset_form"  parent="menu_cl_acc_fixed_assets" sequence="10"/>
+        <menuitem id="cl_acc_fixed_assets_post" action="action_asset_depreciation_confirmation_wizard"  parent="menu_cl_acc_fixed_assets" sequence="20"/>
+    </data>
+</odoo>-->
+<odoo>
+
+  <record id="l10n_cl_pagos.cl_orden_de_pago_action" model="ir.actions.act_window" context="{'studio': True}">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Crear nóminas de pagos
+                    </p>
+                    <p>
+                        Acá podrá realizar pagos masivos a proveedore y empleados                        
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Orden de Pago</field>
+    <field name="res_model">account.payment.order</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+
+  <record id="l10n_cl_pagos.cl_treasury_menu" model="ir.ui.menu">
+    <field name="action" eval="False"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Tesorería</field>
+    <field name="parent_id" eval="False"/>
+    <field name="sequence">10</field>
+    <field name="web_icon">fa fa-institution,#FFFFFF,#58a177</field>
+  </record>
+  
+  <record id="l10n_cl_pagos.cl_orden_de_pago_menu" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="l10n_cl_pagos.cl_orden_de_pago_action"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Orden de Pago</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_treasury_menu"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+</odoo>
