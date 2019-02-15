@@ -34,7 +34,7 @@
                         Crear nóminas de pagos
                     </p>
                     <p>
-                        Acá podrá realizar pagos masivos a proveedore y empleados                        
+                        Acá podrá realizar pagos masivos a proveedores y empleados                        
                     </p>
                 ]]></field>
     <field name="limit">80</field>
