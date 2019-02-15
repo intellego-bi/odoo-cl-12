@@ -107,7 +107,7 @@
         </field>
     </record>
 
-    <record id="l10n_cl_pagos.cl.cl_bank_payment_line_search" model="ir.ui.view">
+    <record id="l10n_cl_pagos.cl_bank_payment_line_search" model="ir.ui.view">
         <field name="name">bank.payment.line.search</field>
         <field name="model">bank.payment.line</field>
         <field name="arch" type="xml">
@@ -123,7 +123,7 @@
         </field>
     </record>
 
-    <menuitem id="l10n_cl_pagos.cl.bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
+    <menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
         parent="l10n_cl_pagos.cl_treasury_menu" sequence="50" groups="group_account_payment"/>  
   
     <record id="l10n_cl_pagos.cl_orden_de_pago_menu" model="ir.ui.menu" context="{'studio': True}">
