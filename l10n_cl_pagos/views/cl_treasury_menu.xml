@@ -10,6 +10,18 @@
 </odoo>-->
 <odoo>
 
+  <!-- Módulo de Tesorería -->
+  <record id="l10n_cl_pagos.cl_treasury_menu" model="ir.ui.menu">
+    <field name="action" eval="False"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Tesorería</field>
+    <field name="parent_id" eval="False"/>
+    <field name="sequence">10</field>
+    <field name="web_icon">fa fa-institution,#FFFFFF,#58a177</field>
+  </record>
+
+  <!-- Accion Ordenes de Pago -->
   <record id="l10n_cl_pagos.cl_orden_de_pago_action" model="ir.actions.act_window" context="{'studio': True}">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
@@ -39,24 +51,88 @@
     <field name="view_type">form</field>
   </record>
 
-
-  <record id="l10n_cl_pagos.cl_treasury_menu" model="ir.ui.menu">
-    <field name="action" eval="False"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Tesorería</field>
-    <field name="parent_id" eval="False"/>
-    <field name="sequence">10</field>
-    <field name="web_icon">fa fa-institution,#FFFFFF,#58a177</field>
-  </record>
+    <!-- Accion Líneas de Pago Bancario -->
+    <record id="l10n_cl_pagos.cl_bank_payment_line_action" model="ir.actions.act_window">
+        <field name="name">Bank Payment Lines</field>
+        <field name="res_model">bank.payment.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'bank_payment_line_main_view': True}</field>
+    </record>
   
-  <record id="l10n_cl_pagos.cl_orden_de_pago_menu" model="ir.ui.menu" context="{'studio': True}">
-    <field name="action" ref="l10n_cl_pagos.cl_orden_de_pago_action"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Orden de Pago</field>
-    <field name="parent_id" ref="l10n_cl_pagos.cl_treasury_menu"/>
-    <field name="sequence">10</field>
-    <field name="web_icon" eval="False"/>
-  </record>
+     <!-- Form Líneas de Pago Bancario -->
+     <record id="l10n_cl_pagos.cl_bank_payment_line_form" model="ir.ui.view">
+        <field name="name">bank.payment.line.form</field>
+        <field name="model">bank.payment.line</field>
+        <field name="arch" type="xml">
+            <form string="Bank Payment Line" create="false">
+                <group name="main">
+                    <field name="order_id"
+                        invisible="not context.get('bank_payment_line_main_view')"/>
+                    <field name="name"/>
+                    <field name="company_id" groups="base.group_multi_company"
+                        invisible="not context.get('bank_payment_line_main_view')"/>
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="amount_currency"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="partner_bank_id"/>
+                    <field name="communication_type"/>
+                    <field name="communication"/>
+                </group>
+                <group string="Related Payment Lines" name="payment-lines">
+                    <field name="payment_line_ids" nolabel="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree Líneas de Pago Bancario -->
+    <record id="l10n_cl_pagos.cl_bank_payment_line_tree" model="ir.ui.view">
+        <field name="name">bank.payment.line.tree</field>
+        <field name="model">bank.payment.line</field>
+        <field name="arch" type="xml">
+            <tree string="Bank Payment Lines" create="false">
+                <field name="order_id"
+                    invisible="not context.get('bank_payment_line_main_view')"/>
+                <field name="partner_id"/>
+                <field name="communication"/>
+                <field name="partner_bank_id"/>
+                <field name="date"/>
+                <field name="amount_currency" sum="Total Amount"/>
+                <field name="currency_id"/>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"
+                    invisible="not context.get('bank_payment_line_main_view')"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="l10n_cl_pagos.cl.cl_bank_payment_line_search" model="ir.ui.view">
+        <field name="name">bank.payment.line.search</field>
+        <field name="model">bank.payment.line</field>
+        <field name="arch" type="xml">
+           <search string="Search Bank Payment Lines">
+                <field name="partner_id"/>
+                <filter name="inbound" string="Inbound" domain="[('payment_type', '=', 'inbound')]" />
+                <filter name="outbound" string="Outbound" domain="[('payment_type', '=', 'outbound')]" />
+                <group string="Group By" name="groupby">
+                    <filter name="state_groupby" string="State" context="{'group_by': 'state'}"/>
+                    <filter name="partner_groupby" string="Partner" context="{'group_by': 'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <menuitem id="l10n_cl_pagos.cl.bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
+        parent="l10n_cl_pagos.cl_treasury_menu" sequence="50" groups="group_account_payment"/>  
+  
+    <record id="l10n_cl_pagos.cl_orden_de_pago_menu" model="ir.ui.menu" context="{'studio': True}">
+        <field name="action" ref="l10n_cl_pagos.cl_orden_de_pago_action"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Orden de Pago</field>
+        <field name="parent_id" ref="l10n_cl_pagos.cl_treasury_menu"/>
+        <field name="sequence">10</field>
+        <field name="web_icon" eval="False"/>
+    </record>
 </odoo>
