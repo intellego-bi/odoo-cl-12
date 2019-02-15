@@ -123,8 +123,11 @@
         </field>
     </record>
 
+    <!--<menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
+        parent="l10n_cl_pagos.cl_treasury_menu" sequence="50" groups="group_account_payment"/> --> 
+  
     <menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
-        parent="l10n_cl_pagos.cl_treasury_menu" sequence="50" groups="group_account_payment"/>  
+        parent="l10n_cl_pagos.cl_treasury_menu" sequence="50"/>
   
     <record id="l10n_cl_pagos.cl_orden_de_pago_menu" model="ir.ui.menu" context="{'studio': True}">
         <field name="action" ref="l10n_cl_pagos.cl_orden_de_pago_action"/>
