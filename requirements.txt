@@ -23,3 +23,4 @@ pyocclient==0.4
 pysftp==0.2.8
 s3transfer==0.1.12
 urllib3>=1.23
+num2words

@@ -29,7 +29,7 @@
     'website': 'https://www.Intellego-BI.com',
     'maintainer': 'Intellego-BI.com',
     'category': 'Accounting',
-    'depends': ['base', 'account_accountant', 'purchase', 'account_payment_mode', 'account_payment_order', 'account_payment_partner'],
+    'depends': ['base', 'purchase', 'account_payment_mode', 'account_payment_order', 'account_payment_partner'],
     'license': 'LGPL-3',
     'data': [
         'views/cl_treasury_menu.xml',
