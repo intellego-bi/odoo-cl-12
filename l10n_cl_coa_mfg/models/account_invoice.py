@@ -22,7 +22,7 @@ class AccountInvoiceTax(models.Model):
             #amount_tax +=tax.amount
             for line in tax.invoice_id.invoice_line_ids:
                 if tax.tax_id in line.invoice_line_tax_ids and tax.tax_id.price_include:
-                    price_tax_included += line.price_tax_included
+                    price_tax_included += line.price_total
             if price_tax_included > 0 and  tax.tax_id.sii_type in ["R"] and tax.tax_id.amount > 0:
                 base = currency.round(price_tax_included)
             elif price_tax_included > 0 and tax.tax_id.amount > 0:
@@ -34,6 +34,8 @@ class AccountInvoiceTax(models.Model):
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
+    @api.depends('invoice_line_ids.price_subtotal', 'tax_line_ids.amount', 'tax_line_ids.amount_rounding',
+                 'currency_id', 'company_id', 'date_invoice', 'type')
     def _compute_amount(self):
         #@TODO Buscar una mejor forma de aplicar retención
         for inv in self:
@@ -57,14 +59,17 @@ class AccountInvoice(models.Model):
             inv.amount_total = inv.amount_untaxed + inv.amount_tax - amount_retencion
             amount_total_company_signed = inv.amount_total
             amount_untaxed_signed = inv.amount_untaxed
+            amount_tax_signed = inv.amount_tax
             if inv.currency_id and inv.currency_id != inv.company_id.currency_id:
-                currency_id = inv.currency_id.with_context(date=inv.date_invoice)
-                amount_total_company_signed = currency_id.compute(inv.amount_total, inv.company_id.currency_id)
-                amount_untaxed_signed = inv.currency_id.compute(inv.amount_untaxed, inv.company_id.currency_id)
+                currency_id = inv.currency_id
+                amount_total_company_signed = currency_id._convert(inv.amount_total, inv.company_id.currency_id, inv.company_id, inv.date_invoice or fields.Date.today())
+                amount_untaxed_signed = currency_id._convert(inv.amount_untaxed, inv.company_id.currency_id, inv.company_id, inv.date_invoice or fields.Date.today())
+                amount_tax_signed = currency_id._convert(inv.amount_tax, inv.company_id.currency_id, inv.company_id, inv.date_invoice or fields.Date.today())
             sign = inv.type in ['in_refund', 'out_refund'] and -1 or 1
             inv.amount_total_company_signed = amount_total_company_signed * sign
             inv.amount_total_signed = inv.amount_total * sign
             inv.amount_untaxed_signed = amount_untaxed_signed * sign
+            inv.amount_tax_signed = amount_tax_signed * sign
 
     amount_retencion = fields.Monetary(
         string="Retención",
