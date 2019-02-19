@@ -2,8 +2,8 @@
 [l10n_cl_hr_employee_extend]
 
 ## Odoo (ERP/CRM)
- - Odoo 12 Localizaci髇 chilena
- - M骴ulos ajustados para versi髇 12 (Enterprise)
+ - Odoo 12 Localizaci贸n chilena
+ - M贸dulos ajustados para versi贸n 12 (Enterprise)
 
 ## Scope 
 **Features list: Chilean Localization**
@@ -17,7 +17,7 @@
 
     * Electronic Bank Statements for chilean banks
     * Generate Bulk Outgoing payment flat files for chilean banks
-    * Electronic Invoicing and EDI with SII (Factura Electr髇ica)
+    * Electronic Invoicing and EDI with SII (Factura Electr贸nica)
     * Fixed Assets accounting
     * Automate monthly Previred indicators update 
 
@@ -35,7 +35,7 @@
 </p>
 
 **Intellego-BI.com** - https://intellego-bi.com
- - Rodolfo Berm鷇ez Neubauer <odoo@intellego-bi.com>
+ - Rodolfo Berm煤dez Neubauer <odoo@intellego-bi.com>
 
 
 ## Thanks to
@@ -47,11 +47,11 @@
  **Cybrosys Technologies Pvt. Ltd.** https://www.cybrosys.com
 
 
- **Localizaci髇 Chilena**
- - Daniel Blanco Mart韓 <daniel@blancomartin.com>
- - Nelson Ram韗ez <info@konos.cl>
+ **Localizaci贸n Chilena**
+ - Daniel Blanco Mart铆n <daniel@blancomartin.com>
+ - Nelson Ram铆rez <info@konos.cl>
  - Carlos Lopez Mite <celm1990@hotmail.com>
- - Daniel Santib狁ez Polanco <dsantibanez@globalresponse.cl>
+ - Daniel Santib谩帽ez Polanco <dsantibanez@globalresponse.cl>
  - Francisco Lorca <fcolorca1979@gmail.com>
  - Marcel Rodriguez <jmrv1981@hotmail.com>
  - ... last, but not least to the Open Source Community!
