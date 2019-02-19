@@ -29,7 +29,8 @@
     'website': 'https://www.Intellego-BI.com',
     'maintainer': 'Intellego-BI.com',
     'category': 'Accounting',
-    'depends': ['base', 'crm', 'website', 'hr', 'account_accountant', 'stock', 'purchase', 'mrp', 'sale_management', 'quality_control', 'documents', 'mail', 'web_studio', 'maintenance', 'fleet'],
+#    'depends': ['base', 'crm', 'website', 'hr', 'account_accountant', 'stock', 'purchase', 'mrp', 'sale_management', 'quality_control', 'documents', 'mail', 'web_studio', 'maintenance', 'fleet'],
+    'depends': ['base', 'contacts', 'account', 'hr', 'stock', 'purchase', 'sale_management', 'mail'],
     'license': 'LGPL-3',
     'data': [
         'views/res_partner_account_extend.xml',
