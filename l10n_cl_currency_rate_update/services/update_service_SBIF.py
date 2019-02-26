@@ -21,7 +21,7 @@ import xmltodict as xm
 apikey = '067edb08cf9ceb0b212d83a0bc8baf39816f026a'
 sbifurl = 'https://api.sbif.cl/api-sbifv3/recursos_api/dolar/?apikey=' + apikey + '&formato=xml'
 rep = requests.get(sbifurl, allow_redirects=True)
-fecha_ayer = date.today() - timedelta(1)
+fecha_ayer = date.today() - timedelta(0)
 fecha = fecha_ayer.strftime('%Y-%m-%d')
 
 
@@ -52,7 +52,7 @@ class SBIFGetter(CurrencyGetterInterface):
             raise UserError(
                 _('Falta configurar API Key en Ajustes Generales de Contabilidad en Odoo'))
 
-        fecha_ayer = date.today() - timedelta(1)
+        fecha_ayer = date.today() - timedelta(0)
         fecha = fecha_ayer.strftime('%Y-%m-%d')
         ano = str(fecha_ayer.year)
         mes = str(fecha_ayer.month)
@@ -128,7 +128,7 @@ class SBIFGetter(CurrencyGetterInterface):
         # at the beginning of the morning ; so, until 10 a.m. SCL time
         # the currency rates are the ones of trading day N-1
 
-        fecha_ayer = date.today() - timedelta(1)
+        fecha_ayer = date.today() - timedelta(0)
         fecha = fecha_ayer.strftime('%Y-%m-%d')
         dia = str(fecha_ayer.day)
 
