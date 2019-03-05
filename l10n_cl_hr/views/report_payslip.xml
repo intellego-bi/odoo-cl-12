@@ -3,9 +3,15 @@
 	<t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
 					<t t-call="web.external_layout">
+<<<<<<< HEAD
             <div class="page" style="font-size: 12px;">
                 <h4 align="center"><span t-raw="o.name"/></h4>
                 <table class="table-condensed " width="100%" style="margin-top:30px; border-top: 3px solid black; border-bottom: 2px solid black;">
+=======
+            <div class="page">
+                <h3 align="center"><span t-raw="o.name"/></h3>
+                <table class="table-condensed " width="100%" style="margin-top:30px; border-top: 3px solid black;">
+>>>>>>> parent of 1497aee... Update report_payslip.xml
                   <thead>
                      <tr>
                         <th colspan="2" width="67%"><strong>Razón Social</strong></th>
@@ -192,7 +198,11 @@
 			  </table>-->
  
 			   
+<<<<<<< HEAD
               <table class="table table-sm" width="100%" style="margin-top: 20px; border-top: 0px solid white;">
+=======
+              <table class="table-condensed" width="100%" style="margin-top: 20px; border-top: 1px solid black;">
+>>>>>>> parent of 1497aee... Update report_payslip.xml
                   <thead>
 				     <tr><br/></tr>
                      <tr>
@@ -202,9 +212,15 @@
                   </thead>
                   <tbody>
                    <tr>
+<<<<<<< HEAD
                        <td style="vertical-align:top; border-top: 2px solid blue;">
                          <table class="table-bordered" width="100%" style="border-top: 0px solid red; border-bottom: 0px solid red; border-left: 0px solid white; border-right: 0px solid white">
                            <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip and line.total)" t-as="p">
+=======
+                       <td style="vertical-align:top;">
+                         <table class="table-condensed" width="100%">
+                           <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="p">
+>>>>>>> parent of 1497aee... Update report_payslip.xml
                                <t t-if=" ('No Imponible' ==p.category_id.name) or ('No Imponible - Otros' ==p.category_id.name) or ('Imponible' ==p.category_id.name) or ('TOTIM' == p.code) or ('TOTNOI' == p.code)">
                                    <td style="border-top: 0px solid white; border-bottom: 0px solid white; border-left: 0px solid white; border-right: 0px solid white;">
                                      <t t-if=" ('Subtotal' ==p.category_id.name)">
@@ -229,9 +245,15 @@
                            </tr>
                          </table>
                        </td>
+<<<<<<< HEAD
                        <td style="vertical-align:top; border-top: 2px solid red;">
                           <table class="table-bordered" width="100%" style="border-top: 0px solid white; border-bottom: 0px solid white; border-left: 0px solid white; border-right: 0px solid white">
                              <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip and line.total)" t-as="p">
+=======
+                       <td style="vertical-align:top;">
+                          <table class="table-condensed" width="100%">
+                             <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="p">
+>>>>>>> parent of 1497aee... Update report_payslip.xml
                                 <t t-if="('Prevision' ==p.category_id.name) or ('Salud' ==p.category_id.name) or ('Descuentos' ==p.category_id.name) or ('Otros Descuentos' ==p.category_id.name) or ('TOD' == p.code) or ('TODELE' == p.code)">
                                    <td style="border-top: 0px solid white; border-bottom: 0px solid white; border-left: 0px solid white; border-right: 0px solid white;">
                                        <t t-if=" ('Subtotal' ==p.category_id.name)">
@@ -266,26 +288,26 @@
               <table class="table-condensed" width="100%" style="margin-top: 50px; border-top: 0px solid white; border-bottom: 0px solid white;">
                 <thead>
                   <tr>
-                    <td colspan="5" width="25%" style="text-align:left"><h6><strong>TOTAL HABERES</strong></h6></td>
+                    <td colspan="5" width="25%" style="text-align:left"><h5><strong>TOTAL HABERES</strong></h5></td>
                     <td colspan="5" width="20%" style="text-align:right">
 					  <t t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="p">
 					  <t t-if="('HAB' == p.code)">
-					  <h6>
+					  <h5>
 					  <!--CLP <span t-esc="round(p.amount)" t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>-->
 					  <strong><span>CLP <t t-esc="'{0:,.0f}'.format(p.amount)"/></span></strong>
-					  </h6>
+					  </h5>
 					  </t>
 					  </t>
 					</td>
 					<td colspan="5" width="5%" style="text-align:right"> </td>
-					<td colspan="5" width="25%" style="text-align:left"><h6><strong>TOTAL DESCUENTOS</strong></h6></td>
+					<td colspan="5" width="25%" style="text-align:left"><h5><strong>TOTAL DESCUENTOS</strong></h5></td>
                     <td colspan="5" width="25%" style="text-align:right">
 					  <t t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="p">
 					  <t t-if="('TDE' == p.code)">
-					  <h6>
+					  <h5>
 					  <!--CLP <span t-esc="round(p.amount)" t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>-->
 					  <strong><span>CLP <t t-esc="'{0:,.0f}'.format(p.amount)"/></span></strong>
-					  </h6>
+					  </h5>
 					  </t>
 					  </t>
 					</td>
@@ -293,7 +315,7 @@
 				</thead>
 			  </table>
 
-              <table class="table-condensed" width="100%" style="margin-top: 30px; border-top: 3px solid white; border-bottom: 0px solid white; background:#efefef;">
+              <table class="table-condensed" width="100%" style="margin-top: 50px; border-top: 3px solid white; border-bottom: 0px solid white; background:#efefef;">
                 <thead>
 				  <tr>
 					<td colspan="1" width="50%" style="text-align:left"><strong>Fecha</strong></td>
