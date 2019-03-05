@@ -15,9 +15,6 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 **Intellego-BI.com** - https://intellego-bi.com
  - Rodolfo Bermúdez Neubauer <odoo@intellego-bi.com>
 
-<br>
-<img width="200" alt="Logo Flectra Chile" src="https://avatars2.githubusercontent.com/u/47437110?s=460&v=4"/>
- 
 <br><br>
 ## Features list
 
