@@ -1,4 +1,4 @@
-# RRHH Chile - Ventas vía Cenabast Chile
+# Chile - Ventas vía Cenabast Chile
 [l10n_cl_cenabast]
 
 ## Odoo (ERP/CRM)
