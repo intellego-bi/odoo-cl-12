@@ -41,6 +41,7 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 
 **Work In Progress: Chilean Localization**
 
+    * Sales workflow for CENABAST
     * Electronic Invoicing and EDI with SII (Factura Electrónica)
     * Witholding Tax (Retención) on Vendor Invoices (Boleta de Honorarios)
     * Outgoing Batch Payments Interface (pay multiple vendors and/or employess in batch process)
