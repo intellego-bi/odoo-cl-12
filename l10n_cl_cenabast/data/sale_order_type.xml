@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="False">
+        <record model='cenabast.saleordertype' id='type_nacional'>
+            <field name='code'>NAC</field>
+            <field name='name'>Nacional</field>
+            <field name='active' eval="True"/>
+        </record>
+        <record model='cenabast.saleordertype' id='type_retail'>
+            <field name='code'>RET</field>
+            <field name='name'>Retail/Locales</field>
+            <field name='active' eval="True"/>
+        </record>
+        <record model='cenabast.saleordertype' id='type_internet'>
+            <field name='code'>INT</field>
+            <field name='name'>Internet</field>
+            <field name='active' eval="True"/>
+        </record>        
+        <record model='cenabast.saleordertype' id='type_export'>
+            <field name='code'>EXP</field>
+            <field name='name'>Exportación</field>
+            <field name='active' eval="False"/>
+        </record>
+        <record model='cenabast.saleordertype' id='type_cenabast'>
+            <field name='code'>CEN</field>
+            <field name='name'>Cenabast</field>
+            <field name='active' eval="True"/>
+        </record>
+    </data>
+</odoo>

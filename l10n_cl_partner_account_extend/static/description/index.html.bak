@@ -8,18 +8,18 @@
 
 <section class="oe_container">
     <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Chile - Ventas vía CENABAST</h2>
-        <h4 class="oe_slogan">[l10n_cl_cenabast]</h4>
-        <h3 class="oe_slogan">Fuljo de Ventas para clientes CENABAST</h3>
+        <h2 class="oe_slogan">Chile - Extensión de vistas de Contabilidad</h2>
+        <h4 class="oe_slogan">[l10n_cl_hr_partner_account_extend]</h4>
+        <h3 class="oe_slogan">Extensión de vistas y maestro de Partners para Chile</h3>
         
     </div>
     <div class="oe_row oe_spaced" style="text-align: center;">
         <h3 class="oe_slogan">Funciones</h3>
         <div>
-            <span style="color:green;"> &#9745; </span> Tipos de Pedido de Venta<br/>
-            <span style="color:green;"> &#9745; </span> Importación del archivo (plano) "Informe de Distribución" de CENABAST<br/>
-            <span style="color:green;"> &#9745; </span> Generación de Facturas con campos específicos para CENABAST<br/>
-            <span style="color:green;"> &#9745; </span> Exportación del archivo (plano) "Informe de Despachos" para CENABAST<br/>
+            <span style="color:green;"> &#9745; </span> Total a Cobrar/Pagar en vista de Partner<br/>
+            <span style="color:green;"> &#9745; </span> Búsqueda por RUT en vista de Lista/Kanban<br/>
+            <span style="color:green;"> &#9745; </span> Oculta campos irrelevantes para Deudores/Acreedores(<br/>
+            <span style="color:green;"> &#9745; </span> Otros ajustes menores de UX<br/>
         </div>
     </div>
 </section>
@@ -38,8 +38,8 @@
         <div class="oe_picture">
             <h3 class="oe_slogan">Resumen</h3>
             <p class="oe_mt32 text-justify" style="text-align: center;">
-                Flujo de trabajo y personsalización del proceso de ventas de acuerdo a las especificaciones 
-                de CENABAST.<br />                
+                Amplia las vistas del maestro de terceros. Mejoras varias en la interfaz de usuario 
+                y búsqueda por RUT.<br />                
             </p>
         </div>
     </div>
@@ -51,8 +51,8 @@
             <h3 class="oe_slogan">Dependencias</h3>
             <p class="oe_mt32 text-justify" style="text-align: center;">
               <li>Odoo - Base [base]</li>
-              <li>Odoo - Ventas [sale_management]</li>
-              <li>OdooCoop.cl - Factura Electrónica para Chile [l10n_cl_fe]</li>
+              <li>Odoo - Contactos [partner]</li>
+              <li>Odoo - Facturación [account]</li>
             </p>
         </div>
     </div>

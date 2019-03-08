@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate='1'>
+        <record id="ir_seq_hr_prestamo" model="ir.sequence">
+            <field name="name">CENABAST Distribución</field>
+            <field name="code">cenabast.dist.seq</field>
+            <field name="prefix">CNAI/%(range_year)s/</field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="use_date_range">True</field>
+            <field name="number_next_actual">1</field>
+            <field name="implementation">standard</field>
+        </record>
+        <record id="ir_seq_hr_prestamo" model="ir.sequence">
+            <field name="name">CENABAST Despacho</field>
+            <field name="code">cenabast.desp.seq</field>
+            <field name="prefix">CNAE/%(range_year)s/</field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="use_date_range">True</field>
+            <field name="number_next_actual">1</field>
+            <field name="implementation">standard</field>
+        </record>
+    </data>
+</odoo>
