@@ -59,13 +59,13 @@ class SaleOrderCenabast(models.Model):
     def _onchange_saleordertype_id(self):
         if self.saleordertype_id:
  #           if self.saleordertype_id == '5':
- #               pricelist = self.env['product.pricelist'].search(
- #               [
- #                   ('name','=', 'Cenabast'),
- #               ])
- #               if pricelist:
+                pricelist = self.env['product.pricelist'].search(
+                [
+                    ('name','=', 'Cenabast'),
+                ])
+                if pricelist:
  #                   self.pricelist_id = pricelist
-                 self.pricelist_id = 2
+                 self.pricelist_id = pricelist.id
  #           else:
  #               self.pricelist_id = self.pricelist_id
 
