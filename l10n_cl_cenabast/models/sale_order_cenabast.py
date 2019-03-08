@@ -66,7 +66,7 @@ class SaleOrderCenabast(models.Model):
                 if pricelist:
                     self.pricelist_id = pricelist
             else:
-                self.pricelist_id = self.pricelist_id.name
+                self.pricelist_id = self.pricelist_id
 
 
 
