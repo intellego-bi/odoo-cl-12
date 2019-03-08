@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sale_order_type_user,cenabast.saleordertype.group_user,model_cenabast_saleordertype,base.group_user,1,1,1,1
+access_sale_order_courier_user,cenabast.operador_logistico.group_user,model_cenabast_operador_logistico,base.group_user,1,1,1,1
