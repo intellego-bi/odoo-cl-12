@@ -58,7 +58,7 @@ class SaleOrderCenabast(models.Model):
     @api.onchange('saleordertype_id')
     def _onchange_saleordertype_id(self):
         if self.saleordertype_id:
-            if saleordertype_id == '5':
+            if self.saleordertype_id == '5':
                 pricelist = self.env['product.pricelist'].search(
                 [
                     ('name','=', 'Cenabast'),
