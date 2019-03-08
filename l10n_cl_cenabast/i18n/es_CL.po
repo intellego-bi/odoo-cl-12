@@ -48,7 +48,7 @@ msgstr "Nombre a mostrar"
 #. module: l10n_cl_cenabast
 #: model:ir.model.fields,field_description:l10n_cl_cenabast.field_sale_order__cenabast_purchase_order
 msgid "External Purchase Order"
-msgstr "Orden de Comrpa (3ro)"
+msgstr "Orden de Compra (3ro)"
 
 #. module: l10n_cl_cenabast
 #: model:ir.model.fields,field_description:l10n_cl_cenabast.field_sale_order__cenabast_sales_order
