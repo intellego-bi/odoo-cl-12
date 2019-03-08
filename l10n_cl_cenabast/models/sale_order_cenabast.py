@@ -14,6 +14,6 @@ class SaleOrderCenabast(models.Model):
     saleordertype_id = fields.Many2one(
         'cenabast.saleordertype',
         string='Sale Order Type',
-        default=lambda self: self._get_default_saleordertype()
+#        default=lambda self: self._get_default_saleordertype()
     )
 
