@@ -29,6 +29,13 @@ class SaleOrderCenabast(models.Model):
     saleordertype_id = fields.Many2one(
         'cenabast.saleordertype',
         string='Sale Order Type',
+        required=True
         default=lambda self: self._get_default_saleordertype()
     )
+
+    cenabast_purchase_order = fields.Char(
+        'External Purchase Order', size=10)
+        
+    cenabast_sales_order = fields.Char(
+        'External Sales Order', size=10)
 

@@ -6,8 +6,13 @@
 		<field name="inherit_id" ref="sale.view_order_form"/>
 		<field name="arch" type="xml">
 			<field name="partner_id" position="before">
-                  <field name="saleordertype_id"/>
+                  <field name="saleordertype_id" attrs="{'required': true}"/>
 			</field>
-		</field>
+			<field name="partner_id" position="after">
+                  <field name="cenabast_purchase_order" attrs="{'invisible': [['saleordertype_id.code','!=','CEN']]}"/>
+                  <field name="cenabast_sales_order" attrs="{'invisible': [['saleordertype_id.code','!=','CEN']]}"/>
+			</field>
+
+        </field>
 	</record>
 </odoo>
