@@ -36,8 +36,7 @@
     ],
     'data': [
 #        'views/cenabast_menu.xml',
-#        'security/ir.model.access.csv',
-#        'security/security.xml',
+        'security/ir.model.access.csv',
         'data/sale_order_type.xml',
         'data/cenabast_file_sequence.xml',
         'views/sale_order.xml',
