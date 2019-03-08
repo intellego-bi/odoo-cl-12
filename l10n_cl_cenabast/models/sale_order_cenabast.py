@@ -8,7 +8,7 @@ class cenabast_operador_logistico(models.Model):
     name = fields.Char(
         'Name', size=64, required=True)
     code = fields.Char(
-        'Code', size=3, required=True)
+        'Code', size=10, required=True)
     active = fields.Boolean(
         'Active', default=True)
 
