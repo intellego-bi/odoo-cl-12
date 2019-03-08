@@ -11,6 +11,7 @@
 			<field name="payment_term_id" position="after">
                   <field name="cenabast_purchase_order" attrs="{'invisible': [('saleordertype_id','!=',5)], 'required': [('saleordertype_id','!=',5)]}"/>
                   <field name="cenabast_sales_order" attrs="{'invisible': [('saleordertype_id','!=',5)], 'required': [('saleordertype_id','!=',5)]}"/>
+                  <field name="cenabast_operador_logistico" attrs="{'invisible': [('saleordertype_id','!=',5)], 'required': [('saleordertype_id','!=',5)]}"/>
 			</field>
 
         </field>

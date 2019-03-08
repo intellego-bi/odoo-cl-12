@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="True">
+        <record model='cenabast.operador_logistico' id='ol_tnt'>
+            <field name='code'>200905</field>
+            <field name='name'>TNT EXPRESS CHILE LTDA.</field>
+            <field name='active' eval="True"/>
+        </record>
+    </data>
+</odoo>

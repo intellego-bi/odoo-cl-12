@@ -1,6 +1,20 @@
 from odoo import api, fields, models
 from odoo.tools.translate import _
 
+class cenabast_operador_logistico(models.Model):
+    _name = 'cenabast.operador_logistico'
+    _description = 'Courier Partner'
+
+    name = fields.Char(
+        'Name', size=64, required=True)
+    code = fields.Char(
+        'Code', size=3, required=True)
+    active = fields.Boolean(
+        'Active', default=True)
+
+    _sql_constraints = [('name', 'unique(name)', 'Name must be unique!'),
+                        ('code', 'unique(code)', 'Code must be unique!')]
+
 
 class cenabast_saleordertype(models.Model):
     _name = 'cenabast.saleordertype'
@@ -40,6 +54,12 @@ class SaleOrderCenabast(models.Model):
         except:
             return self.env['product.pricelist']
 
+    def _get_default_operador_logistico(self):
+        try:
+            return self.env.ref('l10n_cl_cenabast.ol_tnt')
+        except:
+            return self.env['cenabast.operador_logistico']
+            
             
     saleordertype_id = fields.Many2one(
         'cenabast.saleordertype',
@@ -53,6 +73,13 @@ class SaleOrderCenabast(models.Model):
     cenabast_sales_order = fields.Char(
         'External Sales Order', size=10)
 
+    cenabast_operador_logistico_id = fields.Many2one(
+        'cenabast.operador_logistico',
+        string='Courier Partner',
+        default=lambda self: self._get_default_operador_logistico()
+    )
+        
+        
         
     @api.onchange('saleordertype_id')
     def _onchange_saleordertype_id(self):

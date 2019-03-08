@@ -40,6 +40,7 @@
         'data/sale_order_type.xml',
         'data/cenabast_file_sequence.xml',
         'views/sale_order.xml',
+        'views/operador_logistico.xml',
     ],
     'demo': [],
     'images': ['static/description/banner.jpg'],
