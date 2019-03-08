@@ -53,4 +53,22 @@ class SaleOrderCenabast(models.Model):
     cenabast_sales_order = fields.Char(
         'External Sales Order', size=10)
 
-    pricelist_id = fields.Many2one('product.pricelist', string='Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order.", default=lambda self: self._get_default_pricelist_id())
+#    pricelist_id = fields.Many2one('product.pricelist', string='Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order.", default=lambda self: self._get_default_pricelist_id())
+
+    @api.onchange('saleordertype_id')
+    def _onchange_saleordertype_id(self):
+        if self.saleordertype_id:
+            if saleordertype_id == '5':
+                pricelist = self.env['product.pricelist'].search(
+                [
+                    ('name','=', 'Cenabast'),
+                ])
+                if pricelist:
+                    self.pricelist_id = pricelist
+            else:
+                self.pricelist_id = self.pricelist_id.name
+
+
+
+
+
