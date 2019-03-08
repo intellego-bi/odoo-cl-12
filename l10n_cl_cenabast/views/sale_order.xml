@@ -9,8 +9,8 @@
                   <field name="saleordertype_id" attrs="{'required': ['true']}"/>
 			</field>
 			<field name="partner_id" position="after">
-                  <field name="cenabast_purchase_order" attrs="{'invisible': [('cenabast.saleordertype_id.code','!=','CEN')]}"/>
-                  <field name="cenabast_sales_order" attrs="{'invisible': [('cenabast.saleordertype_id.code','!=','CEN')]}"/>
+                  <field name="cenabast_purchase_order" attrs="{'invisible': [('saleordertype_id','!=','5')]}"/>
+                  <field name="cenabast_sales_order" attrs="{'invisible': [('saleordertype_id','!=','5')]}"/>
 			</field>
 
         </field>
