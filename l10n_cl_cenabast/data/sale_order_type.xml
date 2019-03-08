@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data noupdate="False">
+    <data noupdate="True">
         <record model='cenabast.saleordertype' id='type_nacional'>
             <field name='code'>NAC</field>
             <field name='name'>Nacional</field>
