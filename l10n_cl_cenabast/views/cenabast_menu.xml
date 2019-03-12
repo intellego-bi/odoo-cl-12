@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        <menuitem id="l10n_cl_hr.menu_cl_hr_payroll_addons" name="Adicionales Nómina" parent="hr_payroll.menu_hr_payroll_root" sequence="3"/>
+        <menuitem id="l10n_cl_cenabast.menu_cl_sale_cenabast" name="Venta Cenabast" parent="sale.sale_menu_root" sequence="5"/>
+        <menuitem id="l10n_cl_cenabast.cl_cenabast_file_import" action="l10n_cl_pagos.cl_bank_payment_line_action"
+        parent="l10n_cl_cenabast.menu_cl_sale_cenabast" sequence="1"/> 
     </data>
 </odoo>
