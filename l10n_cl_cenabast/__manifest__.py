@@ -41,6 +41,7 @@
         'data/operador_logistico.xml',
         'data/cenabast_file_sequence.xml',
         'views/sale_order.xml',
+        'views/cenabast_menu.xml',
     ],
     'demo': [],
     'images': ['static/description/banner.jpg'],
