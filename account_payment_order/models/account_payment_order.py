@@ -332,7 +332,7 @@ class AccountPaymentOrder(models.Model):
                 f_tipo_pago = 'PRV'
                 f_mensaje_destinatario = 'Pago Helios Doc ' + str(payline.communication)
                 f_cuenta_inscrita = 'R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number
-                payment_file_content = self.company_partner_bank_id.acc_number + ';' + str(payline.partner_bank_id.acc_number) + ';' + str(f_bank_code) + ';' + str(f_rut)+ ';' + str(f_rut_dv) + ';' + payline.partner_id.name + ';' + str(payline.amount_company_currency) + ';' + payline.communication + ';' + str(f_orden_compra) + ';' + str(f_tipo_pago) + ';' + str(f_mensaje_destinatario) + ';' + str(payline.partner_id.email) + ';' + str(f_cuenta_inscrita) + '\n'
+                payment_file_content = self.company_partner_bank_id.acc_number + ';' + str(payline.partner_bank_id.acc_number) + ';' + str(f_bank_code) + ';' + str(f_rut)+ ';' + str(f_rut_dv) + ';' + payline.partner_id.name + ';' + str(payline.amount_company_currency) + ';' + payline.communication + ';' + str(f_orden_compra) + ';' + str(f_tipo_pago) + ';' + str(f_mensaje_destinatario) + ';' + str(payline.partner_id.dte_email) + ';' + str(f_cuenta_inscrita) + '\n'
             return (payment_file_content, f_file_name)
 
     @api.multi
