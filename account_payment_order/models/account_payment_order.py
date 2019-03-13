@@ -363,6 +363,7 @@ class AccountPaymentOrder(models.Model):
             'state': 'uploaded',
             'date_uploaded': fields.Date.context_today(self),
             })
+        # Insert Intellego-BI: Marcar como hecho tras confirmar Upload
         self.write({'state': 'done'})
         return True
 
@@ -501,6 +502,5 @@ class AccountPaymentOrder(models.Model):
             blines.reconcile_payment_lines()
             if post_move:
                 move.post()
-        # Insert Intellego-BI
-        self.write({'state': 'done'})
+
 
