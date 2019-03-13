@@ -322,7 +322,7 @@ class AccountPaymentOrder(models.Model):
         #        "installed the related Odoo module."))
             payment_file_content = 'Chile Payment File Test\n'
             for payline in self.payment_line_ids:
-                payment_file_content = string(payline.partner_id) + '\n' + 'End of File'
+                payment_file_content = str(payline.partner_id) + '\n' + 'End of File'
             return (payment_file_content, 'MyBankFilename.csv')
 
     @api.multi
