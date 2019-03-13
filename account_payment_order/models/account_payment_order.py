@@ -320,7 +320,7 @@ class AccountPaymentOrder(models.Model):
         #    raise UserError(_(
         #        "No handler for this payment method. Maybe you haven't "
         #        "installed the related Odoo module."))
-            payment_file_content = 'A String'
+            payment_file_content = 'A String\n B String'
             return (payment_file_content, 'MyBankFilename.csv')
 
     @api.multi
