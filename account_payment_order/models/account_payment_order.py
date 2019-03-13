@@ -320,9 +320,10 @@ class AccountPaymentOrder(models.Model):
         #    raise UserError(_(
         #        "No handler for this payment method. Maybe you haven't "
         #        "installed the related Odoo module."))
-            payment_file_content = 'Chile Payment File Test\n'
             for payline in self.payment_line_ids:
-                payment_file_content = payline.name + ',' + payline.partner_id.name + ',' + str(payline.partner_id.email) + ',' + payline.partner_id.document_number + ',' + payline.communication + ',' + str(payline.amount_company_currency) + ',' + str(payline.partner_bank_id.bank_id.name) + ',' + str(payline.partner_bank_id.acc_number) + ',' + str(payline.ml_maturity_date) + ',' + str(payline.date) + ',' + '\n'
+#                payment_file_content = payline.name + ',' + payline.partner_id.name + ',' + str(payline.partner_id.email) + ',' + payline.partner_id.document_number + ',' + payline.communication + ',' + str(payline.amount_company_currency) + ',' + str(payline.partner_bank_id.bank_id.name) + ',' + str(payline.partner_bank_id.acc_number) + ',' + str(payline.ml_maturity_date) + ',' + str(payline.date) + ',' + '\n'
+                payment_file_content = self.company_partner_bank_id.acc_number + ';' + str(payline.partner_bank_id.acc_number) + ';' + payline.partner_id.name + ',' + str(payline.partner_id.email) + ',' + payline.partner_id.document_number + ',' + payline.communication + ',' + str(payline.amount_company_currency) + ',' + str(payline.partner_bank_id.bank_id.name) + ',' + str(payline.ml_maturity_date) + ',' + str(payline.date) + ',' + '\n'
+
             return (payment_file_content, 'MyBankFilename.csv')
 
     @api.multi
