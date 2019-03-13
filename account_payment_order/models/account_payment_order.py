@@ -355,7 +355,7 @@ class AccountPaymentOrder(models.Model):
                 f_email_destinatario = self._truncate_str(payline.partner_id.dte_email, 45)
                 f_cuenta_inscrita = self._truncate_str('R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number, 25)
                 # Fin columnas archivo TXT
-                payment_file_content = f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_bank_distino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
+                payment_file_content = f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_bank_destino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
             return (payment_file_content, f_file_name)
 
     @api.multi
