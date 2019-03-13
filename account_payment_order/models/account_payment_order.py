@@ -321,8 +321,8 @@ class AccountPaymentOrder(models.Model):
         #        "No handler for this payment method. Maybe you haven't "
         #        "installed the related Odoo module."))
             payment_file_content = 'Chile Payment File Test\n'
-            for payline in order.payment_line_ids
-                payment_file_content = payment_file_content + payline.partner_id + '\n' + 'End of File'
+#            for payline in order.payment_line_ids
+#                payment_file_content = payment_file_content + payline.partner_id + '\n' + 'End of File'
             return (payment_file_content, 'MyBankFilename.csv')
 
     @api.multi
