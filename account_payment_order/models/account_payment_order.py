@@ -312,10 +312,10 @@ class AccountPaymentOrder(models.Model):
 
         
     @api.model
-    def _truncate_str(self, texto, size=1):
+    def _truncate_str(self, texts, size=1):
         c = 0
         f_string = ""
-        text_str = str(text)
+        text_str = str(texts)
         while c < size and c < len(text_str):
             f_string += text_str[c]
             c += 1
