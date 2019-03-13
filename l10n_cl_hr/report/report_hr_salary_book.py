@@ -30,7 +30,9 @@ class report_hr_salary_employee_bymonth(models.AbstractModel):
     _description = 'Payroll Chile: Salary by Month'
 
     @api.model
-    def get_report_values(self, docids, data=None):
+    # Insert Intellego-BI: Fix para Odoo 12
+    #def get_report_values(self, docids, data=None):
+    def _get_report_values(self, docids, data=None):
         if not data.get('form') or not self.env.context.get('active_model') or not self.env.context.get('active_id'):
             raise UserError(_("Form content is missing, this report cannot be printed."))
 
