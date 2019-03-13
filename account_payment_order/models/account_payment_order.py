@@ -326,12 +326,12 @@ class AccountPaymentOrder(models.Model):
 #                    payline.name + ',' +
                     payline.partner_id.name + ',' + 
                     payline.partner_id.document_number + ',' +
-                    payline.communication + ',' +
-                    payline.amount_company_currency + ',' +
-                    payline.partner_bank_id + ',' +
-                    payline.ml_maturity_date + ',' +
-                    payline.date + ',' +
-                    '\n' + 'End of Line'
+#                    payline.communication + ',' +
+#                    payline.amount_company_currency + ',' +
+#                    payline.partner_bank_id + ',' +
+#                    payline.ml_maturity_date + ',' +
+#                    payline.date + ',' +
+                    '\n'
             return (payment_file_content, 'MyBankFilename.csv')
 
     @api.multi
