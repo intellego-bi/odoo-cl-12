@@ -323,7 +323,7 @@ class AccountPaymentOrder(models.Model):
             payment_file_content = 'Chile Payment File Test\n'
             for payline in self.payment_line_ids:
                 payment_file_content = 
-                    payline.name + ',' +
+#                    payline.name + ',' +
                     payline.partner_id.name + ',' + 
                     payline.partner_id.document_number + ',' +
                     payline.communication + ',' +
