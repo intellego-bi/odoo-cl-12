@@ -322,6 +322,7 @@ class AccountPaymentOrder(models.Model):
         #        "installed the related Odoo module."))
             for payline in self.payment_line_ids:
 #                payment_file_content = payline.name + ',' + payline.partner_id.name + ',' + str(payline.partner_id.email) + ',' + payline.partner_id.document_number + ',' + payline.communication + ',' + str(payline.amount_company_currency) + ',' + str(payline.partner_bank_id.bank_id.name) + ',' + str(payline.partner_bank_id.acc_number) + ',' + str(payline.ml_maturity_date) + ',' + str(payline.date) + ',' + '\n'
+                f_file_name = str(payline.name) + ' - ' + str(payline.date) + '.csv'
                 f_bank_code = payline.partner_bank_id.bank_id.bic[-3:]
                 f_rut = ""
                 f_rut_dv = ""
@@ -332,7 +333,7 @@ class AccountPaymentOrder(models.Model):
                 f_mensaje_destinatario = 'Pago Helios Doc ' + str(payline.communication)
                 f_cuenta_inscrita = 'R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number
                 payment_file_content = self.company_partner_bank_id.acc_number + ';' + str(payline.partner_bank_id.acc_number) + ';' + str(f_bank_code) + ';' + str(f_rut)+ ';' + str(f_rut_dv) + ';' + payline.partner_id.name + ';' + str(payline.amount_company_currency) + ';' + payline.communication + ';' + str(f_orden_compra) + ';' + str(f_tipo_pago) + ';' + str(f_mensaje_destinatario) + ';' + str(payline.partner_id.email) + ';' + str(f_cuenta_inscrita) + '\n'
-            return (payment_file_content, 'MyBankFilename.csv')
+            return (payment_file_content, f_file_name)
 
     @api.multi
     def open2generated(self):
