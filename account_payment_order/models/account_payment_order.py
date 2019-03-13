@@ -322,8 +322,16 @@ class AccountPaymentOrder(models.Model):
         #        "installed the related Odoo module."))
             for payline in self.payment_line_ids:
 #                payment_file_content = payline.name + ',' + payline.partner_id.name + ',' + str(payline.partner_id.email) + ',' + payline.partner_id.document_number + ',' + payline.communication + ',' + str(payline.amount_company_currency) + ',' + str(payline.partner_bank_id.bank_id.name) + ',' + str(payline.partner_bank_id.acc_number) + ',' + str(payline.ml_maturity_date) + ',' + str(payline.date) + ',' + '\n'
-                payment_file_content = self.company_partner_bank_id.acc_number + ';' + str(payline.partner_bank_id.acc_number) + ';' + payline.partner_id.name + ',' + str(payline.partner_id.email) + ',' + payline.partner_id.document_number + ',' + payline.communication + ',' + str(payline.amount_company_currency) + ',' + str(payline.partner_bank_id.bank_id.name) + ',' + str(payline.ml_maturity_date) + ',' + str(payline.date) + ',' + '\n'
-
+                f_bank_code = payline.partner_bank_id.bank_id.bic[5:3]
+                f_rut = ""
+                f_rut_dv = ""
+                f_rut, f_rut_dv = payline.partner_id.document_number.split("-")
+                f_rut = f_rut.replace('.','')
+                f_orden_compra = ''
+                f_tipo_pago = 'PRV'
+                f_mensaje_destinatario = 'Pago Helios Doc ' + payline.partner_id.document_number
+                f_cuenta_inscrita = 'RUT ' + payline.partner_id.document_number + ' CTA ' + payline.partner_bank_id.acc_number
+                payment_file_content = self.company_partner_bank_id.acc_number + ';' + str(payline.partner_bank_id.acc_number) + ';' + str(f_bank_code) + ';' + str(f_rut)+ ';' + str(f_rut_dv) + ';' + payline.partner_id.name + ';' + str(payline.amount_company_currency) + ';' + payline.partner_id.document_number + ';' + str(f_orden_compra) + ';' + str(f_tipo_pago) + ';' + str(f_mensaje_destinatario) + ';' + str(payline.partner_id.email) + ';' + str(f_cuenta_inscrita) + '\n'
             return (payment_file_content, 'MyBankFilename.csv')
 
     @api.multi
