@@ -31,7 +31,6 @@ class AccountPaymentMethod(models.Model):
                 'pain.001.001.cl', 'pain.016.001.cl']:
 #            path = 'account_banking_sepa_credit_transfer/data/%s.xsd'\
             path = 'l10n_cl_account_banking_credit_transfer/data/%s.xsd'\
-            
                 % self.pain_version
             return path
         return super(AccountPaymentMethod, self).get_xsd_file_path()

@@ -8,22 +8,30 @@ from odoo import models, fields, api
 class AccountPaymentMethod(models.Model):
     _inherit = 'account.payment.method'
 
+#    pain_version = fields.Selection(selection_add=[
+#        ('pain.001.001.02', 'pain.001.001.02'),
+#        ('pain.001.001.03', 'pain.001.001.03 '
+#         '(recommended for credit transfer)'),
+#        ('pain.001.001.04', 'pain.001.001.04'),
+#        ('pain.001.001.05', 'pain.001.001.05'),
+#        ('pain.001.003.03', 'pain.001.003.03 (credit transfer in Germany)'),
+#        ])
     pain_version = fields.Selection(selection_add=[
-        ('pain.001.001.02', 'pain.001.001.02'),
-        ('pain.001.001.03', 'pain.001.001.03 '
-         '(recommended for credit transfer)'),
-        ('pain.001.001.04', 'pain.001.001.04'),
-        ('pain.001.001.05', 'pain.001.001.05'),
-        ('pain.001.003.03', 'pain.001.003.03 (credit transfer in Germany)'),
+        ('pain.001.001.cl', 'Banco de Chile v001'),
+        ('pain.016.001.cl', 'Banco BCI v001'),
         ])
-
+        
     @api.multi
     def get_xsd_file_path(self):
         self.ensure_one()
+#        if self.pain_version in [
+#                'pain.001.001.02', 'pain.001.001.03', 'pain.001.001.04',
+#                'pain.001.001.05', 'pain.001.003.03']:
         if self.pain_version in [
-                'pain.001.001.02', 'pain.001.001.03', 'pain.001.001.04',
-                'pain.001.001.05', 'pain.001.003.03']:
-            path = 'account_banking_sepa_credit_transfer/data/%s.xsd'\
+                'pain.001.001.cl', 'pain.016.001.cl']:
+#            path = 'account_banking_sepa_credit_transfer/data/%s.xsd'\
+            path = 'l10n_cl_account_banking_credit_transfer/data/%s.xsd'\
+            
                 % self.pain_version
             return path
         return super(AccountPaymentMethod, self).get_xsd_file_path()
