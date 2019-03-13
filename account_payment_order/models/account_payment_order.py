@@ -320,7 +320,7 @@ class AccountPaymentOrder(models.Model):
         #    raise UserError(_(
         #        "No handler for this payment method. Maybe you haven't "
         #        "installed the related Odoo module."))
-            return ('A String', 'MyBankFilename')
+            return ('A String', 'MyBankFilename.csv')
 
     @api.multi
     def open2generated(self):
@@ -363,6 +363,7 @@ class AccountPaymentOrder(models.Model):
             'state': 'uploaded',
             'date_uploaded': fields.Date.context_today(self),
             })
+        self.write({'state': 'done'})
         return True
 
     @api.multi
