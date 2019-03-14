@@ -454,7 +454,7 @@ class AccountPaymentOrder(models.Model):
                     # Tipo Fila 03
                     for payline in self.payment_line_ids: 
                         if payline.partner_id == bankline.partner_id:
-                            f_tipo_doc = '033'
+                            f_tipo_doc = self._truncate_str(payline.move_line_id.move_id.name, 3)
                             f_num_factura_boleta = self._truncate_str(payline.communication, 10, 0).ljust(10)
                             f_num_cuota = '001'
                             f_monto_doc = self._truncate_str(payline.amount_company_currency, 11, 0) + '00'
