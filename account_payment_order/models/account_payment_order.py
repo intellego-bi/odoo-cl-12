@@ -417,10 +417,10 @@ class AccountPaymentOrder(models.Model):
                     t_monto, t_dec = str(bankline.amount_currency).split(".")
                     # Tipo Fila 02
                     f_rut = self._truncate_str(f_rut, 10, 0)
-                    f_nombre = self._truncate_str(bankline.partner_id.name, 60).ljust(60)
-                    f_direccion = self._truncate_str(bankline.partner_id.street, 34).ljust(34)
-                    f_comuna = self._truncate_str(bankline.partner_id.city, 15).ljust(15)
-                    f_ciudad = self._truncate_str(bankline.partner_id.state_id.name, 15).ljust(15)
+                    f_nombre = self._truncate_str(bankline.partner_id.name.upper(), 60).ljust(60)
+                    f_direccion = self._truncate_str(bankline.partner_id.street.upper(), 34).ljust(34)
+                    f_comuna = self._truncate_str(bankline.partner_id.city.upper(), 15).ljust(15)
+                    f_ciudad = self._truncate_str(bankline.partner_id.state_id.name.upper(), 15).ljust(15)
                     f_no_se_sabe_a = 'C'                    
                     f_monto_total = self._truncate_str(t_monto, 11, 0)
                     f_date = self._truncate_str(self.date_generated.day, 2, 0) + self._truncate_str(self.date_generated.month, 2, 0) + str(self.date_generated.year)
