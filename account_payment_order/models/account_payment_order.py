@@ -337,7 +337,7 @@ class AccountPaymentOrder(models.Model):
                 # Estructura de Archivo BANCO BCI - formato Texto
                 # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
                 # http://www.bci.cl/medios/BCI2/pdf/Carga_Nomina.pdf
-                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' ' + str(self.payment_mode_id.name) + '.csv'
+                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.csv'
                 payment_file_content = ""
                 for payline in self.payment_line_ids:
                     f_rut = ""
@@ -366,7 +366,7 @@ class AccountPaymentOrder(models.Model):
                 # Estructura de Archivo BANCO BCI - formato Texto
                 # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
                 # http://www.bci.cl/medios/BCI2/pdf/Carga_Nomina.pdf
-                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' ' + str(self.payment_mode_id.name) + '.csv'
+                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.csv'
                 payment_file_content = ""
                 for payline in self.payment_line_ids:
                     f_rut = ""
@@ -405,7 +405,7 @@ class AccountPaymentOrder(models.Model):
                 # Estructura de Archivo BANCO CHILE - formato Texto
                 # 
                 # 
-                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' ' + str(self.payment_mode_id.name) + '.csv'
+                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.csv'
                 payment_file_content = ""
                 # Tipo Fila 01
                 payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(self.company_partner_bank_id.acc_number, 12, 0) + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + '\n'
