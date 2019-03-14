@@ -183,6 +183,8 @@ class AccountPaymentOrder(models.Model):
             self.journal_id = journals
         if self.payment_mode_id.default_date_prefered:
             self.date_prefered = self.payment_mode_id.default_date_prefered
+        if self.payment_mode_id.payment_type:
+            self.payment_type = self.payment_mode_id.payment_type
         return res
 
     @api.multi
@@ -334,7 +336,7 @@ class AccountPaymentOrder(models.Model):
         #    raise UserError(_(
         #        "No handler for this payment method. Maybe you haven't "
         #        "installed the related Odoo module."))
-            if self.payment_mode_id.name == 'Transfer BCI':
+            if self.payment_mode_id.name == 'Transfer BCI - PRV':
                 for payline in self.payment_line_ids:
                     # Estructura de Archivo BANCO BCI - formato Texto
                     # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
@@ -352,7 +354,7 @@ class AccountPaymentOrder(models.Model):
                     f_digito_verif_beneficiario = self._truncate_str(f_rut_dv, 1)
                     f_nombre_beneficiario = self._truncate_str(payline.partner_id.name, 45)
                     f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
-                    f_no_factura_boleta = self._truncate_str(payline.communication, 20, 0)
+                    f_no_factura_boleta = self._truncate_str(payline.communication, 20)
                     f_no_orden_compra = self._truncate_str('', 20)
                     f_tipo_pago = 'PRV'
                     f_mensaje_destinatario = self._truncate_str('Pago Doc ' + str(payline.communication), 30)
@@ -361,6 +363,34 @@ class AccountPaymentOrder(models.Model):
                     # Fin columnas archivo TXT
                     payment_file_content = f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_banco_destino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
                 return (payment_file_content, f_file_name)
+            elif self.payment_mode_id.name == 'Transfer BCI - REM':
+                for payline in self.payment_line_ids:
+                    # Estructura de Archivo BANCO BCI - formato Texto
+                    # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
+                    #
+                    f_file_name = str(payline.name) + ' - ' + str(payline.date) + '.csv'
+                    f_rut = ""
+                    f_rut_dv = ""
+                    f_rut, f_rut_dv = payline.partner_id.document_number.split("-")
+                    f_rut = f_rut.replace('.','')
+                    # Inicio columnas archivos TXT
+                    f_no_cta_cargo = self._truncate_str(self.company_partner_bank_id.acc_number, 12)
+                    f_no_cta_destino = self._truncate_str(payline.partner_bank_id.acc_number, 18)
+                    f_banco_destino = self._truncate_str(payline.partner_bank_id.bank_id.bic[-3:], 3)
+                    f_rut_beneficiario = self._truncate_str(f_rut, 12)
+                    f_digito_verif_beneficiario = self._truncate_str(f_rut_dv, 1)
+                    f_nombre_beneficiario = self._truncate_str(payline.partner_id.name, 45)
+                    f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
+                    f_no_factura_boleta = self._truncate_str(payline.communication, 20)
+                    f_no_orden_compra = self._truncate_str('', 20)
+                    f_tipo_pago = 'REM'
+                    f_mensaje_destinatario = self._truncate_str('Pago Doc ' + str(payline.communication), 30)
+                    f_email_destinatario = self._truncate_str(payline.partner_id.dte_email, 45)
+                    f_cuenta_inscrita = self._truncate_str('R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number, 25)
+                    # Fin columnas archivo TXT
+                    payment_file_content = f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_banco_destino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
+                return (payment_file_content, f_file_name)
+
             else:
                 raise UserError(_(
                 "No file structure available for this payment method. Check "
