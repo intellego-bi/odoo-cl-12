@@ -384,7 +384,7 @@ class AccountPaymentOrder(models.Model):
                     f_no_factura_boleta = self._truncate_str(payline.communication, 20)
                     f_no_orden_compra = self._truncate_str('', 20)
                     f_tipo_pago = 'REM'
-                    f_mensaje_destinatario = self._truncate_str('Pago Remu ' + str(payline.communication), 30)
+                    f_mensaje_destinatario = self._truncate_str('Pago Remu ' + str(payline.communication) + str(payline.date), 30)
                     f_email_destinatario = self._truncate_str(payline.partner_id.email, 45)
                     f_cuenta_inscrita = self._truncate_str('R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number, 25)
                     # Fin columnas archivo TXT
