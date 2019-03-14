@@ -22,10 +22,11 @@
     <field name="show_bank_account_from_journal" eval="False"/>
 </record>
 -->
+<!--
 <record id="cl_bank_001_002" model="account.payment.mode">
     <field name="name">REM - Transfer Banco de Chile</field>
     <field name="active" eval="True"/>
-    <field name="payment_method_id">[electronic]</field>
+    <field name="payment_method_id" ref="cl_electronic"/>
     <field name="payment_order_ok" eval="True"/>
     <field name="bank_account_link">fixed</field>
     <field name="fixed_journal_id" ref="cl_bank_001_001_journal"/>
@@ -37,6 +38,7 @@
     <field name="show_bank_account">full</field>
     <field name="show_bank_account_from_journal" eval="False"/>
 </record>
+-->
 <!--
 <record id="cl_bank_016_001" model="account.payment.mode">
     <field name="name">PRV - Transfer BCI</field>
