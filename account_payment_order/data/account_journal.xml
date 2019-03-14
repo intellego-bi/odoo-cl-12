@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  © 2019 Intellego-BI.com (https://www.intellego-bi.com)
+  @author: Rodolfo bermúdez Neubauer <odoo@intellego-bi.com>
+  License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+
+<odoo>
+    <data>      
+        <!-- Account Journal -->
+        <record id="cl_bank_001_001_journal" model="account.journal">
+            <field name="name">Banco de Chile</field>
+            <field name="code">B001</field>
+            <field name="type">bank</field>
+            <field name="show_on_dashboard" eval="False"/>
+        </record>
+        
+        <record id="cl_bank_016_001_journal" model="account.journal">
+            <field name="name">Banco BCI</field>
+            <field name="code">B016</field>
+            <field name="type">bank</field>
+            <field name="show_on_dashboard" eval="False"/>
+        </record>
+
+        <record id="cl_bank_037_001_journal" model="account.journal">
+            <field name="name">Banco Santander</field>
+            <field name="code">B037</field>
+            <field name="type">bank</field>
+            <field name="show_on_dashboard" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

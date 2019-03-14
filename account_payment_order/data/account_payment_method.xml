@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  © 2019 Intellego-BI.com (https://www.intellego-bi.com/)
+  @author: Rodolfo bermúdez Neubauer <odoo@intellego-bi.com>
+  License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo noupdate="1">
+
+<record id="cl_bank_transfer" model="account.payment.method">
+    <field name="name">Pago vía Transferencia</field>
+    <field name="code">electronic</field>
+    <field name="payment_type">outbound</field>
+    <field name="bank_account_required" eval="True"/>
+    <field name="active" eval="True"/>
+</record>
+
+</odoo>

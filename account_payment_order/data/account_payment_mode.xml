@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  © 2019 Intellego-BI.com (https://www.intellego-bi.com/)
+  @author: Rodolfo bermúdez Neubauer <odoo@intellego-bi.com>
+  License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo noupdate="1">
+
+<record id="cl_bank_001_001" model="account.payment.mode">
+    <field name="name">PRV - Transfer Banco de Chile</field>
+    <field name="active" eval="True"/>
+    <field name="payment_method_id" eval="cl_bank_transfer"/>
+    <field name="payment_order_ok" eval="True"/>
+    <field name="bank_account_link" eval="fixed"/>
+    <field name="fixed_journal_id" eval="cl_bank_001_001_journal"/>
+    <field name="default_date_prefered" eval="now"/>
+    <field name="generate_move" eval="True"/>
+    <field name="offsetting_account" eval="bank_account"/>
+    <field name="move_option" eval="line"/>
+    <field name="post_move" eval="True"/>
+    <field name="show_bank_account" eval="full"/>
+    <field name="show_bank_account_from_journal" eval="False"/>
+</record>
+
+<record id="cl_bank_001_002" model="account.payment.mode">
+    <field name="name">REM - Transfer Banco de Chile</field>
+    <field name="active" eval="True"/>
+    <field name="payment_method_id" eval="cl_bank_transfer"/>
+    <field name="payment_order_ok" eval="True"/>
+    <field name="bank_account_link" eval="fixed"/>
+    <field name="fixed_journal_id" eval="cl_bank_001_001_journal"/>
+    <field name="default_date_prefered" eval="now"/>
+    <field name="generate_move" eval="True"/>
+    <field name="offsetting_account" eval="bank_account"/>
+    <field name="move_option" eval="line"/>
+    <field name="post_move" eval="True"/>
+    <field name="show_bank_account" eval="full"/>
+    <field name="show_bank_account_from_journal" eval="False"/>
+</record>
+
+<record id="cl_bank_016_001" model="account.payment.mode">
+    <field name="name">PRV - Transfer BCI</field>
+    <field name="active" eval="True"/>
+    <field name="payment_method_id" eval="cl_bank_transfer"/>
+    <field name="payment_order_ok" eval="True"/>
+    <field name="bank_account_link" eval="fixed"/>
+    <field name="fixed_journal_id" eval="cl_bank_016_001_journal"/>
+    <field name="default_date_prefered" eval="now"/>
+    <field name="generate_move" eval="True"/>
+    <field name="offsetting_account" eval="bank_account"/>
+    <field name="move_option" eval="line"/>
+    <field name="post_move" eval="True"/>
+    <field name="show_bank_account" eval="full"/>
+    <field name="show_bank_account_from_journal" eval="False"/>
+</record>
+
+<record id="cl_bank_016_002" model="account.payment.mode">
+    <field name="name">REM - Transfer BCI</field>
+    <field name="active" eval="True"/>
+    <field name="payment_method_id" eval="cl_bank_transfer"/>
+    <field name="payment_order_ok" eval="True"/>
+    <field name="bank_account_link" eval="fixed"/>
+    <field name="fixed_journal_id" eval="cl_bank_016_001_journal"/>
+    <field name="default_date_prefered" eval="now"/>
+    <field name="generate_move" eval="True"/>
+    <field name="offsetting_account" eval="bank_account"/>
+    <field name="move_option" eval="line"/>
+    <field name="post_move" eval="True"/>
+    <field name="show_bank_account" eval="full"/>
+    <field name="show_bank_account_from_journal" eval="False"/>
+</record>
+
+</odoo>

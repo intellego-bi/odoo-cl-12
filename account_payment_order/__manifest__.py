@@ -1,3 +1,4 @@
+# © 2019 Intellego-BI.com (https://www.intellego-bi.com)
 # © 2009 EduSense BV (<http://www.edusense.nl>)
 # © 2011-2013 Therp BV (<https://therp.nl>)
 # © 2013-2014 ACSONE SA (<https://acsone.eu>).
@@ -20,6 +21,8 @@
     'depends': [
         'account_payment_partner',
         'base_iban',  # for manual_bank_tranfer
+        'l10n_cl_coa_mfg',  #Plan de Cuentas Chile 
+        'l10n_cl_fe', # Factura Electrónica Chile
     ],
     'data': [
         'security/payment_security.xml',
@@ -34,6 +37,9 @@
         'views/ir_attachment.xml',
         'views/account_invoice_view.xml',
         'data/payment_seq.xml',
+        'data/account_journal.xml',
+        'data/account_payment_method.xml',
+        'data/account_payment_mode.xml',
         'report/print_account_payment_order.xml',
         'report/account_payment_order.xml',
     ],
