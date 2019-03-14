@@ -454,10 +454,16 @@ class AccountPaymentOrder(models.Model):
                     # Tipo Fila 03
                     for payline in self.payment_line_ids: 
                         if payline.partner_id == bankline.partner_id:
-                            f_due_date = self._truncate_str(payline.ml_maturity_date.day, 2, 0) + self._truncate_str(payline.ml_maturity_date.month, 2, 0) + str(payline.ml_maturity_date.year)
-                            f_monto_transferencia = self._truncate_str(payline.amount_company_currency, 11, 0) + '00'
-                            f_no_factura_boleta = self._truncate_str(payline.communication, 10, 0)
-                            payment_file_content += '03033' + f_no_factura_boleta + '001' + f_monto_transferencia + f_monto_transferencia + f_due_date + '\n'
+                            f_tipo_doc = '033'
+                            f_num_factura_boleta = self._truncate_str(payline.communication, 10, 0).ljust(10)
+                            f_num_cuota = '001'
+                            f_monto_doc = self._truncate_str(payline.amount_company_currency, 11, 0) + '00'
+                            #f_due_date = self._truncate_str(payline.ml_maturity_date.day, 2, 0) + self._truncate_str(payline.ml_maturity_date.month, 2, 0) + str(payline.ml_maturity_date.year)
+                            f_doc_date = self._truncate_str(payline.date.day, 2, 0) + self._truncate_str(payline.date.month, 2, 0) + str(payline.date.year)
+                            f_doc_descrip = self._truncate_str('PAGO DE DOC: ' + payline.communication, 120).ljust(120)
+                            f_campos_libres_123 = t_filler.ljust(70)
+                            f_filler_03 = t_filler.ljust(368)   
+                            payment_file_content += '03' + f_tipo_doc + f_num_factura_boleta + f_num_cuota + f_monto_doc + f_monto_doc + f_doc_date + f_doc_descrip + f_campos_libres_123 + f_filler_03 + '\n'
                 return (payment_file_content, f_file_name)
 
             else:
