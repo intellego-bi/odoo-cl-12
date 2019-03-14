@@ -19,6 +19,7 @@
     'website': 'https://github.com/OCA/bank-payment',
     'category': 'Banking addons',
     'depends': [
+        'account',
         'account_payment_partner',
         'base_iban',  # for manual_bank_tranfer
         'l10n_cl_coa_mfg',  #Plan de Cuentas Chile 
