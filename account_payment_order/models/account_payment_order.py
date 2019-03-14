@@ -426,9 +426,10 @@ class AccountPaymentOrder(models.Model):
                     payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + 'B' + f_monto_total + '\n'
                     for payline in self.payment_line_ids: 
                         if payline.partner_id == bankline.partner_id:
-                            f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
-                            f_no_factura_boleta = self._truncate_str(payline.communication, 20)
-                            payment_file_content += '03' + f_no_factura_boleta + f_monto_transferencia + '\n'
+                            f_due_date = str(payline.ml_maturity_date[-2:] + payline.ml_maturity_date[5:2] + payline.ml_maturity_date[4:]) 
+                            f_monto_transferencia = self._truncate_str(payline.amount_company_currency, 11, 0)
+                            f_no_factura_boleta = self._truncate_str(payline.communication, 10, 0)
+                            payment_file_content += '03033' + f_no_factura_boleta + '001' + f_monto_transferencia + '00' + f_monto_transferencia + '00' + f_due_date + '\n'
 #                for payline in self.payment_line_ids:
 #                    f_rut = ""
 #                    f_rut_dv = ""
