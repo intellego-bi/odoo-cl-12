@@ -420,6 +420,7 @@ class AccountPaymentOrder(models.Model):
                     f_rut = f_rut.replace('.','')
                     t_monto, t_dec = str(bankline.amount_currency).split(".")
                     t_streets = str(bankline.partner_id.street) + ' ' + str(bankline.partner_id.street2)
+
                     # Tipo Fila 02
                     f_rut = self._truncate_str(f_rut, 10, 0)
                     f_nombre = self._truncate_str(bankline.partner_id.name.upper(), 60).ljust(60)
@@ -489,7 +490,7 @@ class AccountPaymentOrder(models.Model):
                                 f_tipo_doc = self._truncate_str(apayline.move_line_id.move_id.name, 3)
                                 f_doc = 'DOC: '
                             f_monto_aviso = self._truncate_str(apayline.amount_company_currency, 11).ljust(11)
-                            f_glosa_aviso = self._truncate_str("AVISO PAGO DE " + str(self.env.user.company_id.name).upper() + ' DE SU ' + f_doc + apayline.communication + ' POR VALOR DE ' + f_monto_aviso, 320).ljust(320)
+                            f_glosa_aviso = self._truncate_str("AVISO PAGO DE " + str(self.env.user.company_id.name).upper() + ' PARA ' + apayline.partner_id.name.upper() + ' DE SU ' + f_doc + apayline.communication + ' POR VALOR DE ' + f_monto_aviso, 320).ljust(320)
                             f_corr_aviso = self._truncate_str(str(l_num_aviso), 5, 0)
                             #f_due_date = self._truncate_str(payline.ml_maturity_date.day, 2, 0) + self._truncate_str(payline.ml_maturity_date.month, 2, 0) + str(payline.ml_maturity_date.year)
                             #f_doc_date = self._truncate_str(apayline.move_line_id.move_id.date.day, 2, 0) + self._truncate_str(apayline.move_line_id.move_id.date.month, 2, 0) + str(apayline.move_line_id.move_id.date.year)
