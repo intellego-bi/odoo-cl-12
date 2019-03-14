@@ -428,7 +428,7 @@ class AccountPaymentOrder(models.Model):
 #                    f_rut_beneficiario = self._truncate_str(f_rut, 12)
 #                    f_digito_verif_beneficiario = self._truncate_str(f_rut_dv, 1)
                     
-#                    f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
+                    f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
 #                    f_no_factura_boleta = self._truncate_str(payline.communication, 20)
 #                    f_no_orden_compra = self._truncate_str('', 20)
 #                    f_tipo_pago = 'PRV'
