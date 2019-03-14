@@ -417,10 +417,10 @@ class AccountPaymentOrder(models.Model):
                     f_rut = f_rut.replace('.','')
                     # Tipo Fila 02
                     f_rut = self._truncate_str(f_rut, 10, 0)
-                    f_nombre = self._truncate_str(payline.partner_id.name, 60).ljust(60)
-                    f_direccion = self._truncate_str(payline.partner_id.street, 34).ljust(34)
-                    f_comuna = self._truncate_str(payline.partner_id.city, 15).ljust(15)
-                    f_ciudad = self._truncate_str(payline.partner_id.state_id.name, 15).ljust(15)                    
+                    f_nombre = self._truncate_str(bankline.partner_id.name, 60).ljust(60)
+                    f_direccion = self._truncate_str(bankline.partner_id.street, 34).ljust(34)
+                    f_comuna = self._truncate_str(bankline.partner_id.city, 15).ljust(15)
+                    f_ciudad = self._truncate_str(bankline.partner_id.state_id.name, 15).ljust(15)                    
                     f_monto_total = self._truncate_str(bankline.amount_currency , 16)
 
                     payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + 'B' + f_monto_total + '\n'
