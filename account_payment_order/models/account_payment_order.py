@@ -403,7 +403,7 @@ class AccountPaymentOrder(models.Model):
                 f_paga_rut, f_paga_rut_dv = self.env.user.company_id.document_number.split("-")
                 f_paga_rut = f_paga_rut.replace('.','')
                 t_monto_nom, t_decn = str(self.total_company_currency).split(".")
-                f_monto_nomina = t_monto_nom
+                f_monto_nomina = str(t_monto_nom) + '00'
                 # Estructura de Archivo BANCO CHILE - formato Texto
                 # 
                 # 
@@ -411,7 +411,7 @@ class AccountPaymentOrder(models.Model):
                 payment_file_content = ""
                 # Tipo Fila 01
                 f_filler_01 = ""
-                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(f_monto_nomina, 13, 0) + '00' + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + f_filler_01.ljust(564) + '\n'
+                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(f_monto_nomina, 13, 0) + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + f_filler_01.ljust(564) + '\n'
                 for bankline in self.bank_line_ids:
                     f_rut = ""
                     f_rut_dv = ""
@@ -425,20 +425,29 @@ class AccountPaymentOrder(models.Model):
                     f_direccion = self._truncate_str(t_streets.upper(), 35).ljust(35)
                     f_comuna = self._truncate_str(bankline.partner_id.city.upper(), 15).ljust(15)
                     f_ciudad = self._truncate_str(bankline.partner_id.state_id.name.upper(), 15).ljust(15)
-                    f_no_se_sabe_a = 'C'                    
-                    f_monto_total = self._truncate_str(t_monto, 11, 0)
+                    if bankline.partner_id.is_company == 'True':
+                        f_act_eco = 'B1'
+                    else:
+                        f_act_eco = 'BC'                                        
+                    f_monto_total = self._truncate_str(t_monto, 11, 0) + '00'
                     f_date = self._truncate_str(self.date_generated.day, 2, 0) + self._truncate_str(self.date_generated.month, 2, 0) + str(self.date_generated.year)
-                    f_no_se_sabe_b = '07'
-                    f_banco_destino = self._truncate_str(bankline.partner_bank_id.bank_id.bic[-3:], 3).ljust(6)
-                    f_no_cta_destino = self._truncate_str(bankline.partner_bank_id.acc_number, 18)
-                    payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + 'B' + f_no_se_sabe_a + f_monto_total + '00' + f_date + f_no_se_sabe_b + f_banco_destino + f_no_cta_destino + '\n'
+                    d_bancos = ['001','029','033']
+                    if str(bankline.partner_bank_id.bank_id.bic[-3:]) in d_bancos:  
+                        f_medio_pago = '01'
+                    else:
+                        f_medio_pago = '07'
+                    f_banco_destino = self._truncate_str(bankline.partner_bank_id.bank_id.bic[-3:], 3)
+                    f_oficina_destino = "   "
+                    f_no_cta_destino = self._truncate_str(bankline.partner_bank_id.acc_number, 22)
+                    f_descripcion_pago = self._truncate_str("PAGO DE " + str(self.env.user.company_id.name).upper(), 120)
+                    payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + f_act_eco + f_monto_total + f_date + f_medio_pago + f_banco_destino + f_oficina_destino + f_no_cta_destino + f_descripcion_pago + '\n'
                     # Tipo Fila 03
                     for payline in self.payment_line_ids: 
                         if payline.partner_id == bankline.partner_id:
                             f_due_date = self._truncate_str(payline.ml_maturity_date.day, 2, 0) + self._truncate_str(payline.ml_maturity_date.month, 2, 0) + str(payline.ml_maturity_date.year)
-                            f_monto_transferencia = self._truncate_str(payline.amount_company_currency, 11, 0)
+                            f_monto_transferencia = self._truncate_str(payline.amount_company_currency, 11, 0) + '00'
                             f_no_factura_boleta = self._truncate_str(payline.communication, 10, 0)
-                            payment_file_content += '03033' + f_no_factura_boleta + '001' + f_monto_transferencia + '00' + f_monto_transferencia + '00' + f_due_date + '\n'
+                            payment_file_content += '03033' + f_no_factura_boleta + '001' + f_monto_transferencia + f_monto_transferencia + f_due_date + '\n'
                 return (payment_file_content, f_file_name)
 
             else:
