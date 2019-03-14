@@ -410,11 +410,10 @@ class AccountPaymentOrder(models.Model):
                 payment_file_content = ""
                 # Tipo Fila 01
                 payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(self.company_partner_bank_id.acc_number, 12, 0) + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + '\n'
-                
-                for payline in self.payment_line_ids:
+                for bankline in self.bank_line_ids:
                     f_rut = ""
                     f_rut_dv = ""
-                    f_rut, f_rut_dv = payline.partner_id.document_number.split("-")
+                    f_rut, f_rut_dv = bankline.partner_id.document_number.split("-")
                     f_rut = f_rut.replace('.','')
                     # Tipo Fila 02
                     f_rut = self._truncate_str(f_rut, 10, 0)
@@ -422,13 +421,31 @@ class AccountPaymentOrder(models.Model):
                     f_direccion = self._truncate_str(payline.partner_id.street, 34).ljust(34)
                     f_comuna = self._truncate_str(payline.partner_id.city, 15).ljust(15)
                     f_ciudad = self._truncate_str(payline.partner_id.state_id.name, 15).ljust(15)                    
+                    f_monto_total = self._truncate_str(bankline.amount_currency , 16)
+
+                    payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + 'B' + f_monto_total + '\n'
+                    for payline in self.payment_line_ids if payline.partner_id in bankline.partner_id:
+                        f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
+                        f_no_factura_boleta = self._truncate_str(payline.communication, 20)
+                        payment_file_content += '03' + f_no_factura_boleta + f_monto_transferencia + '\n'
+#                for payline in self.payment_line_ids:
+#                    f_rut = ""
+#                    f_rut_dv = ""
+#                    f_rut, f_rut_dv = payline.partner_id.document_number.split("-")
+#                    f_rut = f_rut.replace('.','')
+                    # Tipo Fila 02
+#                    f_rut = self._truncate_str(f_rut, 10, 0)
+#                    f_nombre = self._truncate_str(payline.partner_id.name, 60).ljust(60)
+#                    f_direccion = self._truncate_str(payline.partner_id.street, 34).ljust(34)
+#                    f_comuna = self._truncate_str(payline.partner_id.city, 15).ljust(15)
+#                    f_ciudad = self._truncate_str(payline.partner_id.state_id.name, 15).ljust(15)                    
 #                    f_no_cta_cargo = self._truncate_str(self.company_partner_bank_id.acc_number, 12)
 #                    f_no_cta_destino = self._truncate_str(payline.partner_bank_id.acc_number, 18)
 #                    f_banco_destino = self._truncate_str(payline.partner_bank_id.bank_id.bic[-3:], 3)
 #                    f_rut_beneficiario = self._truncate_str(f_rut, 12)
 #                    f_digito_verif_beneficiario = self._truncate_str(f_rut_dv, 1)
                     
-                    f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
+#                    f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
 #                    f_no_factura_boleta = self._truncate_str(payline.communication, 20)
 #                    f_no_orden_compra = self._truncate_str('', 20)
 #                    f_tipo_pago = 'PRV'
@@ -436,7 +453,7 @@ class AccountPaymentOrder(models.Model):
 #                    f_email_destinatario = self._truncate_str(payline.partner_id.dte_email, 45)
 #                    f_cuenta_inscrita = self._truncate_str('R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number, 25)
                     # Fin columnas archivo TXT
-                    payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + 'B' + f_monto_transferencia + '\n'
+ #                   payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + 'B' + f_monto_transferencia + '\n'
                 return (payment_file_content, f_file_name)
 
             else:
