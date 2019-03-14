@@ -7,11 +7,41 @@
 
 <odoo>
     <data>      
+        <!-- Sequences -->
+        <record id="cl_sequence_bnk_b001" model="ir.sequence">
+            <field name="name">B001 Banco de Chile (Secuencia)</field>
+            <field name="prefix">B001/%(range_year)s/</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="cl_sequence_bnk_b016" model="ir.sequence">
+            <field name="name">B016 Banco BCI (Secuencia)</field>
+            <field name="prefix">B016/%(range_year)s/</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="padding">6</field>
+        </record>
+        
+        <record id="cl_sequence_bnk_b037" model="ir.sequence">
+            <field name="name">B037 Banco Santander (Secuencia)</field>
+            <field name="prefix">B037/%(range_year)s/</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="padding">6</field>
+        </record>
+
+        
         <!-- Account Journal -->
         <record id="cl_bank_001_001_journal" model="account.journal">
             <field name="name">Banco de Chile</field>
             <field name="code">B001</field>
             <field name="type">bank</field>
+            <field name="sequence_id" ref="cl_sequence_bnk_b001"/>
             <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="False"/>
         </record>
@@ -20,6 +50,7 @@
             <field name="name">Banco BCI</field>
             <field name="code">B016</field>
             <field name="type">bank</field>
+            <field name="sequence_id" ref="cl_sequence_bnk_b016"/>
             <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="False"/>
         </record>
@@ -28,6 +59,7 @@
             <field name="name">Banco Santander</field>
             <field name="code">B037</field>
             <field name="type">bank</field>
+            <field name="sequence_id" ref="cl_sequence_bnk_b037"/>
             <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="False"/>
         </record>
