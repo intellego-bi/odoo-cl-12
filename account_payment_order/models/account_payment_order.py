@@ -408,7 +408,7 @@ class AccountPaymentOrder(models.Model):
                 f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.txt'
                 payment_file_content = ""
                 # Tipo Fila 01
-                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(self.company_partner_bank_id.acc_number, 12, 0) + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + '\n'
+                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(self.company_partner_bank_id.acc_number, 12, 0) + '0' + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + '\n'
                 for bankline in self.bank_line_ids:
                     f_rut = ""
                     f_rut_dv = ""
@@ -419,7 +419,7 @@ class AccountPaymentOrder(models.Model):
                     # Tipo Fila 02
                     f_rut = self._truncate_str(f_rut, 10, 0)
                     f_nombre = self._truncate_str(bankline.partner_id.name.upper(), 60).ljust(60)
-                    f_direccion = self._truncate_str(t_streets.upper(), 34).ljust(34)
+                    f_direccion = self._truncate_str(t_streets.upper(), 35).ljust(35)
                     f_comuna = self._truncate_str(bankline.partner_id.city.upper(), 15).ljust(15)
                     f_ciudad = self._truncate_str(bankline.partner_id.state_id.name.upper(), 15).ljust(15)
                     f_no_se_sabe_a = 'C'                    
