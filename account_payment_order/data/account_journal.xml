@@ -20,6 +20,7 @@
             <field name="name">Banco BCI</field>
             <field name="code">B016</field>
             <field name="type">bank</field>
+            <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="False"/>
         </record>
 
@@ -27,6 +28,7 @@
             <field name="name">Banco Santander</field>
             <field name="code">B037</field>
             <field name="type">bank</field>
+            <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="False"/>
         </record>
 
