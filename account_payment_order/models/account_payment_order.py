@@ -320,7 +320,7 @@ class AccountPaymentOrder(models.Model):
             f_string += text_str[c]
             c += 1
         f_string_out = f_string
-        if zerofill=0:
+        if zerofill == 0:
             f_string_out = f_string.zfill(size)
         return f_string_out        
 
