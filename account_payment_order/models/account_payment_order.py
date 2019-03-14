@@ -351,7 +351,7 @@ class AccountPaymentOrder(models.Model):
                     f_rut_beneficiario = self._truncate_str(f_rut, 12)
                     f_digito_verif_beneficiario = self._truncate_str(f_rut_dv, 1)
                     f_nombre_beneficiario = self._truncate_str(payline.partner_id.name, 45)
-                    f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
+                    f_monto_transferencia = self._truncate_str(payline.amount_company_currency, 16)
                     f_no_factura_boleta = self._truncate_str(payline.communication, 20)
                     f_no_orden_compra = self._truncate_str('', 20)
                     f_tipo_pago = 'PRV'
@@ -402,13 +402,15 @@ class AccountPaymentOrder(models.Model):
                 f_paga_rut_dv = ""
                 f_paga_rut, f_paga_rut_dv = self.env.user.company_id.document_number.split("-")
                 f_paga_rut = f_paga_rut.replace('.','')
+                f_monto_nomina = self.total_company_currency
                 # Estructura de Archivo BANCO CHILE - formato Texto
                 # 
                 # 
                 f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.txt'
                 payment_file_content = ""
                 # Tipo Fila 01
-                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(self.company_partner_bank_id.acc_number, 12, 0) + '0' + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + '\n'
+                f_filler_01 = ""
+                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(f_monto_nomina, 13, 0) + '00' + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + l_filler_01.ljust(564) + '\n'
                 for bankline in self.bank_line_ids:
                     f_rut = ""
                     f_rut_dv = ""
