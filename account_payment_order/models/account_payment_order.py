@@ -401,7 +401,7 @@ class AccountPaymentOrder(models.Model):
                     count_bankline += 1
                 f_paga_rut = ""
                 f_paga_rut_dv = ""
-                f_paga_rut, f_paga_rut_dv = self.company_partner_bank_id.acc_number.partner_id.document_number.split("-")
+                f_paga_rut, f_paga_rut_dv = self.env.user.company_id.document_number.split("-")
                 f_paga_rut = f_paga_rut.replace('.','')
                 # Estructura de Archivo BANCO CHILE - formato Texto
                 # 
