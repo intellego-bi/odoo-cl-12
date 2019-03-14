@@ -337,10 +337,11 @@ class AccountPaymentOrder(models.Model):
         #        "No handler for this payment method. Maybe you haven't "
         #        "installed the related Odoo module."))
             if self.payment_mode_id.name == 'Transfer BCI - PRV':
+                payment_file_content = ""
                 for payline in self.payment_line_ids:
                     # Estructura de Archivo BANCO BCI - formato Texto
                     # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
-                    #
+                    # http://www.bci.cl/medios/BCI2/pdf/Carga_Nomina.pdf
                     f_file_name = str(payline.name) + ' - ' + str(payline.date) + ' ' + str(self.payment_mode_id.name) + '.csv'
                     f_rut = ""
                     f_rut_dv = ""
@@ -361,13 +362,13 @@ class AccountPaymentOrder(models.Model):
                     f_email_destinatario = self._truncate_str(payline.partner_id.dte_email, 45)
                     f_cuenta_inscrita = self._truncate_str('R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number, 25)
                     # Fin columnas archivo TXT
-                    payment_file_content = f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_banco_destino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
+                    payment_file_content =+ f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_banco_destino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
                 return (payment_file_content, f_file_name)
             elif self.payment_mode_id.name == 'Transfer BCI - REM':
                 for payline in self.payment_line_ids:
                     # Estructura de Archivo BANCO BCI - formato Texto
                     # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
-                    #
+                    # http://www.bci.cl/medios/BCI2/pdf/Carga_Nomina.pdf
                     f_file_name = str(payline.name) + ' - ' + str(payline.date) + ' ' + str(self.payment_mode_id.name) + '.csv'
                     f_rut = ""
                     f_rut_dv = ""
