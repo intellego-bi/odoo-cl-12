@@ -446,7 +446,10 @@ class AccountPaymentOrder(models.Model):
                     f_contactos = t_filler.ljust(71)
                     f_canal_aviso = " "
                     f_fono_fax = t_filler.ljust(14)
-                    f_email_a = t_filler.ljust(60)
+                    if bankline.partner_id.email:
+                        f_email_a = self._truncate_str(bankline.partner_id.email.upper(), 60).ljust(60) 
+                    else:
+                        f_email_a = t_filler.ljust(60)
                     f_email_b = t_filler.ljust(60)
                     f_num_aviso = t_filler.ljust(4)
                     f_filler_02 = t_filler.ljust(18)                   
