@@ -405,7 +405,7 @@ class AccountPaymentOrder(models.Model):
                 # Estructura de Archivo BANCO CHILE - formato Texto
                 # 
                 # 
-                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.csv'
+                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.txt'
                 payment_file_content = ""
                 # Tipo Fila 01
                 payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(self.company_partner_bank_id.acc_number, 12, 0) + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + '\n'
