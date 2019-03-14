@@ -12,7 +12,7 @@
             <field name="name">Banco de Chile</field>
             <field name="code">B001</field>
             <field name="type">bank</field>
-            <field name="outbound_payment_method_ids" ref="cl_electronic"/>
+            <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="False"/>
         </record>
         
