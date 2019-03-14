@@ -312,14 +312,17 @@ class AccountPaymentOrder(models.Model):
 
         
     @api.model
-    def _truncate_str(self, texts, size=1):
+    def _truncate_str(self, texts, size=1, zerofill=1):
         c = 0
         f_string = ""
         text_str = str(texts)
         while c < size and c < len(text_str):
             f_string += text_str[c]
             c += 1
-        return f_string        
+        f_string_out = f_string
+        if zerofill=0:
+            f_string_out = f_string.zfill(size)
+        return f_string_out        
 
     @api.multi
     def generate_payment_file(self):
@@ -349,7 +352,7 @@ class AccountPaymentOrder(models.Model):
                     f_digito_verif_beneficiario = self._truncate_str(f_rut_dv, 1)
                     f_nombre_beneficiario = self._truncate_str(payline.partner_id.name, 45)
                     f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
-                    f_no_factura_boleta = self._truncate_str(payline.communication.zfill(20), 20)
+                    f_no_factura_boleta = self._truncate_str(payline.communication, 20, 0)
                     f_no_orden_compra = self._truncate_str('', 20)
                     f_tipo_pago = 'PRV'
                     f_mensaje_destinatario = self._truncate_str('Pago Doc ' + str(payline.communication), 30)
