@@ -414,7 +414,7 @@ class AccountPaymentOrder(models.Model):
                     f_rut_dv = ""
                     f_rut, f_rut_dv = bankline.partner_id.document_number.split("-")
                     f_rut = f_rut.replace('.','')
-                    t_monto, t_dec = bankline.amount_currency.split(".")
+                    t_monto, t_dec = str(bankline.amount_currency).split(".")
                     # Tipo Fila 02
                     f_rut = self._truncate_str(f_rut, 10, 0)
                     f_nombre = self._truncate_str(bankline.partner_id.name, 60).ljust(60)
