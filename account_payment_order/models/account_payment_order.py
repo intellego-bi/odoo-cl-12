@@ -398,6 +398,7 @@ class AccountPaymentOrder(models.Model):
                 count_bankline = 0
                 for cpayline in self.bank_line_ids:
                     count_bankline += 1
+                t_filler = ""
                 f_paga_rut = ""
                 f_paga_rut_dv = ""
                 f_paga_rut, f_paga_rut_dv = self.env.user.company_id.document_number.split("-")
@@ -410,8 +411,8 @@ class AccountPaymentOrder(models.Model):
                 f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.txt'
                 payment_file_content = ""
                 # Tipo Fila 01
-                f_filler_01 = ""
-                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(f_monto_nomina, 13, 0) + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + f_filler_01.ljust(564) + '\n'
+                f_filler_01 = t_filler.ljust(564)
+                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(f_monto_nomina, 13, 0) + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + f_filler_01 + '\n'
                 for bankline in self.bank_line_ids:
                     f_rut = ""
                     f_rut_dv = ""
@@ -437,10 +438,19 @@ class AccountPaymentOrder(models.Model):
                     else:
                         f_medio_pago = '07'
                     f_banco_destino = self._truncate_str(bankline.partner_bank_id.bank_id.bic[-3:], 3)
-                    f_oficina_destino = "   "
+                    f_oficina_destino = t_filler.ljust(3)
                     f_no_cta_destino = self._truncate_str(bankline.partner_bank_id.acc_number, 22)
                     f_descripcion_pago = self._truncate_str("PAGO DE " + str(self.env.user.company_id.name).upper(), 120)
-                    payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + f_act_eco + f_monto_total + f_date + f_medio_pago + f_banco_destino + f_oficina_destino + f_no_cta_destino + f_descripcion_pago + '\n'
+                    f_ind_vva = " "
+                    f_campos_libres_123 = t_filler.ljust(70)
+                    f_contactos = t_filler.ljust(71)
+                    f_canal_aviso = " "
+                    f_fono_fax = t_filler.ljust(14)
+                    f_email_a = t_filler.ljust(60)
+                    f_email_b = t_filler.ljust(60)
+                    f_num_aviso = t_filler.ljust(4)
+                    f_filler_02 = t_filler.ljust(18)                   
+                    payment_file_content += '02' + f_rut + f_rut_dv +  f_nombre + f_direccion + f_comuna + f_ciudad + f_act_eco + f_monto_total + f_date + f_medio_pago + f_banco_destino + f_oficina_destino + f_no_cta_destino + f_descripcion_pago + f_ind_vva + f_campos_libres_123 + f_contactos + f_canal_aviso + f_fono_fax + f_email_a + f_email_b + f_num_aviso + f_filler_02 + '\n'
                     # Tipo Fila 03
                     for payline in self.payment_line_ids: 
                         if payline.partner_id == bankline.partner_id:
