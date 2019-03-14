@@ -410,7 +410,7 @@ class AccountPaymentOrder(models.Model):
                 payment_file_content = ""
                 # Tipo Fila 01
                 f_filler_01 = ""
-                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(f_monto_nomina, 13, 0) + '00' + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + l_filler_01.ljust(564) + '\n'
+                payment_file_content = '01' + self._truncate_str(f_paga_rut, 10, 0) + str(f_paga_rut_dv) + self._truncate_str(f_monto_nomina, 13, 0) + '00' + self._truncate_str(count_bankline, 10, 0) + self._truncate_str(count_payline, 10, 0) + f_filler_01.ljust(564) + '\n'
                 for bankline in self.bank_line_ids:
                     f_rut = ""
                     f_rut_dv = ""
