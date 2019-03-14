@@ -402,7 +402,8 @@ class AccountPaymentOrder(models.Model):
                 f_paga_rut_dv = ""
                 f_paga_rut, f_paga_rut_dv = self.env.user.company_id.document_number.split("-")
                 f_paga_rut = f_paga_rut.replace('.','')
-                f_monto_nomina = self.total_company_currency
+                t_monto_nom, t_decn = str(self.total_company_currency).split(".")
+                f_monto_nomina = t_monto_nom
                 # Estructura de Archivo BANCO CHILE - formato Texto
                 # 
                 # 
