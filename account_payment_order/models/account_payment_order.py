@@ -341,7 +341,7 @@ class AccountPaymentOrder(models.Model):
                     # Estructura de Archivo BANCO BCI - formato Texto
                     # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
                     #
-                    f_file_name = str(payline.name) + ' - ' + str(payline.date) + str(self.payment_mode_id.name) + '.csv'
+                    f_file_name = str(payline.name) + ' - ' + str(payline.date) + ' ' + str(self.payment_mode_id.name) + '.csv'
                     f_rut = ""
                     f_rut_dv = ""
                     f_rut, f_rut_dv = payline.partner_id.document_number.split("-")
@@ -368,7 +368,7 @@ class AccountPaymentOrder(models.Model):
                     # Estructura de Archivo BANCO BCI - formato Texto
                     # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
                     #
-                    f_file_name = str(payline.name) + ' - ' + str(payline.date) + str(self.payment_mode_id.name) + '.csv'
+                    f_file_name = str(payline.name) + ' - ' + str(payline.date) + ' ' + str(self.payment_mode_id.name) + '.csv'
                     f_rut = ""
                     f_rut_dv = ""
                     f_rut, f_rut_dv = payline.partner_id.document_number.split("-")
