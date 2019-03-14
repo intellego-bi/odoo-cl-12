@@ -10,7 +10,7 @@
 				<field name='customer'>False</field>				
 				<field name='supplier'>True</field>
 				<field name='country_id'>46</field>
-                <field name="image" type="base64" file="http://www.sii.cl/sobre_el_sii/logoSII250x108.jpg"/>
+                <field name="image" type="base64" file="l10n_cl_hr/static/partnerlogos/logoSII.jpg"/>
 				<field name='commercial_company_name'>Servicio de Impuestos Internos (SII)</field>
         </record> 
     
@@ -24,7 +24,7 @@
 				<field name='customer'>False</field>
                 <field name='supplier'>True</field>				
 				<field name='country_id'>46</field>
-                <field name="image" type="base64" file="http://www.gochpa.cl/imagebrowser/p005_0_6.png"/>
+                <field name="image" type="base64" file="l10n_cl_hr/static/partnerlogos/logoPrevired.png"/>
 				<field name='commercial_company_name'>Previred.com</field>
         </record> 
 
