@@ -32,9 +32,10 @@
                 </div>
                 <group name="head" col="2">
                     <group name="head-left">
-                        <field name="payment_mode_id"
-                            domain="[('payment_order_ok', '=', True), ('payment_type', '=', payment_type)]"
-                            widget="selection"/>
+                        <!-- <field name="payment_mode_id"
+                            domain="[('payment_order_ok', '=', True), ('payment_type', '=', payment_type)]" -->
+                            widget="selection"/> -->
+                        <field name="payment_mode_id" widget="selection"/>
                         <field name="journal_id" widget="selection"/>
                         <field name="bank_account_link" invisible="1"/>
                         <field name="company_partner_bank_id"/>
