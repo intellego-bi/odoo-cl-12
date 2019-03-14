@@ -1,3 +1,4 @@
+# © 2019 Intellego-BI.com (<http://www.intellego-BI.com>)
 # © 2009 EduSense BV (<http://www.edusense.nl>)
 # © 2011-2013 Therp BV (<https://therp.nl>)
 # © 2016 Serv. Tecnol. Avanzados - Pedro M. Baeza
