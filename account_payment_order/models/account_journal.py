@@ -12,6 +12,21 @@ class AccountJournal(models.Model):
         vals = super(AccountJournal, self)._default_outbound_payment_methods()
         return vals + self.env.ref('account_payment_order.cl_electronic')
 
+        
+    @api.model
+    def _enable_electronic_outbound_on_bank_journals(self):
+        """ Enables electronic credit transfer payment method on bank journals. Called upon module installation via data file.
+        """
+        cl_electronic = self.env.ref('account_payment_order.cl_electronic')
+        clp = self.env.ref('base.CLP')
+        if self.env.user.company_id.currency_id == clp:
+            domain = ['&', ('type', '=', 'bank'), '|', ('currency_id', '=', clp.id), ('currency_id', '=', False)]
+        else:
+            domain = ['&', ('type', '=', 'bank'), ('currency_id', '=', clp.id)]
+        for bank_journal in self.search(domain):
+            bank_journal.write({'outbound_payment_method_ids': [(4, cl_electronic.id, None)]})
+
+            
 #    @api.model
 #    def _create_batch_payment_outbound_sequence(self):
 #        IrSequence = self.env['ir.sequence']
@@ -29,13 +44,13 @@ class AccountJournal(models.Model):
 #            'company_id': False,
 #        })
  
-    @api.model
-    def _enable_electronic_outbound_on_bank_journals(self):
-        """ Enables electronic outbound payment method on bank journals. Called upon module installation via data file."""
-        cl_electronic = self.env.ref('account_payment_order.cl_electronic')
-        self.search([('type', '=', 'bank')]).write({
-                'outbound_payment_method_ids': [(4, cl_electronic.id, None)],
-        })
+#    @api.model
+#    def _enable_electronic_outbound_on_bank_journals(self):
+#        """ Enables electronic outbound payment method on bank journals. Called upon module installation via data file."""
+#        cl_electronic = self.env.ref('account_payment_order.cl_electronic')
+#        self.search([('type', '=', 'bank')]).write({
+#                'outbound_payment_method_ids': [(4, cl_electronic.id, None)],
+#        })
 
 #    @api.multi
 #    def open_action_batch_payment(self):

@@ -4,17 +4,15 @@
   @author: Rodolfo bermúdez Neubauer <odoo@intellego-bi.com>
   License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 -->
-<odoo noupdate="1">
-
+<odoo>
+<data noupdate="1">
 <record id="cl_electronic" model="account.payment.method">
-    <field name="name">Pago vía Transferencia</field>
+    <field name="name">Electronic Outbound</field>
     <field name="code">electronic</field>
     <field name="payment_type">outbound</field>
     <field name="bank_account_required" eval="True"/>
     <field name="active" eval="True"/>
 </record>
-
-<data noupdate="1">
     <function model="account.journal" name="_enable_electronic_outbound_on_bank_journals"/>
 </data>
 
