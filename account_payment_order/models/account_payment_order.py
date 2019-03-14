@@ -426,7 +426,7 @@ class AccountPaymentOrder(models.Model):
                     f_direccion = self._truncate_str(t_streets.upper(), 35).ljust(35)
                     f_comuna = self._truncate_str(bankline.partner_id.city.upper(), 15).ljust(15)
                     f_ciudad = self._truncate_str(bankline.partner_id.state_id.name.upper(), 15).ljust(15)
-                    if bankline.partner_id.is_company == 'True':
+                    if bankline.partner_id.is_company:
                         f_act_eco = 'B1'
                     else:
                         f_act_eco = 'BC'                                        
