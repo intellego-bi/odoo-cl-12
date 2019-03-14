@@ -470,7 +470,7 @@ class AccountPaymentOrder(models.Model):
                             f_monto_doc = self._truncate_str(payline.amount_company_currency, 11, 0) + '00'
                             #f_due_date = self._truncate_str(payline.ml_maturity_date.day, 2, 0) + self._truncate_str(payline.ml_maturity_date.month, 2, 0) + str(payline.ml_maturity_date.year)
                             f_doc_date = self._truncate_str(payline.move_line_id.move_id.date.day, 2, 0) + self._truncate_str(payline.move_line_id.move_id.date.month, 2, 0) + str(payline.move_line_id.move_id.date.year)
-                            f_doc_descrip = self._truncate_str(f_doc + payline.communication, 120).ljust(120)
+                            f_doc_descrip = self._truncate_str(f_doc + payline.communication + ' DE FECHA DOC = ' + str(payline.move_line_id.move_id.date) + ' Y VENCIM. = ' + str(payline.ml_maturity_date), 120).ljust(120)
                             f_campos_libres_123 = t_filler.ljust(70)
                             f_filler_03 = t_filler.ljust(368)   
                             payment_file_content += '03' + f_tipo_doc + f_num_factura_boleta + f_num_cuota + f_monto_doc + f_monto_doc + f_doc_date + f_doc_descrip + f_campos_libres_123 + f_filler_03 + '\n'
