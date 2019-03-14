@@ -464,7 +464,7 @@ class AccountPaymentOrder(models.Model):
                             f_num_cuota = '001'
                             f_monto_doc = self._truncate_str(payline.amount_company_currency, 11, 0) + '00'
                             #f_due_date = self._truncate_str(payline.ml_maturity_date.day, 2, 0) + self._truncate_str(payline.ml_maturity_date.month, 2, 0) + str(payline.ml_maturity_date.year)
-                            f_doc_date = self._truncate_str(payline.date.day, 2, 0) + self._truncate_str(payline.date.month, 2, 0) + str(payline.date.year)
+                            f_doc_date = self._truncate_str(payline.move_line_id.move_id.date.day, 2, 0) + self._truncate_str(payline.move_line_id.move_id.date.month, 2, 0) + str(payline.move_line_id.move_id.date.year)
                             f_doc_descrip = self._truncate_str(f_doc + payline.communication, 120).ljust(120)
                             f_campos_libres_123 = t_filler.ljust(70)
                             f_filler_03 = t_filler.ljust(368)   
