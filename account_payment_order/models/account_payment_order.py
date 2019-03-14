@@ -474,6 +474,27 @@ class AccountPaymentOrder(models.Model):
                             f_campos_libres_123 = t_filler.ljust(70)
                             f_filler_03 = t_filler.ljust(368)   
                             payment_file_content += '03' + f_tipo_doc + f_num_factura_boleta + f_num_cuota + f_monto_doc + f_monto_doc + f_doc_date + f_doc_descrip + f_campos_libres_123 + f_filler_03 + '\n'
+                    # Tipo Fila 04
+                    l_num_aviso = 0
+                    for apayline in self.payment_line_ids:       
+                        if apayline.partner_id == bankline.partner_id:
+                            l_num_aviso += 1
+                            for abankline in self.bank_line_ids: 
+                                if abankline.order_id == apayline.order_id:
+                                    f_num_aviso = self._truncate_str(abankline.name[-4:], 4)
+                            if apayline.move_line_id.document_class_id:
+                                f_tipo_doc = self._truncate_str(apayline.move_line_id.document_class_id.sii_code, 3, 0)
+                                f_doc = apayline.move_line_id.document_class_id.doc_code_prefix + ': '
+                            else:
+                                f_tipo_doc = self._truncate_str(apayline.move_line_id.move_id.name, 3)
+                                f_doc = 'DOC: '
+                            f_monto_aviso = self._truncate_str(apayline.amount_company_currency, 11, 0)
+                            f_glosa_aviso = self._truncate_str("PAGO DE " + str(self.env.user.company_id.name).upper() + ' DE ' + f_doc + apayline.communication + ' POR VALOR DE ' + f_monto_aviso, 120).ljust(120)
+                            f_corr_aviso = self._truncate_str(str(l_num_aviso), 5, 0)
+                            #f_due_date = self._truncate_str(payline.ml_maturity_date.day, 2, 0) + self._truncate_str(payline.ml_maturity_date.month, 2, 0) + str(payline.ml_maturity_date.year)
+                            f_doc_date = self._truncate_str(apayline.move_line_id.move_id.date.day, 2, 0) + self._truncate_str(apayline.move_line_id.move_id.date.month, 2, 0) + str(apayline.move_line_id.move_id.date.year)
+                            f_filler_04 = t_filler.ljust(279)   
+                            payment_file_content += '04' + f_num_aviso + f_glosa_aviso + f_corr_aviso + f_filler_04 + '\n'
                 return (payment_file_content, f_file_name)
 
             else:
