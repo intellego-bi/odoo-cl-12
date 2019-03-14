@@ -14,4 +14,6 @@
     <field name="active" eval="True"/>
 </record>
 
+<function model="account.journal" name="_enable_electronic_outbound_on_bank_journals"/>
+
 </odoo>
