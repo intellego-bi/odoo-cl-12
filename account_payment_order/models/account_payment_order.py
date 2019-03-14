@@ -478,7 +478,7 @@ class AccountPaymentOrder(models.Model):
                     # Tipo Fila 04
                     l_num_aviso = 0
                     for apayline in self.payment_line_ids:       
-                        if apayline.partner_id == bankline.partner_id:
+                        if apayline.partner_id == bankline.partner_id and bankline.partner_id.email:
                             l_num_aviso += 1
                             for abankline in self.bank_line_ids: 
                                 if abankline.order_id == apayline.order_id:
