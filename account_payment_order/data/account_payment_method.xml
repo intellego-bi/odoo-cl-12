@@ -6,7 +6,7 @@
 -->
 <odoo noupdate="1">
 
-<record id="cl_bank_transfer" model="account.payment.method">
+<record id="cl_electronic" model="account.payment.method">
     <field name="name">Pago vía Transferencia</field>
     <field name="code">electronic</field>
     <field name="payment_type">outbound</field>
