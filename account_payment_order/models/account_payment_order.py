@@ -439,8 +439,8 @@ class AccountPaymentOrder(models.Model):
                         f_medio_pago = '07'
                     f_banco_destino = self._truncate_str(bankline.partner_bank_id.bank_id.bic[-3:], 3)
                     f_oficina_destino = t_filler.ljust(3)
-                    f_no_cta_destino = self._truncate_str(bankline.partner_bank_id.acc_number, 22)
-                    f_descripcion_pago = self._truncate_str("PAGO DE " + str(self.env.user.company_id.name).upper(), 120)
+                    f_no_cta_destino = self._truncate_str(bankline.partner_bank_id.acc_number, 22).ljust(22)
+                    f_descripcion_pago = self._truncate_str("PAGO DE " + str(self.env.user.company_id.name).upper(), 120).ljust(120)
                     f_ind_vva = " "
                     f_campos_libres_123 = t_filler.ljust(70)
                     f_contactos = t_filler.ljust(71)
