@@ -16,6 +16,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_concil_full_act_window
+msgid "Account Reconciliation Moves"
+msgstr "Movimientos de Conciliación"
+
+#. module: l10n_cl_pagos
 #: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_entries
 msgid "Accounting"
 msgstr "Contabilidad"
@@ -26,21 +31,72 @@ msgid "Acá podrá realizar pagos masivos a proveedores y empleados"
 msgstr ""
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_form
-msgid "Bank Payment Line"
-msgstr "Línea para Pago Bancario"
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_bank_accounts_act_window
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_bank_accounts_act_window
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_bank_accounts_menu_item
+msgid "Bank Accounts"
+msgstr "Cuentas Bancarias"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_configuration_banks
+msgid "Bank Configuration"
+msgstr "Configurar Bancos"
+
+#. module: l10n_cl_pagos
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_journal_bank_items_action
+msgid "Bank Items"
+msgstr "Partidas en Banco"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_bank_items_action
+msgid "Bank Journal Items"
+msgstr "Partidas en Banco"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_bank_items_action
+msgid "Bank Line Items posted in accounting are displayed here."
+msgstr "Acá si visualizan las partidas en cuentas bancarias y líquidas."
 
 #. module: l10n_cl_pagos
 #: model:ir.actions.act_window,name:l10n_cl_pagos.cl_bank_payment_line_action
-#: model:ir.ui.menu,name:l10n_cl_pagos.cl_bank_payment_line_menu
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_tree
 msgid "Bank Payment Lines"
-msgstr "Líneas de pago bancario"
+msgstr "Líneas de Pago Bancario"
 
 #. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_bank_payment_line_menu
+msgid "Bank Payment Order Lines"
+msgstr "Líneas Banco Orden de Pago"
+
+#. module: l10n_cl_pagos
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_bank_statement_act_window
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_bank_statement_menu_item
+msgid "Bank Statement"
+msgstr "Extracto Bancario"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_bank_statement_lines_act_window
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_bank_statement_lines_act_window
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_bank_statement_lines_menu_item
+msgid "Bank Statement Lines"
+msgstr "Líneas de Extracto Bancario"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_bank_statement_act_window
+msgid "Bank Statements"
+msgstr "Extractos Bancarios"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_banks_act_window
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_banks_act_window
 #: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_banks
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_banks_menu_item
 msgid "Banks"
 msgstr "Bancos"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_receivables
+msgid "Collection"
+msgstr "Cobranza"
 
 #. module: l10n_cl_pagos
 #: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_configuration
@@ -48,35 +104,130 @@ msgid "Configuration"
 msgstr "Configuración"
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_orden_de_pago_action
-msgid "Crear nóminas de pagos"
-msgstr ""
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_bank_accounts_act_window
+msgid "Create bank accounts for your company, employees and partners."
+msgstr "Acá podrá crear Cuentas Bancarias para su empresa, empleados y terceros."
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_search
-msgid "Group By"
-msgstr "Agrupar por"
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_customer_action
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_customer_action
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_customer_menu_item
+msgid "Customers"
+msgstr "Clientes"
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_search
-msgid "Inbound"
-msgstr "Entrante"
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_payment_modes_act_window
+msgid "Define Payment Modes for incoming and outgoing payments and\n"
+"                        configure settings to process payments."
+msgstr "Defina Modos para el registro y procesamiento de pagos entrantes y salientes."
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_payment_terms_act_window
+msgid "Define payment terms for incoming and outgoing payment to\n"
+"                        customers and vendors."
+msgstr "Defina la Condiciones de Pago para cobrar y pagar a sus clientes y proveedores"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_concil_full_act_window
+msgid "Documents and move lines created when reconciling open accounting\n"
+"                        items will be displaued here"
+msgstr "Lod Asientos y Apuntes contables generados por efecto de la conciliación\n"
+"                         se mostrarán acá."
+
+#. module: l10n_cl_pagos
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_concil_full_act_window
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_concil_full_menu_item
+msgid "Full Reconciliation Moves"
+msgstr "Documentos de Conciliación"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_banks_act_window
+msgid "If no banks are available for your country, please go ahead\n"
+"                        and create one."
+msgstr "Si no ha creado Bancos para su país, acá podrá hacerlo facilmente."
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_items_action
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_journal_items_action
+msgid "Journal Items"
+msgstr "Apuntes Contables"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_items_action
+msgid "Line items posted in accounting are displayed here."
+msgstr "Acá se visualizan las partidas contabilizadas en el Libro Mayor"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_bank_journal_items_menu_item
+msgid "Liquidity Line Items"
+msgstr "Partidas de Banco/Liquidez) "
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_bank_statement_lines_act_window
+msgid "Move lines created after posting Bank Statements will be displyed \n"
+"                        here."
+msgstr "Aca se visualizarán los movimientos (partidas) generadas por la contabilización \n"
+"                        de los extractos bancarios."
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_customer_action
+msgid "Odoo helps you easily track all activities related to a customer."
+msgstr "Odoo le facilita el seguimiento de todas las acciones relacionadas a sus clientes."
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_vendor_action
+msgid "Odoo helps you easily track all activities related to a vendor."
+msgstr "Odoo le facilita el seguimiento de todas las acciones relacionadas a sus acreedores."
 
 #. module: l10n_cl_pagos
 #: model:ir.actions.act_window,name:l10n_cl_pagos.cl_orden_de_pago_action
-#: model:ir.ui.menu,name:l10n_cl_pagos.cl_orden_de_pago_menu
 msgid "Orden de Pago"
 msgstr ""
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_search
-msgid "Outbound"
-msgstr "Saliente"
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_journal_payable_items_action
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_payable_journal_items_menu_item
+msgid "Payable Items"
+msgstr "Partidas por Pagar"
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_search
-msgid "Partner"
-msgstr "Empresa"
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_payable_items_action
+msgid "Payable Journal Items"
+msgstr "Partidas por Pagar"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_payable_items_action
+msgid "Payable Line Items posted in accounting are displayed here."
+msgstr "Acá se visualizan las partidas por Pagar"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_configuration_payments
+msgid "Payment Configuration"
+msgstr "Configurar Pagos"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_payment_modes_act_window
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_payment_modes_act_window
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_payment_modes_menu_item
+msgid "Payment Modes"
+msgstr "Modalidades de Pago"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_orden_de_pago_menu
+msgid "Payment Order"
+msgstr "Orden de Pago"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_orden_de_pago_action
+msgid "Payment Orders"
+msgstr "Órdenes de Pago"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_payment_terms_act_window
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_payment_terms_act_window
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_payment_terms_menu_item
+msgid "Payment Terms"
+msgstr "Condiciones de Pago"
 
 #. module: l10n_cl_pagos
 #: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_payables
@@ -84,9 +235,30 @@ msgid "Payments"
 msgstr "Pagos"
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_form
-msgid "Related Payment Lines"
-msgstr "Líneas de Pago Relacionadas"
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_journal_receivable_items_action
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_receivable_journal_items_menu_item
+msgid "Receivable Items"
+msgstr "Partidas por Cobrar"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_receivable_items_action
+msgid "Receivable Journal Items"
+msgstr "Partidas por Cobrar"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_journal_receivable_items_action
+msgid "Recievable Line Items posted in accounting are displayed here."
+msgstr "Acá se visualizan las partidas por cobrar"
+
+#. module: l10n_cl_pagos
+#: model:ir.actions.client,name:l10n_cl_pagos.cl_account_reconcile_action
+msgid "Reconcile"
+msgstr "Conciliar"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_reconcile_menu_item
+msgid "Reconcile Moves"
+msgstr "Conciliar Partidas"
 
 #. module: l10n_cl_pagos
 #: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_reports
@@ -94,22 +266,21 @@ msgid "Reporting"
 msgstr "Informes"
 
 #. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_search
-msgid "Search Bank Payment Lines"
-msgstr "Buscar líneas de pago bancario"
-
-#. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_search
-msgid "State"
-msgstr "Estado"
-
-#. module: l10n_cl_pagos
-#: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_tree
-msgid "Total Amount"
-msgstr "Importe Total"
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_bank_statement_act_window
+msgid "Register your bank statements here and then reconcile move items\n"
+"                        with open accounting items."
+msgstr "Registre sus extractos (cartolas) bancarias acá y luego concilie las partidas\n"
+"                        pendientes en la contabilidad."
 
 #. module: l10n_cl_pagos
 #: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_menu
 msgid "Treasury"
 msgstr "Tesorería"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_vendor_action
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_vendor_action
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_vendor_menu_item
+msgid "Vendors"
+msgstr "Proveedores"
 
