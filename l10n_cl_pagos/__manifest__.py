@@ -33,6 +33,7 @@
     'license': 'LGPL-3',
     'data': [
         'views/cl_treasury_menu.xml',
+        'views/account_menuitem.xml',
     ],
     'demo': [],
     'images': ['static/description/banner.jpg'],

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Top menu item -->
+        <menuitem name="Treasury"
+            id="l10n_cl_pagos"
+            groups="account.group_account_user,account.group_account_manager,account.group_account_invoice,account_payment_order.group_account_payment"
+            web_icon="l10n_cl_pagos,static/img/tr_icon.png"
+            sequence="10"/>
+
+        <menuitem id="cl_menu_pagos_banks" name="Banks" parent="l10n_cl_pagos" sequence="2" groups="account_payment_order.group_account_payment"/>
+        <menuitem id="cl_menu_pagos_payables" name="Payments" parent="l10n_cl_pagos" sequence="3" groups="account_payment_order.group_account_payment"/>
+        <menuitem id="cl_menu_pagos_entries" name="Accounting" parent="l10n_cl_pagos" sequence="4" groups="account_payment_order.group_account_payment"/>
+        <menuitem id="cl_menu_pagos_reports" name="Reporting" parent="cl_menu_pagos" sequence="5" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
+        <menuitem id="cl_menu_pagos_configuration" name="Configuration" parent="cl_menu_pagos" sequence="99" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
+
+            <menuitem id="l10n_cl_pagos.cl_orden_de_pago_menu" action="l10n_cl_pagos.cl_orden_de_pago_action"
+                      parent="cl_menu_pagos_payables" sequence="10" groups="account_payment_order.group_account_payment"/>         
+         
+            <menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
+                      parent="cl_menu_pagos_banks" sequence="50" groups="account_payment_order.group_account_payment"/>         
+        
+        
+    </data>
+</odoo>
+

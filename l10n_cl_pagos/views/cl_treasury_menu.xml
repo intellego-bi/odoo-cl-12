@@ -11,6 +11,7 @@
 <odoo>
 
   <!-- Módulo de Tesorería -->
+  <!--
   <record id="l10n_cl_pagos.cl_treasury_menu" model="ir.ui.menu">
     <field name="action" eval="False"/>
     <field name="active" eval="True"/>
@@ -21,7 +22,7 @@
     <!-- <field name="web_icon">fa fa-institution,#FFFFFF,#58a177</field> -->  
     <field name="web_icon">l10n_cl_pagos,static/img/tr_icon.png</field>
   </record> 
-
+  -->
 
   <!-- Accion Ordenes de Pago -->
   <record id="l10n_cl_pagos.cl_orden_de_pago_action" model="ir.actions.act_window">
@@ -125,6 +126,7 @@
         </field>
     </record>
 
+    <!--
     <menuitem id="l10n_cl_pagos.cl_payment_root" name="Payments" parent="l10n_cl_pagos.cl_treasury_menu" sequence="2"/>
     
     <menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
@@ -140,4 +142,5 @@
         <field name="sequence">10</field>
         <field name="web_icon" eval="False"/>
     </record>
+    -->
 </odoo>
