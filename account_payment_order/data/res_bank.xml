@@ -17,7 +17,7 @@
 <record id="cl_bank_009" model="res.bank">
     <field name="name">Bano Internacional</field>
     <field name="bic">009</field>
-    <field name="country">Chile</field>
+    <field name="country" eval="CL"/>
     <field name="active" eval="True"/>
 </record>
 
