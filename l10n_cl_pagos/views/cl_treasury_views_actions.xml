@@ -465,7 +465,7 @@
         <field name="context">{}</field>
     </record>
 
-
+<!--
     <act_window id="l10n_cl_pagos.cl_account_move_add_to_payment_order_action"
         multi="True"
         key2="client_action_multi"
@@ -474,7 +474,7 @@
         src_model="account.move.line"
         view_mode="form"
         target="new"/>
-    
+-->    
     
     
     
