@@ -32,7 +32,7 @@
     'depends': ['base', 'account', 'purchase', 'account_payment_mode', 'account_payment_order', 'account_payment_partner'],
     'license': 'LGPL-3',
     'data': [
-        'views/cl_treasury_top_menu.xml',
+        'views/cl_treasury_menu_top.xml',
         'views/cl_treasury_views_actions.xml',
     ],
     'demo': [],
