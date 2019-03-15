@@ -265,6 +265,14 @@
         <field name="context">{'bank_payment_line_main_view': True}</field>
     </record>
 
+    <!-- Action RECONCILE -->
+    <record id="l10n_cl_pagos.cl_account_reconcile_action" model="ir.actions.client">
+        <field name="name">Reconcile</field>
+        <field name="tag">manual_reconciliation_view</field>
+        <field name="xml_id">account.action_manual_reconciliation</field>
+        <field name="context">{}</field>
+    </record>
+    
   <!-- MENU ITEMS -->
   
   <record id="l10n_cl_pagos.cl_treasury_bank_statement_menu_item" model="ir.ui.menu">
@@ -286,6 +294,17 @@
     <field name="sequence">22</field>
     <field name="web_icon" eval="False"/>
   </record>
+
+  <record id="l10n_cl_pagos.cl_treasury_reconcile_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_account_reconcile_action"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Reconcile Moves</field>
+    <field name="parent_id" ref="cl_menu_pagos_entries"/>
+    <field name="sequence">31</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
   
   <record id="l10n_cl_pagos.cl_treasury_concil_full_menu_item" model="ir.ui.menu">
     <field name="action" ref="l10n_cl_pagos.cl_treasury_concil_full_act_window"/>
@@ -293,7 +312,7 @@
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Full Reconciliation Moves</field>
     <field name="parent_id" ref="cl_menu_pagos_entries"/>
-    <field name="sequence">31</field>
+    <field name="sequence">32</field>
     <field name="web_icon" eval="False"/>
   </record>
 
