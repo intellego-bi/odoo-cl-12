@@ -466,7 +466,17 @@
     </record>
 
 
-
+    <act_window id="l10n_cl_pagos.cl_account_move_add_to_payment_order_action"
+        multi="True"
+        key2="client_action_multi"
+        name="Add to Payment Order"
+        res_model="account.move.line.payment.line.multi"
+        src_model="account.move.line"
+        view_mode="form"
+        target="new"/>
+    
+    
+    
     
   <!-- MENU ITEMS -->
   
