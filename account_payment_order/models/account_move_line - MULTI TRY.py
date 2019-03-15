@@ -43,6 +43,127 @@ class AccountMoveLine(models.Model):
 
     # END INSERT Payment Move line Multi
 
+    # INSERT Payment Move line Multi
+        
+    @api.depends('payment_mode_id', 'move_id', 'move_id.line_ids',
+                 'move_id.line_ids.payment_mode_id')
+    def _compute_payment_order_ok(self):
+        for move_line in self:
+            payment_mode = (
+                move_line.move_id.line_ids.filtered(
+                    lambda x: not x.reconciled
+                ).mapped('payment_mode_id')[:1]
+            )
+            if not payment_mode:
+                payment_mode = move_line.payment_mode_id
+            move_line.payment_order_ok = payment_mode.payment_order_ok
+
+    @api.model
+    def line_get_convert(self, line, part):
+        """Copy supplier bank account from move_line to account move line"""
+        res = super(AccountMoveLine, self).line_get_convert(line, part)
+        if line.get('user_type_id') == 'dest' and line.get('move_line_id'):
+            move_line = self.browse(line['move_line_id'])
+            if move_line.user_type_id in ('1', '2'):
+                res['partner_bank_id'] = invoice.partner_bank_id.id or False
+        return res
+
+    @api.multi
+    def _prepare_new_payment_order(self, payment_mode=None):
+        self.ensure_one()
+        if payment_mode is None:
+            payment_mode = self.env['account.payment.mode']
+        vals = {
+            'payment_mode_id': payment_mode.id or self.payment_mode_id.id,
+        }
+        # other important fields are set by the inherit of create
+        # in account_payment_order.py
+        return vals
+
+    @api.multi
+    def create_account_payment_line(self):
+        apoo = self.env['account.payment.order']
+        result_payorder_ids = []
+        action_payment_type = 'debit'
+        for move_l in self:
+            if move_l.reconciled != 'false':
+                raise UserError(_(
+                    "The move line %s is already reconciled") % move_l.ref)
+            if move_l.blocked != 'false':
+                raise UserError(_(
+                    "The move line %s is blocked for payment") % move_l.ref)
+            if not move_l.move_id:
+                raise UserError(_(
+                    "No Journal Entry on invoice %s") % inv.number)
+            if move_l.amount_residual > 0:
+                raise UserError(_(
+                    "You can only select outgoing payments. %s has nos amount to pay.") % move_l.ref)
+            applicable_lines = move_l.move_id.line_ids.filtered(
+                lambda x: (
+                    not x.reconciled and x.payment_mode_id.payment_order_ok and
+                    x.account_id.internal_type in ('receivable', 'payable') and
+                    not x.payment_line_ids
+                )
+            )
+            if not applicable_lines:
+                raise UserError(_(
+                    'No Payment Line created for invoice %s because '
+                    'it already exists or because this move line is '
+                    'already paid.') % move_l.number)
+            payment_modes = applicable_lines.mapped('payment_mode_id')
+            if not payment_modes:
+                raise UserError(_(
+                    "No Payment Mode on Move Line %s") % move_l.ref)
+            for payment_mode in payment_modes:
+                payorder = apoo.search([
+                    ('payment_mode_id', '=', payment_mode.id),
+                    ('state', '=', 'draft')
+                ], limit=1)
+                new_payorder = False
+                if not payorder:
+                    payorder = apoo.create(move_l._prepare_new_payment_order(
+                        payment_mode
+                    ))
+                    new_payorder = True
+                result_payorder_ids.append(payorder.id)
+                action_payment_type = payorder.payment_type
+                count = 0
+                for line in applicable_lines.filtered(
+                    lambda x: x.payment_mode_id == payment_mode
+                ):
+                    line.create_payment_line_from_move_line(payorder)
+                    count += 1
+                if new_payorder:
+                    move_l.message_post(body=_(
+                        '%d payment lines added to the new draft payment '
+                        'order %s which has been automatically created.')
+                        % (count, payorder.name))
+                else:
+                    move_l.message_post(body=_(
+                        '%d payment lines added to the existing draft '
+                        'payment order %s.')
+                        % (count, payorder.name))
+        action = self.env['ir.actions.act_window'].for_xml_id(
+            'account_payment_order',
+            'account_payment_order_%s_action' % action_payment_type)
+        if len(result_payorder_ids) == 1:
+            action.update({
+                'view_mode': 'form,tree,pivot,graph',
+                'res_id': payorder.id,
+                'views': False,
+                })
+        else:
+            action.update({
+                'view_mode': 'tree,form,pivot,graph',
+                'domain': "[('id', 'in', %s)]" % result_payorder_ids,
+                'views': False,
+                })
+        return action
+
+    # FIN INSERT Payment Move line Multi    
+    
+    
+    
     
     @api.multi
     def _prepare_payment_line_vals(self, payment_order):
@@ -160,120 +281,4 @@ class AccountMoveLine(models.Model):
         return result
 
         
-    # INSERT Payment Move line Multi
-        
-    @api.depends('payment_mode_id', 'move_id', 'move_id.line_ids',
-                 'move_id.line_ids.payment_mode_id')
-    def _compute_payment_order_ok(self):
-        for move_line in self:
-            payment_mode = (
-                move_line.move_id.line_ids.filtered(
-                    lambda x: not x.reconciled
-                ).mapped('payment_mode_id')[:1]
-            )
-            if not payment_mode:
-                payment_mode = move_line.payment_mode_id
-            move_line.payment_order_ok = payment_mode.payment_order_ok
-
-    @api.model
-    def line_get_convert(self, line, part):
-        """Copy supplier bank account from move_line to account move line"""
-        res = super(AccountMoveLine, self).line_get_convert(line, part)
-        if line.get('user_type_id') == 'dest' and line.get('move_line_id'):
-            move_line = self.browse(line['move_line_id'])
-            if move_line.user_type_id in ('1', '2'):
-                res['partner_bank_id'] = invoice.partner_bank_id.id or False
-        return res
-
-    @api.multi
-    def _prepare_new_payment_order(self, payment_mode=None):
-        self.ensure_one()
-        if payment_mode is None:
-            payment_mode = self.env['account.payment.mode']
-        vals = {
-            'payment_mode_id': payment_mode.id or self.payment_mode_id.id,
-        }
-        # other important fields are set by the inherit of create
-        # in account_payment_order.py
-        return vals
-
-    @api.multi
-    def create_account_payment_line(self):
-        apoo = self.env['account.payment.order']
-        result_payorder_ids = []
-        action_payment_type = 'debit'
-        for move_l in self:
-            if move_l.reconciled != 'false':
-                raise UserError(_(
-                    "The move line %s is already reconciled") % move_l.ref)
-            if move_l.blocked != 'false':
-                raise UserError(_(
-                    "The move line %s is blocked for payment") % move_l.ref)
-            if not move_l.move_id:
-                raise UserError(_(
-                    "No Journal Entry on invoice %s") % inv.number)
-            if move_l.amount_residual > 0:
-                raise UserError(_(
-                    "You can only select outgoing payments. %s has nos amount to pay.") % move_l.ref)
-            applicable_lines = move_l.move_id.line_ids.filtered(
-                lambda x: (
-                    not x.reconciled and x.payment_mode_id.payment_order_ok and
-                    x.account_id.internal_type in ('receivable', 'payable') and
-                    not x.payment_line_ids
-                )
-            )
-            if not applicable_lines:
-                raise UserError(_(
-                    'No Payment Line created for invoice %s because '
-                    'it already exists or because this move line is '
-                    'already paid.') % move_l.number)
-            payment_modes = applicable_lines.mapped('payment_mode_id')
-            if not payment_modes:
-                raise UserError(_(
-                    "No Payment Mode on Move Line %s") % move_l.ref)
-            for payment_mode in payment_modes:
-                payorder = apoo.search([
-                    ('payment_mode_id', '=', payment_mode.id),
-                    ('state', '=', 'draft')
-                ], limit=1)
-                new_payorder = False
-                if not payorder:
-                    payorder = apoo.create(move_l._prepare_new_payment_order(
-                        payment_mode
-                    ))
-                    new_payorder = True
-                result_payorder_ids.append(payorder.id)
-                action_payment_type = payorder.payment_type
-                count = 0
-                for line in applicable_lines.filtered(
-                    lambda x: x.payment_mode_id == payment_mode
-                ):
-                    line.create_payment_line_from_move_line(payorder)
-                    count += 1
-                if new_payorder:
-                    move_l.message_post(body=_(
-                        '%d payment lines added to the new draft payment '
-                        'order %s which has been automatically created.')
-                        % (count, payorder.name))
-                else:
-                    move_l.message_post(body=_(
-                        '%d payment lines added to the existing draft '
-                        'payment order %s.')
-                        % (count, payorder.name))
-        action = self.env['ir.actions.act_window'].for_xml_id(
-            'account_payment_order',
-            'account_payment_order_%s_action' % action_payment_type)
-        if len(result_payorder_ids) == 1:
-            action.update({
-                'view_mode': 'form,tree,pivot,graph',
-                'res_id': payorder.id,
-                'views': False,
-                })
-        else:
-            action.update({
-                'view_mode': 'tree,form,pivot,graph',
-                'domain': "[('id', 'in', %s)]" % result_payorder_ids,
-                'views': False,
-                })
-        return action
 
