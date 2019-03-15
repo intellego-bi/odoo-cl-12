@@ -248,10 +248,19 @@
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Full Reconciliation Moves</field>
-    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
+    <field name="parent_id" ref="cl_menu_pagos_entries"/>
     <field name="sequence">31</field>
     <field name="web_icon" eval="False"/>
   </record>
 
+    <record id="l10n_cl_pagos.cl_orden_de_pago_menu" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_orden_de_pago_action"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Payment Order</field>
+        <field name="parent_id" ref="cl_menu_pagos_payables"/>
+        <field name="sequence">10</field>
+        <field name="web_icon" eval="False"/>
+    </record>
   
 </odoo>
