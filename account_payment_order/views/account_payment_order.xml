@@ -53,7 +53,7 @@
                         <field name="description"/>
                     </group>
                 </group>
-                <notebook>
+                <notebook colspan="3">
                     <page name="payment-lines" string="Transactions">
                         <field name="payment_line_ids"
                             context="{'default_payment_type': payment_type}"/>
