@@ -262,5 +262,20 @@
         <field name="sequence">10</field>
         <field name="web_icon" eval="False"/>
     </record>
+
+    <record id="l10n_cl_pagos.cl_bank_payment_line_menu" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_bank_payment_line_action"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Bank Payment Order Lines</field>
+        <field name="parent_id" ref="cl_menu_pagos_payables"/>
+        <field name="sequence">20</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+<!--    
+      <menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
+        parent="l10n_cl_pagos.cl_payment_root" sequence="50" groups="account_payment_order.group_account_payment"/> 
+-->
   
 </odoo>
