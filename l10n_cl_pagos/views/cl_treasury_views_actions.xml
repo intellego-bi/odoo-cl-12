@@ -225,6 +225,37 @@
     <field name="view_type">form</field>
   </record>
 
+  <!-- Accion CUSTOMER -->
+
+  <record id="l10n_cl_pagos.cl_customer_action" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'default_customer':1, 'search_default_customer':1, 'default_is_company': True}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Customers
+                    </p>
+                    <p>
+                        Odoo helps you easily track all activities related to a customer.                        
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Customers</field>
+    <field name="res_model">res.partner</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">kanban,tree,form,activity</field>
+    <field name="view_type">kanban</field>
+  </record>
+
   
   <!-- Accion Ordenes de Pago -->
 
@@ -237,7 +268,7 @@
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        Crear nóminas de pagos
+                        Payment Orders
                     </p>
                     <p>
                         Acá podrá realizar pagos masivos a proveedores y empleados                        
@@ -335,6 +366,16 @@
         <field name="sequence">20</field>
         <field name="web_icon" eval="False"/>
     </record>
+
+  <record id="l10n_cl_pagos.cl_treasury_customer_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_customer_action"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Customers</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_receivables"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
     
     <record id="l10n_cl_pagos.cl_treasury_banks_menu_item" model="ir.ui.menu">
         <field name="action" ref="l10n_cl_pagos.cl_treasury_banks_act_window"/>
