@@ -37,6 +37,7 @@
         'views/account_move_line.xml',
         'views/ir_attachment.xml',
         'views/account_invoice_view.xml',
+        'data/res_bank.xml',
         'data/payment_seq.xml',
         'data/account_payment_method.xml',
         'data/account_journal.xml',

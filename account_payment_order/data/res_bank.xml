@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  © 2019 Intellego-BI.com (https://www.intellego-bi.com)
+  @author: Rodolfo bermúdez Neubauer <odoo@intellego-bi.com>
+  License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+
+<odoo>
+<!--
+<record id="cl_bank_001" model="res.bank">
+    <field name="name">Bano de Chile</field>
+    <field name="bic">001</field>
+    <field name="country">Chile</field>
+    <field name="active" eval="True"/>
+</record>
+-->
+<record id="cl_bank_009" model="res.bank">
+    <field name="name">Bano Internacional</field>
+    <field name="bic">009</field>
+    <field name="country">Chile</field>
+    <field name="active" eval="True"/>
+</record>
+
+</odoo>
