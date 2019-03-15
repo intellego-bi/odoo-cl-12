@@ -358,7 +358,12 @@ class AccountPaymentOrder(models.Model):
                     f_no_orden_compra = self._truncate_str('', 20)
                     f_tipo_pago = 'PRV'
                     f_mensaje_destinatario = self._truncate_str('Pago Doc ' + str(payline.communication), 30)
-                    f_email_destinatario = self._truncate_str(payline.partner_id.dte_email, 45)
+                    if payline.partner_id.email:
+                        f_email_destinatario = self._truncate_str(payline.partner_id.email, 45)
+                    elif payline.partner_id.dte_email:
+                        f_email_destinatario = self._truncate_str(payline.partner_id.dte_email, 45)
+                    else:
+                        f_email_destinatario = ""
                     f_cuenta_inscrita = self._truncate_str('R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number, 25)
                     # Fin columnas archivo TXT
                     payment_file_content += f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_banco_destino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
@@ -387,7 +392,10 @@ class AccountPaymentOrder(models.Model):
                     f_no_orden_compra = self._truncate_str('', 20)
                     f_tipo_pago = 'REM'
                     f_mensaje_destinatario = self._truncate_str('Pago Remuneraciones ' + str(payline.date), 30)
-                    f_email_destinatario = self._truncate_str(payline.partner_id.email, 45)
+                    if payline.partner_id.email:
+                        f_email_destinatario = self._truncate_str(payline.partner_id.email, 45)
+                    else:
+                        f_email_destinatario = ""
                     f_cuenta_inscrita = self._truncate_str('R' + payline.partner_id.document_number.replace('.','') + ' C' + payline.partner_bank_id.acc_number, 25)
                     # Fin columnas archivo TXT
                     payment_file_content += f_no_cta_cargo + ';' + f_no_cta_destino + ';' + f_banco_destino + ';' + f_rut_beneficiario + ';' + f_digito_verif_beneficiario + ';' + f_nombre_beneficiario + ';' + f_monto_transferencia + ';' + f_no_factura_boleta + ';' + f_no_orden_compra + ';' + f_tipo_pago + ';' + f_mensaje_destinatario + ';' + f_email_destinatario + ';' + f_cuenta_inscrita + '\n'
