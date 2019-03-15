@@ -161,6 +161,70 @@
     <field name="view_type">form</field>
   </record>
 
+  <!-- Action PAYMENT TERMS -->
+
+  <record id="l10n_cl_pagos.cl_treasury_payment_terms_act_window" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Payment Terms
+                    </p>
+                    <p>
+                        Define payment terms for incoming and outgoing payment to
+                        customers and vendors.
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Payment Terms</field>
+    <field name="res_model">account.payment.term</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+  <!-- Action PAYMENT MODES -->
+
+  <record id="l10n_cl_pagos.cl_treasury_payment_modes_act_window" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Payment Modes
+                    </p>
+                    <p>
+                        Define Payment Modes for incoming and outgoing payments and
+                        configure settings to process payments.
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Payment Modes</field>
+    <field name="res_model">account.payment.mode</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
   
   <!-- Accion Ordenes de Pago -->
 
@@ -203,15 +267,6 @@
 
   <!-- MENU ITEMS -->
 
-  <record id="l10n_cl_pagos.cl_treasury_banks_menu_item" model="ir.ui.menu">
-    <field name="action" ref="l10n_cl_pagos.cl_treasury_banks_act_window"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Banks</field>
-    <field name="parent_id" ref="cl_menu_pagos_configuration_banks"/>
-    <field name="sequence">11</field>
-    <field name="web_icon" eval="False"/>
-  </record>
   
   <record id="l10n_cl_pagos.cl_treasury_bank_accounts_menu_item" model="ir.ui.menu">
     <field name="action" ref="l10n_cl_pagos.cl_treasury_bank_accounts_act_window"/>
@@ -272,7 +327,37 @@
         <field name="sequence">20</field>
         <field name="web_icon" eval="False"/>
     </record>
+    
+    <record id="l10n_cl_pagos.cl_treasury_banks_menu_item" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_treasury_banks_act_window"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Banks</field>
+        <field name="parent_id" ref="cl_menu_pagos_configuration_banks"/>
+        <field name="sequence">11</field>
+        <field name="web_icon" eval="False"/>
+    </record>
 
+    <record id="l10n_cl_pagos.cl_treasury_payment_modes_menu_item" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_treasury_payment_modes_act_window"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Payment Modes</field>
+        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_configuration"/>
+        <field name="sequence">2</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+  <record id="l10n_cl_pagos.cl_treasury_payment_terms_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_payment_terms_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Payment Terms</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_configuration"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>    
+ 
 <!--    
       <menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
         parent="l10n_cl_pagos.cl_payment_root" sequence="50" groups="account_payment_order.group_account_payment"/> 
