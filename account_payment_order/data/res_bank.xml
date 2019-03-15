@@ -6,19 +6,182 @@
 -->
 
 <odoo>
-<!--
+
 <record id="cl_bank_001" model="res.bank">
     <field name="name">Bano de Chile</field>
     <field name="bic">001</field>
-    <field name="country">Chile</field>
+    <field name="country">46</field>
     <field name="active" eval="True"/>
 </record>
--->
+
 <record id="cl_bank_009" model="res.bank">
-    <field name="name">Bano Internacional</field>
+    <field name="name">Banco Internacional</field>
     <field name="bic">009</field>
     <field name="country">46</field>
     <field name="active" eval="True"/>
 </record>
+
+<record id="cl_bank_012" model="res.bank">
+    <field name="name">Banco Estado</field>
+    <field name="bic">012</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_014" model="res.bank">
+    <field name="name">Scotiabank</field>
+    <field name="bic">014</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_016" model="res.bank">
+    <field name="name">BCI</field>
+    <field name="bic">016</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_017" model="res.bank">
+    <field name="name">Banco do Brasil</field>
+    <field name="bic">017</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_027" model="res.bank">
+    <field name="name">Corpbanca</field>
+    <field name="bic">027</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_028" model="res.bank">
+    <field name="name">BICE</field>
+    <field name="bic">028</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_031" model="res.bank">
+    <field name="name">HSBC</field>
+    <field name="bic">031</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_037" model="res.bank">
+    <field name="name">Banco Santander</field>
+    <field name="bic">037</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_039" model="res.bank">
+    <field name="name">ITAÚ</field>
+    <field name="bic">039</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_040" model="res.bank">
+    <field name="name">Banco Sudameris</field>
+    <field name="bic">040</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_041" model="res.bank">
+    <field name="name">JP Morgan Chase Bank</field>
+    <field name="bic">041</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_043" model="res.bank">
+    <field name="name">Banco de la Nación Argentina</field>
+    <field name="bic">043</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_045" model="res.bank">
+    <field name="name">Bank of Tokyo-Mitsubishi</field>
+    <field name="bic">045</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_046" model="res.bank">
+    <field name="name">ABN AMRO</field>
+    <field name="bic">046</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_049" model="res.bank">
+    <field name="name">Banco Security</field>
+    <field name="bic">049</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_051" model="res.bank">
+    <field name="name">Banco Falabella</field>
+    <field name="bic">051</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_052" model="res.bank">
+    <field name="name">Deustche Bank</field>
+    <field name="bic">052</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_053" model="res.bank">
+    <field name="name">Banco Ripley</field>
+    <field name="bic">053</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_054" model="res.bank">
+    <field name="name">HNS Banco</field>
+    <field name="bic">054</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_055" model="res.bank">
+    <field name="name">Banco Monex</field>
+    <field name="bic">055</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_056" model="res.bank">
+    <field name="name">Banco Penta</field>
+    <field name="bic">056</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_057" model="res.bank">
+    <field name="name">Banco París</field>
+    <field name="bic">057</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+<record id="cl_bank_504" model="res.bank">
+    <field name="name">BBVA</field>
+    <field name="bic">504</field>
+    <field name="country">46</field>
+    <field name="active" eval="True"/>
+</record>
+
+
 
 </odoo>
