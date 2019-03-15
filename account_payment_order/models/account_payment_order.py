@@ -435,7 +435,7 @@ class AccountPaymentOrder(models.Model):
                         f_act_eco = 'BC'                                        
                     f_monto_total = self._truncate_str(t_monto, 11, 0) + '00'
                     #f_date = self._truncate_str(self.date_generated.day, 2, 0) + self._truncate_str(self.date_generated.month, 2, 0) + str(self.date_generated.year)
-                    f_date = self._truncate_str(self.date_today.day, 2, 0) + self._truncate_str(self.date_today.month, 2, 0) + str(self.date_today.year)
+                    f_date = self._truncate_str(date_today.day, 2, 0) + self._truncate_str(date_today.month, 2, 0) + str(date_today.year)
                     d_bancos = ['001','029','033']
                     if str(bankline.partner_bank_id.bank_id.bic[-3:]) in d_bancos:  
                         f_medio_pago = '01'
