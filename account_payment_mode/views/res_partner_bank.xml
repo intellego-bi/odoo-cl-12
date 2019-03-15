@@ -9,7 +9,7 @@ detect wrong IBANs -->
     <field name="inherit_id" ref="base.view_partner_bank_form"/>
     <field name="arch" type="xml">
         <field name="acc_number" position="after">
-            <field name="acc_type" string="Bank Account Type"/>
+            <field name="bank_acc_type" string="Bank Account Type"/>
         </field>
     </field>
 </record>
