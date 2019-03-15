@@ -14,3 +14,8 @@ class ResPartnerBank(models.Model):
     # initially computed+stored, it doesn't take into account the
     # inherits of the method that compute this field
     acc_type = fields.Char(string='Bank Account Type')
+    bank_acc_type = fields.Selection([
+        ('[CTE]', 'Cuenta Corriente'),
+        ('[AHO]', 'Cuenta Ahorro'),
+        ('[VIS]', 'Cuenta a la Vista'),
+        ], string='Clase de Cuenta', default='[CTE]')

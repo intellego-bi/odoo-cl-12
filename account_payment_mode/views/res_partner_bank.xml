@@ -20,7 +20,7 @@ detect wrong IBANs -->
     <field name="inherit_id" ref="base.view_partner_bank_tree"/>
     <field name="arch" type="xml">
         <field name="partner_id" position="after">
-            <field name="acc_type"/>
+            <field name="bank_acc_type"/>
         </field>
     </field>
 </record>
