@@ -287,26 +287,57 @@
     <field name="view_type">form</field>
   </record>
 
-  <!-- Accion JOURNAL ITEMS -->
+  <!-- Accion PAYABLE JOURNAL ITEMS -->
 
-  <record id="l10n_cl_pagos.cl_journal_items_action" model="ir.actions.act_window">
+  <record id="l10n_cl_pagos.cl_journal_payable_items_action" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="context">{'journal_type':'purchase'}</field>
-    <field name="domain" eval="False"/>
+    <field name="context">{}</field>
+    <field name="domain">[("account_id.internal_type","=","payable")]</field>
     <field name="filter" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        Journal Items
+                        Payable Journal Items
                     </p>
                     <p>
-                        Line items posted in accounting are displayed here.                        
+                        Payable Line Items posted in accounting are displayed here.                        
                     </p>
                 ]]></field>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
-    <field name="name">Journal Items</field>
+    <field name="name">Payable Items</field>
+    <field name="res_model">account.move.line</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,pivot,graph,form,kanban</field>
+    <field name="view_type">form</field>
+  </record>
+
+  <!-- Accion PAYABLE JOURNAL ITEMS -->
+
+  <record id="l10n_cl_pagos.cl_journal_receivable_items_action" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain">[("account_id.internal_type","=","receivable")]</field>
+    <field name="filter" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Receivable Journal Items
+                    </p>
+                    <p>
+                        Recievable Line Items posted in accounting are displayed here.                        
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Receivable Items</field>
     <field name="res_model">account.move.line</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
@@ -388,16 +419,26 @@
     <field name="web_icon" eval="False"/>
   </record>
 
-    <record id="l10n_cl_pagos.cl_treasury_journal_items_menu_item" model="ir.ui.menu">
-        <field name="action" ref="l10n_cl_pagos.cl_journal_items_action"/>
+    <record id="l10n_cl_pagos.cl_treasury_payable_journal_items_menu_item" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_journal_payable_items_action"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="name">Journal Items</field>
-        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_entries"/>
-        <field name="sequence">10</field>
+        <field name="name">Payable Items</field>
+        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_payables"/>
+        <field name="sequence">11</field>
         <field name="web_icon" eval="False"/>
     </record>
-  
+
+    <record id="l10n_cl_pagos.cl_treasury_receivable_journal_items_menu_item" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_journal_receivable_items_action"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Receivable Items</field>
+        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_receivables"/>
+        <field name="sequence">11</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+    
   
   <record id="l10n_cl_pagos.cl_treasury_reconcile_menu_item" model="ir.ui.menu">
     <field name="action" ref="l10n_cl_pagos.cl_account_reconcile_action"/>
