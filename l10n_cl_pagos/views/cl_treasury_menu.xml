@@ -21,7 +21,7 @@
     <field name="name">Tesorería</field>
     <field name="parent_id" eval="False"/>
     <field name="sequence">10</field>   
-    <!-- <field name="web_icon">fa fa-institution,#FFFFFF,#58a177</field> -->  
+    <field name="web_icon">fa fa-institution,#FFFFFF,#58a177</field>   
     <field name="web_icon">l10n_cl_pagos,static/img/tr_icon.png</field>
   </record> 
   -->
