@@ -16,6 +16,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_entries
+msgid "Accounting"
+msgstr "Contabilidad"
+
+#. module: l10n_cl_pagos
 #: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_orden_de_pago_action
 msgid "Acá podrá realizar pagos masivos a proveedores y empleados"
 msgstr ""
@@ -31,6 +36,16 @@ msgstr "Línea para Pago Bancario"
 #: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_tree
 msgid "Bank Payment Lines"
 msgstr "Líneas de pago bancario"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_banks
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_configuration
+msgid "Configuration"
+msgstr "Configuración"
 
 #. module: l10n_cl_pagos
 #: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_orden_de_pago_action
@@ -64,7 +79,7 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: l10n_cl_pagos
-#: model:ir.ui.menu,name:l10n_cl_pagos.cl_payment_root
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_payables
 msgid "Payments"
 msgstr "Pagos"
 
@@ -72,6 +87,11 @@ msgstr "Pagos"
 #: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_form
 msgid "Related Payment Lines"
 msgstr "Líneas de Pago Relacionadas"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_menu_pagos_reports
+msgid "Reporting"
+msgstr "Informes"
 
 #. module: l10n_cl_pagos
 #: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_search
@@ -84,12 +104,12 @@ msgid "State"
 msgstr "Estado"
 
 #. module: l10n_cl_pagos
-#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_menu
-msgid "Tesorería"
-msgstr ""
-
-#. module: l10n_cl_pagos
 #: model_terms:ir.ui.view,arch_db:l10n_cl_pagos.cl_bank_payment_line_tree
 msgid "Total Amount"
 msgstr "Importe Total"
+
+#. module: l10n_cl_pagos
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_menu
+msgid "Treasury"
+msgstr "Tesorería"
 
