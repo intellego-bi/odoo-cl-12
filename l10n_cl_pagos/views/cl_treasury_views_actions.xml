@@ -129,57 +129,27 @@
     <field name="view_type">form</field>
   </record>
 
-  <!-- Accion BANK JOURNAL ITEMS -->
+
+  <!-- Accion BANK/LIQUIDITY JOURNAL ITEMS -->
 
   <record id="l10n_cl_pagos.cl_journal_bank_items_action" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
     <field name="context">{}</field>
-    <field name="domain">[("account_id.internal_type","=","bank")]</field>
+    <field name="domain">[("account_id.internal_type","=","liquidity")]</field>
     <field name="filter" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        Bank Journal Items
+                        Bank/Liquidity Journal Items
                     </p>
                     <p>
-                        Bank Line Items posted in accounting are displayed here.                        
+                        Liquidity Line Items posted in accounting are displayed here.                        
                     </p>
                 ]]></field>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
-    <field name="name">Bank Items</field>
-    <field name="res_model">account.move.line</field>
-    <field name="search_view_id" eval="False"/>
-    <field name="src_model" eval="False"/>
-    <field name="target">current</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="usage" eval="False"/>
-    <field name="view_id" eval="False"/>
-    <field name="view_mode">tree,pivot,graph,form,kanban</field>
-    <field name="view_type">form</field>
-  </record>
-
-  <!-- Accion BANK JOURNAL ITEMS -->
-
-  <record id="l10n_cl_pagos.cl_journal_cash_items_action" model="ir.actions.act_window">
-    <field name="auto_search" eval="True"/>
-    <field name="binding_model_id" eval="False"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field name="domain">[("account_id.internal_type","=","cash")]</field>
-    <field name="filter" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        Cash Journal Items
-                    </p>
-                    <p>
-                        Cash Line Items posted in accounting are displayed here.                        
-                    </p>
-                ]]></field>
-    <field name="limit">80</field>
-    <field name="multi" eval="False"/>
-    <field name="name">Cash Items</field>
+    <field name="name">Bank/Liquidity Items</field>
     <field name="res_model">account.move.line</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
@@ -486,22 +456,12 @@
         <field name="action" ref="l10n_cl_pagos.cl_journal_bank_items_action"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="name">Bank Line Items</field>
+        <field name="name">Liquidity Line Items</field>
         <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
         <field name="sequence">31</field>
         <field name="web_icon" eval="False"/>
     </record>
-
-    <record id="l10n_cl_pagos.cl_treasury_cash_journal_items_menu_item" model="ir.ui.menu">
-        <field name="action" ref="l10n_cl_pagos.cl_journal_cash_items_action"/>
-        <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="name">Cash Line Items</field>
-        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
-        <field name="sequence">32</field>
-        <field name="web_icon" eval="False"/>
-    </record>
-    
+ 
   
     <record id="l10n_cl_pagos.cl_treasury_payable_journal_items_menu_item" model="ir.ui.menu">
         <field name="action" ref="l10n_cl_pagos.cl_journal_payable_items_action"/>
