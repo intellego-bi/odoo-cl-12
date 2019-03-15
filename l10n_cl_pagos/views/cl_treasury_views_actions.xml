@@ -20,7 +20,7 @@
                         and create one.
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Banks</field>
     <field name="res_model">res.bank</field>
@@ -50,7 +50,7 @@
                         Create bank accounts for your company, employees and partners.
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Bank Accounts</field>
     <field name="res_model">res.partner.bank</field>
@@ -83,7 +83,7 @@
                         with open accounting items.
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Bank Statement</field>
     <field name="res_model">account.bank.statement</field>
@@ -115,7 +115,7 @@
                         here.
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Bank Statement Lines</field>
     <field name="res_model">account.bank.statement.line</field>
@@ -147,7 +147,7 @@
                         Liquidity Line Items posted in accounting are displayed here.                        
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Bank/Liquidity Items</field>
     <field name="res_model">account.move.line</field>
@@ -180,7 +180,7 @@
                         items will be displaued here
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Full Reconciliation Moves</field>
     <field name="res_model">account.full.reconcile</field>
@@ -275,7 +275,7 @@
                         Odoo helps you easily track all activities related to a customer.                        
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">200</field>
     <field name="multi" eval="False"/>
     <field name="name">Customers</field>
     <field name="res_model">res.partner</field>
@@ -306,7 +306,7 @@
                         Odoo helps you easily track all activities related to a vendor.                        
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">200</field>
     <field name="multi" eval="False"/>
     <field name="name">Vendors</field>
     <field name="res_model">res.partner</field>
@@ -337,7 +337,7 @@
                         Payable Line Items posted in accounting are displayed here.                        
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Payable Items</field>
     <field name="res_model">account.move.line</field>
@@ -351,7 +351,7 @@
     <field name="view_type">form</field>
   </record>
 
-  <!-- Accion PAYABLE JOURNAL ITEMS -->
+  <!-- Accion RECEIVABLE JOURNAL ITEMS -->
 
   <record id="l10n_cl_pagos.cl_journal_receivable_items_action" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
@@ -368,7 +368,7 @@
                         Recievable Line Items posted in accounting are displayed here.                        
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Receivable Items</field>
     <field name="res_model">account.move.line</field>
@@ -400,7 +400,7 @@
                         Acá podrá realizar pagos masivos a proveedores y empleados                        
                     </p>
                 ]]></field>
-    <field name="limit">80</field>
+    <field name="limit">500</field>
     <field name="multi" eval="False"/>
     <field name="name">Orden de Pago</field>
     <field name="res_model">account.payment.order</field>
@@ -621,5 +621,72 @@
     <field name="priority">99</field>
     <field name="type">form</field>
   </record>  
+
+  <!-- Account FULL RECONCILE Tree  -->  
+  
+    <record id="l10n_cl_pagos.cl_full_reconcile_tree_default" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <tree string="Full Reconcile">
+        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+      </tree>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">account.full.reconcile</field>
+    <field name="name">Default tree view for account.full.reconcile</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  
+  
+  <record id="l10n_cl_pagos.cl_full_reconcile_tree_custom" model="ir.ui.view"">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//tree[1]" position="attributes">
+          <attribute name="create">false</attribute>
+          <attribute name="delete">false</attribute>
+          <attribute name="edit">false</attribute>
+        </xpath>
+        <xpath expr="//tree[1]/field[@name='name']" position="before">
+          <field name="create_date"/>
+        </xpath>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="reconciled_line_ids"/>
+          <field name="exchange_move_id"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="l10n_cl_pagos.cl_full_reconcile_tree_default"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.full.reconcile</field>
+    <field name="name">CL Tree view for account.full.reconcile customization</field>
+    <field name="priority">99</field>
+    <field name="type">tree</field>
+  </record>
+
+  
+  
+  
+  
+  <!--  FILTERS  -->
+
+  <record id="l10n_cl_pagos.cl_bank_statement_form_custom" model="ir.filters" context="{'studio': True}">
+    <field name="action_id" eval="False"/>
+    <field name="active" eval="True"/>
+    <field name="context">{}</field>
+    <field name="domain">["&amp;",["full_reconcile_id","=",False],["balance","!=",0]]</field>
+    <field name="is_default" eval="True"/>
+    <field name="model_id">account.move.line</field>
+    <field name="name">Por Pagar</field>
+    <field name="sort">[]</field>
+  </record>
   
 </odoo>
