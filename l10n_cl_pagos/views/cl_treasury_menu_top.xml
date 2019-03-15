@@ -14,6 +14,7 @@
         <menuitem id="cl_menu_pagos_entries" name="Accounting" parent="cl_treasury_menu" sequence="40" groups="account_payment_order.group_account_payment"/>
         <menuitem id="cl_menu_pagos_reports" name="Reporting" parent="cl_treasury_menu" sequence="50" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
         <menuitem id="cl_menu_pagos_configuration" name="Configuration" parent="cl_treasury_menu" sequence="99" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
+            <menuitem id="cl_menu_pagos_configuration_banks" name="Bank Configuration" parent="cl_menu_pagos_configuration" sequence="10" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
         
     </data>
 </odoo>
