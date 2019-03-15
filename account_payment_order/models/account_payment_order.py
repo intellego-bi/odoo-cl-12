@@ -334,11 +334,12 @@ class AccountPaymentOrder(models.Model):
         if self.payment_method_id.code == 'manual':
             return (False, False)
         else:
+            date_today = fields.Date.context_today(self)
             if self.payment_mode_id.name == 'PRV - Transfer BCI':
                 # Estructura de Archivo BANCO BCI - formato Texto
                 # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
                 # http://www.bci.cl/medios/BCI2/pdf/Carga_Nomina.pdf
-                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.csv'
+                f_file_name = str(self.name) + ' - ' + str(date_today) + ' - ' + str(self.payment_mode_id.name) + '.csv'
                 payment_file_content = ""
                 for payline in self.payment_line_ids:
                     f_rut = ""
@@ -367,7 +368,7 @@ class AccountPaymentOrder(models.Model):
                 # Estructura de Archivo BANCO BCI - formato Texto
                 # http://www.bci.cl/medios/2012/empresarios/capacitacion_pnol/archivos/estructura.pdf
                 # http://www.bci.cl/medios/BCI2/pdf/Carga_Nomina.pdf
-                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.csv'
+                f_file_name = str(self.name) + ' - ' + str(date_today) + ' - ' + str(self.payment_mode_id.name) + '.csv'
                 payment_file_content = ""
                 for payline in self.payment_line_ids:
                     f_rut = ""
@@ -409,7 +410,7 @@ class AccountPaymentOrder(models.Model):
                 # Estructura de Archivo BANCO CHILE - formato Texto
                 # 
                 # 
-                f_file_name = str(self.name) + ' - ' + str(self.date_generated) + ' - ' + str(self.payment_mode_id.name) + '.txt'
+                f_file_name = str(self.name) + ' - ' + str(date_today) + ' - ' + str(self.payment_mode_id.name) + '.txt'
                 payment_file_content = ""
                 # Tipo Fila 01
                 f_filler_01 = t_filler.ljust(564)
@@ -433,7 +434,8 @@ class AccountPaymentOrder(models.Model):
                     else:
                         f_act_eco = 'BC'                                        
                     f_monto_total = self._truncate_str(t_monto, 11, 0) + '00'
-                    f_date = self._truncate_str(self.date_generated.day, 2, 0) + self._truncate_str(self.date_generated.month, 2, 0) + str(self.date_generated.year)
+                    #f_date = self._truncate_str(self.date_generated.day, 2, 0) + self._truncate_str(self.date_generated.month, 2, 0) + str(self.date_generated.year)
+                    f_date = self._truncate_str(self.date_today.day, 2, 0) + self._truncate_str(self.date_today.month, 2, 0) + str(self.date_today.year)
                     d_bancos = ['001','029','033']
                     if str(bankline.partner_bank_id.bank_id.bic[-3:]) in d_bancos:  
                         f_medio_pago = '01'
