@@ -29,7 +29,7 @@
                 </group>
                 <group name="right">
                     <field name="company_id" widget="selection" groups="base.group_multi_company"/>
-                    <field name="amount_company_currency"/>
+                    <field name="amount_company_currency" sum="Total company currency" invisible="0"/>
                     <field name="company_currency_id" invisible="1"/>
                     <field name="bank_line_id"/>
                     <field name="payment_type" invisible="1"/>

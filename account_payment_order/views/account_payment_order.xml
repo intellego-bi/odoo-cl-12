@@ -42,6 +42,7 @@
                         <field name="company_id" groups="base.group_multi_company"/>
                         <field name="payment_type" invisible="0"/>
                         <field name="bank_line_count"/>
+                        <field name="total_company_currency" widget="monetary"/>
                     </group>
                     <group name="head-right">
                         <field name="date_prefered"/>
