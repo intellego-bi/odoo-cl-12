@@ -8,7 +8,7 @@
 <odoo>
 
 <record id="cl_bank_001" model="res.bank">
-    <field name="name">Bano de Chile</field>
+    <field name="name">Banco de Chile</field>
     <field name="bic">001</field>
     <field name="country">46</field>
     <field name="active" eval="True"/>
