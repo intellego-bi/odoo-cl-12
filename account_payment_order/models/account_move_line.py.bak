@@ -179,7 +179,7 @@ class AccountMoveLine(models.Model):
     def line_get_convert(self, line, part):
         """Copy supplier bank account from move_line to account move line"""
         res = super(AccountMoveLine, self).line_get_convert(line, part)
-        if line.get('type') == 'dest' and line.get('move_line_id'):
+        if line.get('user_type_id') == 'dest' and line.get('move_line_id'):
             move_line = self.browse(line['move_line_id'])
             if move_line.user_type_id in ('1', '2'):
                 res['partner_bank_id'] = invoice.partner_bank_id.id or False
