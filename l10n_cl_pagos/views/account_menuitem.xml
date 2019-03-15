@@ -4,16 +4,16 @@
 
         <!-- Top menu item -->
         <menuitem name="Treasury"
-            id="l10n_cl_pagos"
+            id="l10n_cl_pagos.cl_treasury_menu"
             groups="account.group_account_user,account.group_account_manager,account.group_account_invoice,account_payment_order.group_account_payment"
             web_icon="l10n_cl_pagos,static/img/tr_icon.png"
             sequence="10"/>
 
-        <menuitem id="cl_menu_pagos_banks" name="Banks" parent="l10n_cl_pagos" sequence="2" groups="account_payment_order.group_account_payment"/>
-        <menuitem id="cl_menu_pagos_payables" name="Payments" parent="l10n_cl_pagos" sequence="3" groups="account_payment_order.group_account_payment"/>
-        <menuitem id="cl_menu_pagos_entries" name="Accounting" parent="l10n_cl_pagos" sequence="4" groups="account_payment_order.group_account_payment"/>
-        <menuitem id="cl_menu_pagos_reports" name="Reporting" parent="cl_menu_pagos" sequence="5" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
-        <menuitem id="cl_menu_pagos_configuration" name="Configuration" parent="cl_menu_pagos" sequence="99" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
+        <menuitem id="cl_menu_pagos_banks" name="Banks" parent="cl_treasury_menu" sequence="2" groups="account_payment_order.group_account_payment"/>
+        <menuitem id="cl_menu_pagos_payables" name="Payments" parent="cl_treasury_menu" sequence="3" groups="account_payment_order.group_account_payment"/>
+        <menuitem id="cl_menu_pagos_entries" name="Accounting" parent="cl_treasury_menu" sequence="4" groups="account_payment_order.group_account_payment"/>
+        <menuitem id="cl_menu_pagos_reports" name="Reporting" parent="cl_treasury_menu" sequence="5" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
+        <menuitem id="cl_menu_pagos_configuration" name="Configuration" parent="cl_treasury_menu" sequence="99" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
 
             <menuitem id="l10n_cl_pagos.cl_orden_de_pago_menu" action="l10n_cl_pagos.cl_orden_de_pago_action"
                       parent="cl_menu_pagos_payables" sequence="10" groups="account_payment_order.group_account_payment"/>         
