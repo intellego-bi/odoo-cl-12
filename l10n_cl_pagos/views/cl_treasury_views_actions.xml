@@ -289,6 +289,32 @@
     <field name="view_type">form</field>
   </record>
 
+  <!-- Accion CUSTOMER FOLLOW-UP -->
+
+  <record id="l10n_cl_pagos.cl_customer_followup_action" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'search_default_filter_in_need_of_action': 1}</field>
+    <field name="domain">[('parent_id', '=', False)]</field>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help">No follow-up to send!</field>
+    <field name="limit">200</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Customer Follow-up</field>
+    <field name="res_model">res.partner</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  
+  
   <!-- Accion VENDOR -->
 
   <record id="l10n_cl_pagos.cl_vendor_action" model="ir.actions.act_window">
@@ -429,6 +455,9 @@
         <field name="xml_id">account.action_manual_reconciliation</field>
         <field name="context">{}</field>
     </record>
+
+
+
     
   <!-- MENU ITEMS -->
   
@@ -462,48 +491,6 @@
         <field name="web_icon" eval="False"/>
     </record>
  
-  
-    <record id="l10n_cl_pagos.cl_treasury_payable_journal_items_menu_item" model="ir.ui.menu">
-        <field name="action" ref="l10n_cl_pagos.cl_journal_payable_items_action"/>
-        <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="name">Payable Items</field>
-        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_payables"/>
-        <field name="sequence">11</field>
-        <field name="web_icon" eval="False"/>
-    </record>
-
-    <record id="l10n_cl_pagos.cl_treasury_receivable_journal_items_menu_item" model="ir.ui.menu">
-        <field name="action" ref="l10n_cl_pagos.cl_journal_receivable_items_action"/>
-        <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="name">Receivable Items</field>
-        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_receivables"/>
-        <field name="sequence">11</field>
-        <field name="web_icon" eval="False"/>
-    </record>
-    
-  
-  <record id="l10n_cl_pagos.cl_treasury_reconcile_menu_item" model="ir.ui.menu">
-    <field name="action" ref="l10n_cl_pagos.cl_account_reconcile_action"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Reconcile Moves</field>
-    <field name="parent_id" ref="cl_menu_pagos_entries"/>
-    <field name="sequence">31</field>
-    <field name="web_icon" eval="False"/>
-  </record>
-
-  
-  <record id="l10n_cl_pagos.cl_treasury_concil_full_menu_item" model="ir.ui.menu">
-    <field name="action" ref="l10n_cl_pagos.cl_treasury_concil_full_act_window"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Full Reconciliation Moves</field>
-    <field name="parent_id" ref="cl_menu_pagos_entries"/>
-    <field name="sequence">32</field>
-    <field name="web_icon" eval="False"/>
-  </record>
 
     <record id="l10n_cl_pagos.cl_treasury_vendor_menu_item" model="ir.ui.menu">
         <field name="action" ref="l10n_cl_pagos.cl_vendor_action"/>
@@ -514,7 +501,18 @@
         <field name="sequence">10</field>
         <field name="web_icon" eval="False"/>
     </record>
+
+    <record id="l10n_cl_pagos.cl_treasury_payable_journal_items_menu_item" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_journal_payable_items_action"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Payable Items</field>
+        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_payables"/>
+        <field name="sequence">11</field>
+        <field name="web_icon" eval="False"/>
+    </record>
   
+    
     <record id="l10n_cl_pagos.cl_orden_de_pago_menu" model="ir.ui.menu">
         <field name="action" ref="l10n_cl_pagos.cl_orden_de_pago_action"/>
         <field name="active" eval="True"/>
@@ -545,7 +543,46 @@
         <field name="web_icon" eval="False"/>
     </record>
 
+    <record id="l10n_cl_pagos.cl_treasury_receivable_journal_items_menu_item" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_journal_receivable_items_action"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Receivable Items</field>
+        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_receivables"/>
+        <field name="sequence">11</field>
+        <field name="web_icon" eval="False"/>
+    </record>
 
+    <record id="l10n_cl_pagos.cl_treasury_customer_followup_menu_item" model="ir.ui.menu">
+        <field name="action" ref="l10n_cl_pagos.cl_customer_followup_action"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Customer Follow-up</field>
+        <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_receivables"/>
+        <field name="sequence">12</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+  
+  <record id="l10n_cl_pagos.cl_treasury_reconcile_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_account_reconcile_action"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Reconcile Moves</field>
+    <field name="parent_id" ref="cl_menu_pagos_entries"/>
+    <field name="sequence">31</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  
+  <record id="l10n_cl_pagos.cl_treasury_concil_full_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_concil_full_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Full Reconciliation Moves</field>
+    <field name="parent_id" ref="cl_menu_pagos_entries"/>
+    <field name="sequence">32</field>
+    <field name="web_icon" eval="False"/>
+  </record>
     
     <record id="l10n_cl_pagos.cl_treasury_banks_menu_item" model="ir.ui.menu">
         <field name="action" ref="l10n_cl_pagos.cl_treasury_banks_act_window"/>
