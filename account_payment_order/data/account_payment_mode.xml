@@ -4,7 +4,7 @@
   @author: Rodolfo bermúdez Neubauer <odoo@intellego-bi.com>
   License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 -->
-<odoo noupdate="1">
+<odoo>
 <!--
 <record id="cl_bank_001_001" model="account.payment.mode">
     <field name="name">PRV - Transfer Banco de Chile</field>
