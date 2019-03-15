@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+  <!-- MENU ITEMS -->
+
+  <record id="l10n_cl_pagos.cl_treasury_banks_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_bancos_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Banks</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
+    <field name="sequence">11</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  
+  <record id="l10n_cl_pagos.cl_treasury_bank_accounts_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_bank_accounts_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Bank Accounts</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
+    <field name="sequence">15</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  
+  <record id="l10n_cl_pagos.cl_treasury_bank_statement_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_bank_statement_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Bank Statement</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
+    <field name="sequence">21</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+  <record id="l10n_cl_pagos.cl_treasury_bank_statement_lines_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_bank_statement_lines_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Bank Statement Lines</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
+    <field name="sequence">22</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  
+  <record id="l10n_cl_pagos.cl_treasury_concil_full_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_concil_full_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Full Reconciliation Moves</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_menu_pagos_banks"/>
+    <field name="sequence">31</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+  <!-- ACTION WINDOWS -->
+ 
+  <!-- Action BANKS -->
+  <record id="l10n_cl_pagos.cl_treasury_bancos_act_window" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Banks
+                    </p>
+                    <p>
+                        If no banks are available for your country, please go ahead
+                        and create one.
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Banks</field>
+    <field name="res_model">res.bank</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+  <!-- Action BANK ACCOUNTS -->
+  <record id="l10n_cl_pagos.cl_treasury_bank_accounts_act_window" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Bank Accounts
+                    </p>
+                    <p>
+                        Create bank accounts for your company, employees and partners.
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Bank Accounts</field>
+    <field name="res_model">res.partner.bank</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+
+  <!-- Action BANK STATEMENT -->
+  
+  <record id="l10n_cl_pagos.cl_treasury_bank_statement_act_window" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Bank Statements
+                    </p>
+                    <p>
+                        Rgister your bank statements here and then reconcile move items
+                        with open accounting items.
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Bank Statement</field>
+    <field name="res_model">account.bank.statement</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  
+  <!-- Action BANK STATEMENT LINE-->
+  
+  <record id="l10n_cl_pagos.cl_treasury_bank_statement_lines_act_window" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Bank Statement Lines
+                    </p>
+                    <p>
+                        Move lines created after posting Bank Statements will be displyed 
+                        here.
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Bank Statement Lines</field>
+    <field name="res_model">account.bank.statement.line</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+  <!-- Action RECONCILIATION MOVES -->
+  
+  <record id="l10n_cl_pagos.cl_treasury_concil_full_act_window" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Account Reconciliation Moves
+                    </p>
+                    <p>
+                        Documents and move lines created when reconciling open accounting
+                        items will be displaued here
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Full Reconciliation Moves</field>
+    <field name="res_model">account.full.reconcile</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+  
+  <!-- Accion Ordenes de Pago -->
+
+  <record id="l10n_cl_pagos.cl_orden_de_pago_action" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Crear nóminas de pagos
+                    </p>
+                    <p>
+                        Acá podrá realizar pagos masivos a proveedores y empleados                        
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Orden de Pago</field>
+    <field name="res_model">account.payment.order</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+    <!-- Accion Líneas de Pago Bancario -->
+    <record id="l10n_cl_pagos.cl_bank_payment_line_action" model="ir.actions.act_window">
+        <field name="name">Bank Payment Lines</field>
+        <field name="res_model">bank.payment.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'bank_payment_line_main_view': True}</field>
+    </record>
+
+
+  
+</odoo>

@@ -15,12 +15,12 @@
         <menuitem id="cl_menu_pagos_reports" name="Reporting" parent="cl_treasury_menu" sequence="5" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
         <menuitem id="cl_menu_pagos_configuration" name="Configuration" parent="cl_treasury_menu" sequence="99" groups="account_payment_order.group_account_payment,account.group_account_manager"/>
 
-            <menuitem id="l10n_cl_pagos.cl_orden_de_pago_menu" action="l10n_cl_pagos.cl_orden_de_pago_action"
+         <!--   <menuitem id="l10n_cl_pagos.cl_orden_de_pago_menu" action="l10n_cl_pagos.cl_orden_de_pago_action"
                       parent="cl_menu_pagos_payables" sequence="10" groups="account_payment_order.group_account_payment"/>         
          
             <menuitem id="l10n_cl_pagos.cl_bank_payment_line_menu" action="l10n_cl_pagos.cl_bank_payment_line_action"
                       parent="cl_menu_pagos_banks" sequence="50" groups="account_payment_order.group_account_payment"/>         
-        
+        -->
         
     </data>
 </odoo>
