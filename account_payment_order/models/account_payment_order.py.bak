@@ -327,25 +327,6 @@ class AccountPaymentOrder(models.Model):
             f_string_out = f_string.zfill(size)
         return f_string_out        
 
-    @api.model
-    def _get_user_details(self, partner):
-        """
-        Get user details for Partner
-        """
-        first_name = ""
-        last_name = ""
-        mothers_name = ""
-        if partner:
-            ref_user_model = self.env['res.users']
-            ref_user_recs = []
-            user_recs = ref_user_model.search(['partner_id','=',partner])
-            for users in user_recs:
-                first_name = users.firstname
-                last_name = users.last_name
-                mothers_name = users.mothers_name
-        return (first_name, last_name, mothers_name)        
-        
-        
     @api.multi
     def generate_payment_file(self):
         """Returns (payment file as string, filename)"""
