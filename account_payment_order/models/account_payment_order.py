@@ -343,7 +343,8 @@ class AccountPaymentOrder(models.Model):
                 first_name = users.firstname
                 last_name = users.last_name
                 mothers_name = users.mothers_name
-        return (first_name, last_name, mothers_name)        
+        #return (first_name, last_name, mothers_name)        
+        return first_name        
         
         
     @api.multi
@@ -405,8 +406,8 @@ class AccountPaymentOrder(models.Model):
                     f_no_cta_cargo = self._truncate_str(self.company_partner_bank_id.acc_number, 12)
                     f_no_cta_destino = self._truncate_str(payline.partner_bank_id.acc_number, 18)
                     f_banco_destino = self._truncate_str(payline.partner_bank_id.bank_id.bic[-3:], 3)
-                    t_first_name = self._get_user_details(payline.partner_id.id)
-                    f_nombre_beneficiario = self._truncate_str(t_first_name.first_name, 45)
+                    t_first_name = self._get_user_details(payline.partner_id)
+                    f_nombre_beneficiario = self._truncate_str(t_first_name, 45)
                     #f_nombre_beneficiario = self._truncate_str(payline.partner_id.name, 45)
                     f_monto_transferencia = self._truncate_str(payline.amount_company_currency , 16)
                     f_no_factura_boleta = self._truncate_str(payline.communication, 20)
