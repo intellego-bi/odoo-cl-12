@@ -26,12 +26,13 @@ class AccountPaymentOrder(models.Model):
             return [('id', 'in', jrl_ids)]
 
     def domain_payment_mode_id(self):
-        if self.payment_type == 'inbound':
-            return [('payment_type','=','inbound')]
-        elif self.payment_type == 'outbound':
-            return [('payment_type','=','outbound')]
-        else:
-            return [('payment_type', '=', self.payment_type)]
+        for order in self:
+            if order.payment_type == 'inbound':
+                return [('payment_type','=','inbound')]
+            elif order.payment_type == 'outbound':
+                return [('payment_type','=','outbound')]
+            else:
+                return [('payment_type', '=', order.payment_type)]
             
     name = fields.Char(
         string='Number', readonly=True, copy=False)  # v8 field : name
