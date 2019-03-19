@@ -18,7 +18,7 @@ class AccountPaymentOrder(models.Model):
 
     def domain_journal_id(self):
         if not self.payment_mode_id:
-            return [('id', '=', False)]
+            return [('type','=','bank')]
         if self.payment_mode_id.bank_account_link == 'fixed':
             return [('id', '=', self.payment_mode_id.fixed_journal_id.id)]
         elif self.payment_mode_id.bank_account_link == 'variable':

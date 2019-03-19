@@ -74,7 +74,7 @@
                 <field name="message_ids" widget="mail_thread"/>
             </div>
         </form>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='moves']/field[@name='move_ids']" position="inside">
+        <!-- <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='moves']/field[@name='move_ids']" position="inside">
             <tree decoration-info="state == 'draft'" string="Asientos contables">
                 <field name="date"/>
                 <field name="name"/>
@@ -88,7 +88,7 @@
                 <field name="state"/>
                 <field name="currency_id" invisible="1"/>
             </tree>
-        </xpath>
+        </xpath> -->
     </field>
 </record>
 
