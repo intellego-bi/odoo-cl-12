@@ -25,11 +25,20 @@ class AccountPaymentOrder(models.Model):
             jrl_ids = self.payment_mode_id.variable_journal_ids.ids
             return [('id', 'in', jrl_ids)]
 
+    def domain_payment_mode_id(self):
+        if self.payment_type == 'inbound':
+            return [('payment_type','=','inbound')]
+        elif self.payment_type == 'outbound':
+            return [('payment_type','=','outbound')]
+        else:
+            return []
+            
     name = fields.Char(
         string='Number', readonly=True, copy=False)  # v8 field : name
     payment_mode_id = fields.Many2one(
         'account.payment.mode', 'Payment Mode', required=True,
         ondelete='restrict', track_visibility='onchange',
+        domain=domain_payment_mode_id,
         readonly=True, states={'draft': [('readonly', False)]})
     payment_type = fields.Selection([
         ('inbound', 'Inbound'),
