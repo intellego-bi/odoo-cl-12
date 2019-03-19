@@ -40,15 +40,15 @@ class AccountPaymentOrder(models.Model):
             
     name = fields.Char(
         string='Number', readonly=True, copy=False)  # v8 field : name
+    payment_type = fields.Selection([
+        ('inbound', 'Inbound'),
+        ('outbound', 'Outbound'),
+        ], string='Payment Type', readonly=True, required=True)
     payment_mode_id = fields.Many2one(
         'account.payment.mode', 'Payment Mode', required=True,
         ondelete='restrict', track_visibility='onchange',
         domain=domain_payment_mode_id,
         readonly=True, states={'draft': [('readonly', False)]})
-    payment_type = fields.Selection([
-        ('inbound', 'Inbound'),
-        ('outbound', 'Outbound'),
-        ], string='Payment Type', readonly=True, required=True)
     payment_method_id = fields.Many2one(
         'account.payment.method', related='payment_mode_id.payment_method_id',
         readonly=True, store=True)
@@ -202,6 +202,19 @@ class AccountPaymentOrder(models.Model):
             self.payment_type = self.payment_mode_id.payment_type
         return res
 
+    @api.onchange('payment_type')
+    def payment_type_change(self):
+        domain = self.domain_payment_mode_id()
+        res = {'domain': {
+            'payment_mode_id': domain
+        }}
+        payment_modes = self.env['account.payment.mode'].search(domain)
+        if len(payment_modes) == 1:
+            self.payment_mode_id = payment_modes
+        return res
+
+        
+        
     @api.multi
     def action_done(self):
         self.write({
