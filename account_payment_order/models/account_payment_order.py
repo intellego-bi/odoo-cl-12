@@ -31,7 +31,7 @@ class AccountPaymentOrder(models.Model):
         elif self.payment_type == 'outbound':
             return [('payment_type','=','outbound')]
         else:
-            return []
+            return [('payment_type', '=', payment_type)]
             
     name = fields.Char(
         string='Number', readonly=True, copy=False)  # v8 field : name
