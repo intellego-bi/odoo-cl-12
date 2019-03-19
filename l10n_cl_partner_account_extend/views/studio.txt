@@ -47,3 +47,5 @@
     <attribute name="attrs">{"invisible": [["customer","=",False]]}</attribute>
   </xpath>
 </data>
+
+@5C@	No existe SID para valor "000010051219 " de característica 0NOTIFICATN	BRAIN	70	@35@	@3R@
