@@ -739,6 +739,9 @@
         <xpath expr="//field[@name='journal_type']" position="attributes">
           <attribute name="attrs">{}</attribute>
         </xpath>
+        <xpath expr="//field[@name='journal_id']" position="attributes">
+          <attribute name="domain">[('type','=','bank')]</attribute>
+        </xpath>
         <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='currency_id']" position="attributes">
           <attribute name="invisible"/>
           <attribute name="attrs">{}</attribute>
