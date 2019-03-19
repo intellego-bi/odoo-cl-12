@@ -4,6 +4,7 @@
   <!-- ACTION WINDOWS -->
  
   <!-- Action BANKS -->
+  
   <record id="l10n_cl_pagos.cl_treasury_banks_act_window" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
@@ -35,6 +36,7 @@
   </record>
 
   <!-- Action BANK ACCOUNTS -->
+  
   <record id="l10n_cl_pagos.cl_treasury_bank_accounts_act_window" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
@@ -96,6 +98,7 @@
     <field name="view_mode">tree,form</field>
     <field name="view_type">form</field>
   </record>
+  
   
   <!-- Action BANK STATEMENT LINE-->
   
@@ -194,6 +197,7 @@
     <field name="view_type">form</field>
   </record>
 
+  
   <!-- Action PAYMENT TERMS -->
 
   <record id="l10n_cl_pagos.cl_treasury_payment_terms_act_window" model="ir.actions.act_window">
@@ -226,6 +230,7 @@
     <field name="view_type">form</field>
   </record>
 
+  
   <!-- Action PAYMENT MODES -->
 
   <record id="l10n_cl_pagos.cl_treasury_payment_modes_act_window" model="ir.actions.act_window">
@@ -258,6 +263,7 @@
     <field name="view_type">form</field>
   </record>
 
+  
   <!-- Accion CUSTOMER -->
 
   <record id="l10n_cl_pagos.cl_customer_action" model="ir.actions.act_window">
@@ -289,6 +295,39 @@
     <field name="view_type">form</field>
   </record>
 
+
+  <!-- Accion RECEIVABLE JOURNAL ITEMS -->
+
+  <record id="l10n_cl_pagos.cl_journal_receivable_items_action" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain">[("account_id.internal_type","=","receivable")]</field>
+    <field name="filter" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Receivable Journal Items
+                    </p>
+                    <p>
+                        Recievable Line Items posted in accounting are displayed here.                        
+                    </p>
+                ]]></field>
+    <field name="limit">500</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Receivable Items</field>
+    <field name="res_model">account.move.line</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,pivot,graph,form,kanban</field>
+    <field name="view_type">form</field>
+  </record>
+
+  
   <!-- Accion CUSTOMER FOLLOW-UP -->
 
   <record id="l10n_cl_pagos.cl_customer_followup_action" model="ir.actions.act_window">
@@ -355,6 +394,7 @@
     <field name="view_type">form</field>
   </record>
 
+  
   <!-- Accion PAYABLE JOURNAL ITEMS -->
 
   <record id="l10n_cl_pagos.cl_journal_payable_items_action" model="ir.actions.act_window">
@@ -386,46 +426,15 @@
     <field name="view_type">form</field>
   </record>
 
-  <!-- Accion RECEIVABLE JOURNAL ITEMS -->
-
-  <record id="l10n_cl_pagos.cl_journal_receivable_items_action" model="ir.actions.act_window">
-    <field name="auto_search" eval="True"/>
-    <field name="binding_model_id" eval="False"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field name="domain">[("account_id.internal_type","=","receivable")]</field>
-    <field name="filter" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        Receivable Journal Items
-                    </p>
-                    <p>
-                        Recievable Line Items posted in accounting are displayed here.                        
-                    </p>
-                ]]></field>
-    <field name="limit">500</field>
-    <field name="multi" eval="False"/>
-    <field name="name">Receivable Items</field>
-    <field name="res_model">account.move.line</field>
-    <field name="search_view_id" eval="False"/>
-    <field name="src_model" eval="False"/>
-    <field name="target">current</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="usage" eval="False"/>
-    <field name="view_id" eval="False"/>
-    <field name="view_mode">tree,pivot,graph,form,kanban</field>
-    <field name="view_type">form</field>
-  </record>
   
-  
-  <!-- Accion Ordenes de Pago -->
+  <!-- Accion Ordenes de Pago SALIENTE -->
 
   <record id="l10n_cl_pagos.cl_orden_de_pago_action" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field name="domain" eval="False"/>
+    <field name="domain">[('payment_type', '=', 'outbound')]</field>
+    <field name="context">{'default_payment_type': 'outbound'}</field>
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
@@ -449,6 +458,40 @@
     <field name="view_type">form</field>
   </record>
 
+
+  <!-- Accion Ordenes de Cobro ENTRANTE -->
+
+  <record id="l10n_cl_pagos.cl_orden_de_cobro_action" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="domain">[('payment_type', '=', 'inbound')]</field>
+    <field name="context">{'default_payment_type': 'inbound'}</field>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Debit Orders
+                    </p>
+                    <p>
+                        Acá podrá realizar pagos masivos a clientes                        
+                    </p>
+                ]]></field>
+    <field name="limit">500</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Orden de Cobro</field>
+    <field name="res_model">account.payment.order</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  
+  
+  
     <!-- Accion Líneas de Pago Bancario -->
     <record id="l10n_cl_pagos.cl_bank_payment_line_action" model="ir.actions.act_window">
         <field name="name">Bank Payment Lines</field>
