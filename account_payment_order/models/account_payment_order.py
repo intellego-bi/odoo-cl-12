@@ -27,6 +27,10 @@ class AccountPaymentOrder(models.Model):
 
     def domain_payment_mode_id(self):
         for order in self:
+            raise ValidationError(_(
+                        "Order Type = %s"
+                        "Internal Order Type = %s")
+                        % (order.payment_type, payment_type))
             if order.payment_type == 'inbound':
                 return [('payment_type','=','inbound')]
             elif order.payment_type == 'outbound':
