@@ -14,16 +14,16 @@
                     <attribute name="attrs">{}</attribute>
                     <attribute name="invisible">1</attribute>
                 </xpath>-->
-                
+   
 
-                <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[1]/strong[1]/field[@name='display_name']" position="after">
-                    <field name="display_name" attrs="{'invisible': True}"/>
-                    <field name="employee" attrs="{'invisible': True}"/>
-                    <field name="vat" attrs="{'invisible': True}"/>                    
+                <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[1]/strong[1]/field[@name='name']" position="after">
                     <div><h5>
                     <field name="document_number" attrs="{'invisible': [('is_company','=',False)]}"/>
                     <field name="ref" attrs="{'invisible': [('employee','=',False)]}"/>
                     </h5></div>
+                    <field name="display_name" attrs="{'invisible': True}"/>
+                    <field name="employee" attrs="{'invisible': True}"/>
+                    <field name="vat" attrs="{'invisible': True}"/>                    
                 </xpath>            
             </field>
         </record>
