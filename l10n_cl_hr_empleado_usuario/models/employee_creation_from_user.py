@@ -72,7 +72,7 @@ class ResUsersInherit(models.Model):
 
                     
                     
-    @api.onchange('user_type')
+    @api.onchange('user_type', 'identification_id')
     def update_partner_as_employee(self):
         check_id = self.id
         bool_emp = True
@@ -88,10 +88,10 @@ class ResUsersInherit(models.Model):
                     #    % (self.id, self.user_type, user.partner_id.id, ))
 
                     if self.user_type == 'empl':
-                        self.partner_id.write({'employee': bool_emp, 'comment': self.user_type})
+                        self.partner_id.write({'employee': bool_emp, 'ref': self.identification_id})
                         return
                     else:
-                        self.partner_id.write({'employee': bool_int, 'comment': self.user_type})
+                        self.partner_id.write({'employee': bool_int, 'ref': self.identification_id})
                         return
             else:
                 raise UserError(_('Se han encontrado %s partners') % (len(partner_ids)))
