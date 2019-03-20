@@ -778,7 +778,7 @@
     </field>
     <field name="field_parent" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="inherit_id" ref="account.journal.tree"/>
+    <field name="inherit_id" ref="account.view_account_journal_form"/>
     <field name="key" eval="False"/>
     <field name="mode">extension</field>
     <field name="model">account.journal</field>
