@@ -69,6 +69,17 @@ class ResUsersInherit(models.Model):
                 user.name = self._get_computed_name(
                     user.last_name, user.firstname, user.mothers_name, user.middle_name)
 
+    @api.multi
+    @api.onchange('user_type')
+    def onchange_user_type(self):
+        for user in self:
+            if user.partner_id:
+                if user.user_type == 'empl':
+                   user.partner_id.employee = 'true'
+                else:
+                   user.partner_id.employee = 'false'
+                    
+                    
     @api.onchange('identification_id')
     def onchange_document(self):
         identification_id = (
@@ -101,7 +112,7 @@ class ResUsersInherit(models.Model):
                                                                        'identification_id': vals['identification_id'],
                                                                        'formated_vat': vals['identification_id'],
                                                                        'address_home_id': result['partner_id'].id})
-        self.user_id.partner_id.employee = 'true'                                                               
+        #self.user_id.partner_id.employee = 'true'                                                               
         
         
         return result
