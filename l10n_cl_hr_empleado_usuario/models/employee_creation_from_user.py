@@ -93,32 +93,6 @@ class ResUsersInherit(models.Model):
                 raise UserError(_('Se han encontrado %s partners') % (len(partner_ids)))
                    
                     
-                    
-                    
-    # TO-DO: asignar Employee = True correctamente
-    @api.onchange('user_type', 'employee_id', 'partner_id')
-    #def onchange_user_type(self):
-    #    partner_obj = self.env['res.partner']
-    #    for user in self:
-    #        if user.name:
-                #raise ValidationError(_(
-                #        "User %s / UserName %s / Type = %s / Partner %s")
-                #        % (user, user.name, user.user_type, user.partner_id.name))
-    #            if user.user_type == 'empl':
-    #                if user.partner_id.name:
-    #                    partner_obj = user.partner_id
-    #                    partner_obj.sudo().write({'employee': 'true'})
-    #                    self.partner_id.employee = 'true'
-    #                    return
-    #            else:
-    #                if user.partner_id.name:
-    #                    partner_obj = user.partner_id
-    #                    partner_obj.sudo().write({'employee': 'false'})
-    #                    self.partner_id.employee = 'false'
-    #                    return
-
-                    
-                    
     @api.onchange('identification_id')
     def onchange_document(self):
         identification_id = (
@@ -156,58 +130,5 @@ class ResUsersInherit(models.Model):
         return result
 
 
-    #@api.onchange('identification_id')
-    #def check_identification_id_cl (self):
-    #    body, vdig = '', ''
-    #    if len(self.identification_id) > 9:
-    #        self.identification_id = self.identification_id.replace('-','',1).replace('.','',2)
-    #    if len(self.identification_id) != 9:
-    #        raise UserError(u'El Rut no tiene formato')
-    #    else:
-    #        body, vdig = self.identification_id[:-1], self.identification_id[-1].upper()
-    #    try:
-    #        vali = range(2,8) + [2,3]
-    #        operar = '0123456789K0'[11 - (
-    #            sum([int(digit)*factor for digit, factor in zip(
-    #                body[::-1],vali)]) % 11)]
-    #        if operar == vdig:
-    #            return True
-    #        else:
-    #            raise UserError(u'El Rut no tiene formato')
-    #    except IndexError:
-    #        raise UserError(u'El Rut no tiene formato')
 
-    #@api.onchange('mothers_name')
-    #def on_change_user(self):
-    #    for user in self:
-    #        self._employee_set()
-    #    return True
-
-    #@api.multi
-    #def _employee_set(self):
-    #    """This code is to update an employee while creating an user."""
-    #    Employee = self.env['hr.employee']
-    #    for user in self:
-    #        Employee.sudo().write({'mothers_name': user.mothers_name})
-        
-    #@api.model
-    #@api.onchange('firstname', 'mothers_name', 'middle_name', 'last_name', 'type_id', 'gender', 'country_id', 'department_id', 'identification_id')
-    #def update(self, vals):
-        #"""This code is to update an employee while updating a user."""
-        #self.sudo().write({'mothers_name': vals['mothers_name']})
-        #self.write({'mothers_name': 'mothers_name'})
-        #vals['name'] = self._get_computed_name(
-        #            vals['last_name'], vals['firstname'], vals['mothers_name'], vals['middle_name'])
-        #result = super(ResUsersInherit, self).write(vals)
-        #result['employee_id'] = self.env['hr.employee'].sudo().write({'name': vals['name'],
-        #                                                              'firstname': vals['firstname'],
-        #                                                              'middle_name': vals['middle_name'],
-        #                                                              'last_name': vals['last_name'],
-        #                                                              'mothers_name': vals['mothers_name'],
-        #                                                              'type_id': vals['type_id'],
-        #                                                              'gender': vals['gender'],
-        #                                                              'country_id': vals['country_id'],
-        #                                                              'department_id': vals['department_id'],
-        #                                                              'identification_id': vals['identification_id']})
-        #return result
 
