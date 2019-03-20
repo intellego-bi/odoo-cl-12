@@ -111,8 +111,13 @@ class ResUsersInherit(models.Model):
         vals['name'] = self._get_computed_name(
                     vals['last_name'], vals['firstname'], vals['mothers_name'], vals['middle_name'])
         result = super(ResUsersInherit, self).create(vals)
+        work_email = ''
+        if set(result['login']).issubset('@.'):
+            work_email = result['login']
+
         result['employee_id'] = self.env['hr.employee'].sudo().create({'name': result['name'],
                                                                        'user_id': result['id'],
+                                                                       'work_email': work_email,
                                                                        'firstname': vals['firstname'],
                                                                        'middle_name': vals['middle_name'],
                                                                        'last_name': vals['last_name'],
