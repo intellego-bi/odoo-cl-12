@@ -84,11 +84,13 @@ class ResUsersInherit(models.Model):
                         partner_obj = user.partner_id
                         partner_obj.sudo().write({'employee': 'true'})
                         self.partner_id.employee = 'true'
+                        return
                 else:
                     if user.partner_id.name:
                         partner_obj = user.partner_id
                         partner_obj.sudo().write({'employee': 'false'})
                         self.partner_id.employee = 'false'
+                        return
 
                    
                     
