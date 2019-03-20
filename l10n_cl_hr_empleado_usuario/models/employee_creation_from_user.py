@@ -125,19 +125,19 @@ class ResUsersInherit(models.Model):
                                                                        'identification_id': vals['identification_id'],
                                                                        'formated_vat': vals['identification_id'],
                                                                        'address_home_id': result['partner_id'].id})
-        partner_obj = self.env['res.partner']
-        for user in self:
-            if user.name:
-                if user.user_type == 'empl':
-                    if user.partner_id.name:
-                        partner_obj = user.partner_id
-                        partner_obj.write({'employee': 'true'})
-                        user.partner_id.employee = 'true'
-                else:
-                    if user.partner_id.name:
-                        partner_obj = user.partner_id
-                        partner_obj.write({'employee': 'false'})
-                        user.partner_id.employee = 'false'
+        #partner_obj = self.env['res.partner']
+        #for user in self:
+        #    if user.name:
+        #        if user.user_type == 'empl':
+        #            if user.partner_id.name:
+        #                partner_obj = user.partner_id
+        #                partner_obj.write({'employee': 'true'})
+        #                user.partner_id.employee = 'true'
+        #        else:
+        #            if user.partner_id.name:
+        #                partner_obj = user.partner_id
+        #                partner_obj.write({'employee': 'false'})
+        #                user.partner_id.employee = 'false'
                                                                        
         return result
 
