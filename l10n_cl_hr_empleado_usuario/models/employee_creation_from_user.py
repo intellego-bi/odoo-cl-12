@@ -76,21 +76,23 @@ class ResUsersInherit(models.Model):
         partner_obj = self.env['res.partner']
         for user in self:
             if user.name:
-                raise ValidationError(_(
-                        "User %s / UserName %s / Type = %s / Partner %s")
-                        % (user, user.name, user.user_type, user.partner_id.name))
+                #raise ValidationError(_(
+                #        "User %s / UserName %s / Type = %s / Partner %s")
+                #        % (user, user.name, user.user_type, user.partner_id.name))
                 if user.partner_id.name:
                     if user.user_type == 'empl':
                         #partner_ids = partner_obj.search(['partner_id','=',user.partner_id], limit=1)
+                        partner_obj.id = user.partner_id.id
+                        partner_obj.write({'employee': 'true'})
                         #for partners in partner_ids:
                             #partners.write({'employee': 'true'})
                         user.partner_id.employee = 'true'
                 else:
-                    partner_ids = partner_obj.search(['partner_id','=',user.partner_id], limit=1)
-                    for partners in partner_ids:
-                        partners.write({'employee': 'true'})
+                    #partner_ids = partner_obj.search(['partner_id','=',user.partner_id], limit=1)
+                    #for partners in partner_ids:
+                    #    partners.write({'employee': 'true'})
 
-                    #user.partner_id.employee = 'false'
+                    user.partner_id.employee = 'false'
                    
                     
                     
