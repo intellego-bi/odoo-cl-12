@@ -81,7 +81,7 @@ class ResUsersInherit(models.Model):
             identification_id[-1])
 
             
-    @api.onchange('user_type', 'identification_id')
+    @api.onchange('user_type', 'partner_id')
     def update_partner_as_employee(self):
         check_id = self.id
         bool_emp = True
