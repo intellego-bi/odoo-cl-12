@@ -70,7 +70,7 @@ class ResUsersInherit(models.Model):
                 user.name = self._get_computed_name(
                     user.last_name, user.firstname, user.mothers_name, user.middle_name)
 
-    @api.multi
+    #@api.multi
     @api.onchange('user_type', 'employee_id')
     def onchange_user_type(self):
         partner_obj = self.env['res.partner']
