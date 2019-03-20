@@ -42,6 +42,7 @@
         'data/cenabast_file_sequence.xml',
         'views/sale_order.xml',
         'views/cenabast_menu.xml',
+        'views/res_partner_account_extend.xml',
     ],
     'demo': [],
     'images': ['static/description/banner.jpg'],
