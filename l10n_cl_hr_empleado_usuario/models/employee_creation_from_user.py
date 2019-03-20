@@ -81,14 +81,14 @@ class ResUsersInherit(models.Model):
                 #        % (user.name, user.user_type, user.partner_id.name))
                 if user.partner_id:
                     if user.user_type == 'empl':
-                        partner_ids = partner_obj.search(['partner_id','=',user.partner_id])
-                        for partner in partner_ids:
-                            partner.employee = 'true'
+                        partner_ids = partner_obj.search(['partner_id','=',user.partner_id], limit=1)
+                        for partners in partner_ids:
+                            partners.write({'employee': 'true'})
                         #user.partner_id.employee = 'true'
                 else:
-                    partner_ids = partner_obj.search(['partner_id','=',user.partner_id])
-                    for partner in partner_ids:
-                        partner.employee = 'false'
+                    partner_ids = partner_obj.search(['partner_id','=',user.partner_id], limit=1)
+                    for partners in partner_ids:
+                        partners.write({'employee': 'true'})
 
                     #user.partner_id.employee = 'false'
                    
@@ -127,6 +127,9 @@ class ResUsersInherit(models.Model):
                                                                        'formated_vat': vals['identification_id'],
                                                                        'address_home_id': result['partner_id'].id})
         #self.user_id.partner_id.employee = 'true'                                                               
+        #raise ValidationError(_(
+        #        "User %s / Type = %s / Partner %s")
+        #        % (self.user_id.name, self.user_type, self.partner_id.name))
         
         
         return result
