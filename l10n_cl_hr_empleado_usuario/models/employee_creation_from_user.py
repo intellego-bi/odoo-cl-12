@@ -82,7 +82,7 @@ class ResUsersInherit(models.Model):
                 if user.partner_id.name:
                     if user.user_type == 'empl':
                         #partner_ids = partner_obj.search(['partner_id','=',user.partner_id], limit=1)
-                        partner_obj.id = user.partner_id.id
+                        partner_obj = user.partner_id
                         partner_obj.write({'employee': 'true'})
                         #for partners in partner_ids:
                             #partners.write({'employee': 'true'})
