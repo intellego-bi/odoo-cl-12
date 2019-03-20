@@ -82,10 +82,10 @@ class ResUsersInherit(models.Model):
             if len(partner_ids) == 1:
                 for partner in partner_ids:
                     if self.user_type != 'empl':
-                        partner.write({'employee': true})
+                        partner.write({'employee': 'true'})
                         return
                     else:
-                        partner.write({'employee': false})
+                        partner.write({'employee': 'false'})
                         return
             else:
                 raise UserError(_('Se han encontrado %s partners') % (len(partner_ids)))
