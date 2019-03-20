@@ -77,7 +77,7 @@ class ResUsersInherit(models.Model):
         #partner_recs = ref_partner_obj.search(['partner_id','=',partner])
         #    for users in user_recs:
         for user in self:
-            if user:
+            if user.name:
                 raise ValidationError(_(
                         "User %s / Type = %s / Partner %s")
                         % (user.name, user.user_type, user.partner_id.name))
