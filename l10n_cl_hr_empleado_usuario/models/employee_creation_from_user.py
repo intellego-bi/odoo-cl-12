@@ -81,7 +81,7 @@ class ResUsersInherit(models.Model):
                               ('id', '=', check_id)])
             if len(partner_ids) == 1:
                 for partner in partner_ids:
-                    if self.user_type != 'empl':
+                    if self.user_type == 'empl':
                         partner.write({'employee': 'true'})
                         return
                     else:
