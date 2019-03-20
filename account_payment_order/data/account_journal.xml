@@ -43,7 +43,7 @@
             <field name="type">bank</field>
             <field name="sequence_id" ref="cl_sequence_bnk_b001"/>
             <field name="outbound_payment_method_ids">electronic</field>
-            <field name="show_on_dashboard" eval="False"/>
+            <field name="show_on_dashboard" eval="True"/>
         </record>
         
         <record id="cl_bank_016_001_journal" model="account.journal">
@@ -52,7 +52,7 @@
             <field name="type">bank</field>
             <field name="sequence_id" ref="cl_sequence_bnk_b016"/>
             <field name="outbound_payment_method_ids">electronic</field>
-            <field name="show_on_dashboard" eval="False"/>
+            <field name="show_on_dashboard" eval="True"/>
         </record>
 
         <record id="cl_bank_037_001_journal" model="account.journal">

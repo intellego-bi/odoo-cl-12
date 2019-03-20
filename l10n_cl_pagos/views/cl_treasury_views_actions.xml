@@ -765,6 +765,29 @@
     <field name="type">form</field>
   </record>  
 
+  <!--  JOURNAL Form  -->
+ 
+  <record id="l10n_cl_pagos.cl_journal_form_custom" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+          <xpath expr="//field[@name='company_id']" position="before">
+              <field name="show_on_dashboard" widget="toggle_button"/>
+          </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="account.journal.tree"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">account.journal</field>
+    <field name="name">CL Journal form customization</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>  
+  
+  
   <!-- Account FULL RECONCILE Tree  -->  
   <!--
     <record id="l10n_cl_pagos.cl_full_reconcile_tree_default" model="ir.ui.view">
