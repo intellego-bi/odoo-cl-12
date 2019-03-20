@@ -83,16 +83,11 @@ class ResUsersInherit(models.Model):
                               ('id', '=', check_id)])
             if len(partner_ids) == 1:
                 for partner in partner_ids:
-                    #raise ValidationError(_(
-                    #    "UserID %s / Type = %s / UserPartnerID %s / PartnerID %s / PartEmpl %s")
-                    #    % (self.id, self.user_type, user.partner_id.id, ))
-
                     if self.user_type == 'empl':
-                        users_id = self.id
-                        self.partner_id.write({'employee': bool_emp, 'user_id': users_id, 'ref': self.identification_id})
+                        self.partner_id.write({'employee': bool_emp, 'ref': self.identification_id})
                         return
                     else:
-                        self.partner_id.write({'employee': bool_int, 'user_id': users_id, 'ref': self.identification_id})
+                        self.partner_id.write({'employee': bool_int, 'ref': self.identification_id})
                         return
             else:
                 raise UserError(_('Se han encontrado %s partners') % (len(partner_ids)))
