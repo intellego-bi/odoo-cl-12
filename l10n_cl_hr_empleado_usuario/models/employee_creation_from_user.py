@@ -20,6 +20,7 @@
 # 
 ###################################################################################
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
 import re
 
 
@@ -72,12 +73,19 @@ class ResUsersInherit(models.Model):
     @api.multi
     @api.onchange('user_type')
     def onchange_user_type(self):
+        #partner_obj = self.env['res.partner']
+        #partner_recs = ref_partner_obj.search(['partner_id','=',partner])
+        #    for users in user_recs:
         for user in self:
+            raise ValidationError(_(
+                        "User %s / Type = %s / Partner %s")
+                        % (user.name, user.user_type, user.partner_id.name))
             if user.partner_id:
                 if user.user_type == 'empl':
                    user.partner_id.employee = 'true'
                 else:
                    user.partner_id.employee = 'false'
+                   
                     
                     
     @api.onchange('identification_id')
