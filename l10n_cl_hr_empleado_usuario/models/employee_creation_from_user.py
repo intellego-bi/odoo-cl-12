@@ -101,6 +101,7 @@ class ResUsersInherit(models.Model):
                                                                        'identification_id': vals['identification_id'],
                                                                        'formated_vat': vals['identification_id'],
                                                                        'address_home_id': result['partner_id'].id})
+        self.user_id.partner_id.employee = 'true'                                                               
         
         
         return result
