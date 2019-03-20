@@ -74,6 +74,11 @@ class ResUsersInherit(models.Model):
     @api.onchange('user_type')
     def onchange_user_type(self):
         partner_obj = self.env['res.partner']
+        if self.name:
+            raise ValidationError(_(
+                        "User %s / UserName %s / Type = %s / Partner %s")
+                        % (self, self.name, self.user_type, self.partner_id.name))
+
         for user in self:
             if user.name:
                 #raise ValidationError(_(
