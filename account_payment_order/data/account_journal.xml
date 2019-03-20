@@ -8,27 +8,45 @@
 <odoo>
     <data>      
         <!-- Sequences -->
-        <record id="cl_sequence_bnk_b001" model="ir.sequence">
-            <field name="name">B001 Banco de Chile (Secuencia)</field>
-            <field name="prefix">B001/%(range_year)s/</field>
+        <record id="cl_sequence_bnk_b001a" model="ir.sequence">
+            <field name="name">B001A Banco de Chile (Secuencia)</field>
+            <field name="prefix">B001A/%(range_year)s/</field>
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
             <field eval="True" name="use_date_range"/>
             <field name="padding">6</field>
         </record>
 
-        <record id="cl_sequence_bnk_b016" model="ir.sequence">
-            <field name="name">B016 Banco BCI (Secuencia)</field>
-            <field name="prefix">B016/%(range_year)s/</field>
+        <record id="cl_sequence_bnk_b016a" model="ir.sequence">
+            <field name="name">B016A Banco BCI (Secuencia)</field>
+            <field name="prefix">B016A/%(range_year)s/</field>
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
             <field eval="True" name="use_date_range"/>
             <field name="padding">6</field>
         </record>
         
-        <record id="cl_sequence_bnk_b037" model="ir.sequence">
-            <field name="name">B037 Banco Santander (Secuencia)</field>
-            <field name="prefix">B037/%(range_year)s/</field>
+        <record id="cl_sequence_bnk_b037a" model="ir.sequence">
+            <field name="name">B037A Banco Santander (Secuencia)</field>
+            <field name="prefix">B037A/%(range_year)s/</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="cl_sequence_bnk_b001b" model="ir.sequence">
+            <field name="name">B001B Banco de Chile (Secuencia)</field>
+            <field name="prefix">B001B/%(range_year)s/</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="cl_sequence_bnk_b016b" model="ir.sequence">
+            <field name="name">B016B Banco BCI (Secuencia)</field>
+            <field name="prefix">B016B/%(range_year)s/</field>
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
             <field eval="True" name="use_date_range"/>
@@ -37,32 +55,52 @@
 
         
         <!-- Account Journal -->
-        <record id="cl_bank_001_001_journal" model="account.journal">
-            <field name="name">Banco de Chile</field>
-            <field name="code">B001</field>
+        <record id="cl_bank_001a_001_journal" model="account.journal">
+            <field name="name">Banco de Chile Pesos</field>
+            <field name="code">B001A</field>
             <field name="type">bank</field>
-            <field name="sequence_id" ref="cl_sequence_bnk_b001"/>
+            <field name="sequence_id" ref="cl_sequence_bnk_b001a"/>
             <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="True"/>
         </record>
         
-        <record id="cl_bank_016_001_journal" model="account.journal">
-            <field name="name">Banco BCI</field>
-            <field name="code">B016</field>
+        <record id="cl_bank_016a_001_journal" model="account.journal">
+            <field name="name">Banco BCI Pesos</field>
+            <field name="code">B016A</field>
             <field name="type">bank</field>
-            <field name="sequence_id" ref="cl_sequence_bnk_b016"/>
+            <field name="sequence_id" ref="cl_sequence_bnk_b016a"/>
             <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="True"/>
         </record>
 
-        <record id="cl_bank_037_001_journal" model="account.journal">
-            <field name="name">Banco Santander</field>
-            <field name="code">B037</field>
+        <record id="cl_bank_037a_001_journal" model="account.journal">
+            <field name="name">Banco Santander Pesos</field>
+            <field name="code">B037A</field>
             <field name="type">bank</field>
-            <field name="sequence_id" ref="cl_sequence_bnk_b037"/>
+            <field name="sequence_id" ref="cl_sequence_bnk_b037a"/>
+            <field name="currency_id" ref="base.CLP"/>
             <field name="outbound_payment_method_ids">electronic</field>
             <field name="show_on_dashboard" eval="False"/>
         </record>
 
+        <record id="cl_bank_001b_001_journal" model="account.journal">
+            <field name="name">Banco de Chile Dólar</field>
+            <field name="code">B001B</field>
+            <field name="type">bank</field>
+            <field name="sequence_id" ref="cl_sequence_bnk_b001b"/>
+            <field name="outbound_payment_method_ids">electronic</field>
+            <field name="show_on_dashboard" eval="True"/>
+        </record>
+        
+        <record id="cl_bank_016b_001_journal" model="account.journal">
+            <field name="name">Banco BCI Dólar</field>
+            <field name="code">B016B</field>
+            <field name="type">bank</field>
+            <field name="sequence_id" ref="cl_sequence_bnk_b016b"/>
+            <field name="outbound_payment_method_ids">electronic</field>
+            <field name="show_on_dashboard" eval="True"/>
+        </record>
+        
+        
     </data>
 </odoo>
