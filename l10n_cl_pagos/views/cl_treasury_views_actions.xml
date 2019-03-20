@@ -794,7 +794,7 @@
     <field name="active" eval="True"/>
     <field name="arch" type="xml">
       <data>
-          <xpath expr="//field[@name='typr']" position="after">
+          <xpath expr="//field[@name='type']" position="after">
               <field name="show_on_dashboard" widget="toggle_button"/>
           </xpath>
       </data>
