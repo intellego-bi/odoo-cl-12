@@ -86,6 +86,9 @@ class ResUsersInherit(models.Model):
         check_id = self.id
         bool_emp = True
         bool_int = False
+        cl_vat = ('CL' + 
+            re.sub('[^1234567890Kk]', '',
+            str(self.identification_id))).zfill(9).upper()
         if self.partner_id:
             check_id = self.partner_id.id
             partner_ids = self.env['res.partner'].search([
@@ -93,10 +96,10 @@ class ResUsersInherit(models.Model):
             if len(partner_ids) == 1:
                 for partner in partner_ids:
                     if self.user_type == 'empl':
-                        self.partner_id.write({'employee': bool_emp, 'ref': self.identification_id})
+                        self.partner_id.write({'employee': bool_emp, 'vat': cl_vat, 'ref': self.identification_id})
                         return
                     else:
-                        self.partner_id.write({'employee': bool_int, 'ref': self.identification_id})
+                        self.partner_id.write({'employee': bool_int, 'vat': cl_vat, 'ref': self.identification_id})
                         return
             else:
                 raise UserError(_('Se han encontrado %s partners') % (len(partner_ids)))
