@@ -70,29 +70,49 @@ class ResUsersInherit(models.Model):
                 user.name = self._get_computed_name(
                     user.last_name, user.firstname, user.mothers_name, user.middle_name)
 
+                    
+                    
+    @api.onchange('user_type')
+    def update_partner_as_employee(self):
+        check_id = self.id
+        if self.partner_id:
+            check_id = self.partner_id.id
+            partner_ids = self.env['res.partner'].search([
+                              ('id', '=', check_id)])
+            if len(partner_ids) == 1:
+                for partner in partner_ids:
+                    if self.user_type != 'empl':
+                        partner.write({'employee': 1})
+                    else:
+                        partner.write({'employee': 0})
+            else:
+                raise UserError(_('Se han encontrado %s partners') % (len(partner_ids)))
+                   
+                    
+                    
+                    
     # TO-DO: asignar Employee = True correctamente
     @api.onchange('user_type', 'employee_id', 'partner_id')
-    def onchange_user_type(self):
-        partner_obj = self.env['res.partner']
-        for user in self:
-            if user.name:
+    #def onchange_user_type(self):
+    #    partner_obj = self.env['res.partner']
+    #    for user in self:
+    #        if user.name:
                 #raise ValidationError(_(
                 #        "User %s / UserName %s / Type = %s / Partner %s")
                 #        % (user, user.name, user.user_type, user.partner_id.name))
-                if user.user_type == 'empl':
-                    if user.partner_id.name:
-                        partner_obj = user.partner_id
-                        partner_obj.sudo().write({'employee': 'true'})
-                        self.partner_id.employee = 'true'
-                        return
-                else:
-                    if user.partner_id.name:
-                        partner_obj = user.partner_id
-                        partner_obj.sudo().write({'employee': 'false'})
-                        self.partner_id.employee = 'false'
-                        return
+    #            if user.user_type == 'empl':
+    #                if user.partner_id.name:
+    #                    partner_obj = user.partner_id
+    #                    partner_obj.sudo().write({'employee': 'true'})
+    #                    self.partner_id.employee = 'true'
+    #                    return
+    #            else:
+    #                if user.partner_id.name:
+    #                    partner_obj = user.partner_id
+    #                    partner_obj.sudo().write({'employee': 'false'})
+    #                    self.partner_id.employee = 'false'
+    #                    return
 
-                   
                     
                     
     @api.onchange('identification_id')
