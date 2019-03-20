@@ -71,14 +71,9 @@ class ResUsersInherit(models.Model):
                     user.last_name, user.firstname, user.mothers_name, user.middle_name)
 
     @api.multi
-    @api.onchange('user_type')
+    @api.onchange('user_type', 'employee_id')
     def onchange_user_type(self):
         partner_obj = self.env['res.partner']
-        if self.name:
-            raise ValidationError(_(
-                        "User %s / UserName %s / Type = %s / Partner %s")
-                        % (self, self.name, self.user_type, self.partner_id.name))
-
         for user in self:
             if user.name:
                 #raise ValidationError(_(
@@ -88,12 +83,12 @@ class ResUsersInherit(models.Model):
                     if user.partner_id.name:
                         partner_obj = user.partner_id
                         partner_obj.sudo().write({'employee': 'true'})
-                        #user.partner_id.employee = 'true'
+                        self.partner_id.employee = 'true'
                 else:
                     if user.partner_id.name:
                         partner_obj = user.partner_id
                         partner_obj.sudo().write({'employee': 'false'})
-                        #user.partner_id.employee = 'false'
+                        self.partner_id.employee = 'false'
 
                    
                     
