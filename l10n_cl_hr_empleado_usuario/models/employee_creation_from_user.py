@@ -79,7 +79,7 @@ class ResUsersInherit(models.Model):
                 #raise ValidationError(_(
                 #        "User %s / Type = %s / Partner %s")
                 #        % (user.name, user.user_type, user.partner_id.name))
-                if user.partner_id:
+                if user.partner_id.name:
                     if user.user_type == 'empl':
                         partner_ids = partner_obj.search(['partner_id','=',user.partner_id], limit=1)
                         for partners in partner_ids:
