@@ -82,11 +82,14 @@ class ResUsersInherit(models.Model):
                 if user.partner_id:
                     if user.user_type == 'empl':
                         partner_ids = partner_obj.search(['partner_id','=',user.partner_id])
-                        partner_ids.employee = 'true'
+                        for partner in partner_ids:
+                            partner.employee = 'true'
                         #user.partner_id.employee = 'true'
                 else:
                     partner_ids = partner_obj.search(['partner_id','=',user.partner_id])
-                    partner_ids.employee = 'false'
+                    for partner in partner_ids:
+                        partner.employee = 'false'
+
                     #user.partner_id.employee = 'false'
                    
                     
