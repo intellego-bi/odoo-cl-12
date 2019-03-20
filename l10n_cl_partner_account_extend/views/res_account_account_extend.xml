@@ -53,7 +53,8 @@
             <field name="inherit_id" ref="account.view_move_line_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='credit']" position="after">
-                    <field name="balance" sum="Total Balance" string="Saldo" widget="monetary"/>
+                    <field name="balance" sum="Total Balance" string="Saldo" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+                    <field name="amount_residual" sum="Total Residual" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
                 </xpath>
             </field>
         </record>
