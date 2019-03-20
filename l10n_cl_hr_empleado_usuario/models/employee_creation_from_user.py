@@ -71,7 +71,7 @@ class ResUsersInherit(models.Model):
                     user.last_name, user.firstname, user.mothers_name, user.middle_name)
 
     @api.multi
-    @api.onchange('user_type', 'employee_id')
+    @api.onchange('user_type')
     def onchange_user_type(self):
         partner_obj = self.env['res.partner']
         for user in self:
@@ -83,12 +83,12 @@ class ResUsersInherit(models.Model):
                     if user.partner_id.name:
                         partner_obj = user.partner_id
                         partner_obj.write({'employee': 'true'})
-                        user.partner_id.employee = 'true'
+                        #user.partner_id.employee = 'true'
                 else:
                     if user.partner_id.name:
                         partner_obj = user.partner_id
                         partner_obj.write({'employee': 'false'})
-                        user.partner_id.employee = 'false'
+                        #user.partner_id.employee = 'false'
 
                    
                     
