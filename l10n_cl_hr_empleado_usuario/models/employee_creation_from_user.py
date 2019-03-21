@@ -96,13 +96,13 @@ class ResUsersInherit(models.Model):
             if len(partner_ids) == 1:
                 for partner in partner_ids:
                     if self.user_type == 'empl':
-                        if 'DOCUMENT_NUMBER' in self.env['res.partner']._fields:
+                        if 'document_number' in self.env['res.partner']._fields:
                             self.partner_id.write({'employee': bool_emp, 'document_number': self.identification_id, 'vat': cl_vat, 'ref': self.identification_id})
                         else:
                             self.partner_id.write({'employee': bool_emp, 'vat': cl_vat, 'ref': self.identification_id})
                         return
                     else:
-                        if 'DOCUMENT_NUMBER' in self.env['res.partner']._fields:
+                        if 'document_number' in self.env['res.partner']._fields:
                             self.partner_id.write({'employee': bool_int, 'document_number': self.identification_id, 'vat': cl_vat, 'ref': self.identification_id})
                         else:
                             self.partner_id.write({'employee': bool_int, 'vat': cl_vat, 'ref': self.identification_id})
