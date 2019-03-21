@@ -556,6 +556,18 @@
     
     
   <!-- MENU ITEMS -->
+
+  <!-- BANK MENU -->
+  
+  <record id="l10n_cl_pagos.cl_treasury_bank_dashboard_menu_item" model="ir.ui.menu">
+    <field name="action" ref="l10n_cl_pagos.cl_treasury_banks_dashboard_act_window"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Bank Dashboard</field>
+    <field name="parent_id" ref="l10n_cl_pagos.cl_treasury_menu"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>
   
     
   <!-- BANK MENU -->
