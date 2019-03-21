@@ -40,7 +40,7 @@
                 </xpath>
                 <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[1]/strong[1]/field[@name='display_name']" position="after">
                     <field name="name"/>
-                    <div><h5><field name="vat" attrs="{'invisible': [('is_company','=',False)]}"/></h5></div>
+                    <!--<div><h5><field name="vat" attrs="{'invisible': [('is_company','=',False)]}"/></h5></div>-->
                 </xpath>            
             </field>
         </record>
