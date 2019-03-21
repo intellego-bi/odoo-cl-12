@@ -56,12 +56,10 @@
                 <xpath expr="//field[@name='display_name']" position="before">
                     <field name="name"/>
                 </xpath>
-                <xpath expr="//field[@name='display_name']" position="after">
-                    <field name="vat" attrs="{'invisible': [('is_company','=',False)]}"/>
+                <xpath expr="//field[@name='display_name']" position="attributes">
+                    <attribute name="attrs">{}</attribute>
+                    <attribute name="invisible">1</attribute>
                 </xpath>
-                <!-- <xpath expr="//field[@name='email']" position="after">
-                    <field name="total_due" widget="monetary"/> 
-                </xpath> -->
             </field>
         </record>
 
