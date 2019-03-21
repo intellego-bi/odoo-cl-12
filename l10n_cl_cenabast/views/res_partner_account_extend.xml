@@ -38,19 +38,9 @@
             <field name="mode">extension</field>
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='display_name']" position="before">
-                    <field name="employee" attrs="{'invisible': True}"/>
+                <xpath expr="//field[@name='document_number']" position="before">
+                    <field name="country_id"/>
                 </xpath>
-                <xpath expr="//field[@name='vat']" position="attributes">
-                    <attribute name="attrs">{}</attribute>
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='display_name']" position="after">
-                    <field name="document_number" attrs="{'invisible': [('is_company','=',False),('employee','=',False)]}"/>
-                </xpath>
-                <!-- <xpath expr="//field[@name='email']" position="after">
-                    <field name="total_due" widget="monetary"/> 
-                </xpath> -->
             </field>
         </record>
 
