@@ -114,7 +114,15 @@ class WizardExportCsvPrevired(models.TransientModel):
             return 'SIP'
         else:
             return 'AFP'
-    
+
+    @api.model
+    def get_cost_center(self, contract):
+        cost_center = '0001'
+        if contract.analytic_account_id:
+            return contract.analytic_account_id.code
+        return cost_center
+
+            
     @api.model
     def get_tipo_trabajador(self, employee):
 
@@ -599,7 +607,7 @@ class WizardExportCsvPrevired(models.TransientModel):
                              # yo pensaba rut_emp_dv,
                              " ",
                              #105 Centro de Costos, Sucursal, Agencia 
-                             "1"
+                             self.get_cost_center(payslip.contract_id)
                              ]
             writer.writerow(line_employee)
       
