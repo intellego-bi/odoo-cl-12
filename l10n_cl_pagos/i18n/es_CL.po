@@ -16,6 +16,17 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: l10n_cl_pagos
+#: model:ir.actions.act_window,name:l10n_cl_pagos.cl_treasury_banks_dashboard_act_window
+#: model:ir.ui.menu,name:l10n_cl_pagos.cl_treasury_bank_dashboard_menu_item
+msgid "Bank Dashboard"
+msgstr "Resumen Bancos"
+
+#. module: l10n_cl_pagos
+#: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_banks_dashboard_act_window
+msgid "Banks Dashboard"
+msgstr "Dashboard Bancos"
+
+#. module: l10n_cl_pagos
 #: model_terms:ir.actions.act_window,help:l10n_cl_pagos.cl_treasury_concil_full_act_window
 msgid "Account Reconciliation Moves"
 msgstr "Movimientos de Conciliación"
