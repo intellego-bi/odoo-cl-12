@@ -65,7 +65,14 @@
 							</t>
 						</th>
 						<th colspan="4" width="22%" style="text-align:left"><span t-field="o.contract_id.type_id"/></th>
-						<th colspan="4" width="25%" style="text-align:right">0001</th>
+						<th colspan="4" width="25%" style="text-align:right">
+                            <t t-if="not o.contract_id.analytic_account_id">
+     						    <span>0001</span>
+							</t>
+    						<t t-if="o.contract_id.analytic_account_id">
+     						    <span t-field="o.contract_id.analytic_account_id.code"/>
+							</t>
+                        </th>
                     </tr>
                   </tbody>
                 </table>
