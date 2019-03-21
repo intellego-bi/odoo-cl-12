@@ -2,7 +2,41 @@
 <odoo>
 
   <!-- ACTION WINDOWS -->
- 
+
+  <!-- Action BANK DASHBOARD -->
+  
+  <record id="l10n_cl_pagos.cl_treasury_banks_dashboard_act_window" model="ir.actions.act_window">
+    <field name="name">Bank Dashboard</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="view_id">591</field>
+    <field name="context">{'search_default_dashboard':1}</field>
+    <field name="domain">[('belongs_to_company', '=', True)]</field>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        Banks Dashboard
+                    </p>
+                    <p>
+                        If no banks are available for your country, please go ahead
+                        and create one.
+                    </p>
+                ]]></field>
+    <field name="res_model">account.journal</field>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="view_mode">kanban,form</field>
+    <field name="view_type">form</field>
+    <field name="usage">menu</field>    
+    <field name="filter" eval="False"/>
+    <field name="auto_search" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="limit">500</field>
+    <field name="multi" eval="False"/>
+    <field name="search_view_id" eval="False"/>
+  </record>
+
+
+  
   <!-- Action BANKS -->
   
   <record id="l10n_cl_pagos.cl_treasury_banks_act_window" model="ir.actions.act_window">
