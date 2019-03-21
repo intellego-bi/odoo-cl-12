@@ -9,8 +9,8 @@ detect wrong IBANs -->
     <field name="inherit_id" ref="base.view_partner_bank_form"/>
     <field name="arch" type="xml">
         <field name="acc_number" position="after">
-            <field name="acc_type" attrs="{'invisible': [('bank_acc_type', '!=', False)]}"/>
             <field name="bank_acc_type" string="Bank Account Type"/>
+            <field name="acc_type" attrs="{'invisible': [('bank_acc_type', '!=', False)]}"/>
         </field>
         <xpath expr="//form[1]/group[1]/group[1]/field[@name='acc_type']" position="attributes">
              <attribute name="invisible">True</attribute>
