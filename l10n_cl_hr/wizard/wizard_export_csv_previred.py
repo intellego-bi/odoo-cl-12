@@ -119,7 +119,7 @@ class WizardExportCsvPrevired(models.TransientModel):
     def get_cost_center(self, contract):
         cost_center = '0001'
         if contract.analytic_account_id:
-            return contract.analytic_account_id.code
+            cost_center = contract.analytic_account_id.code
         return cost_center
 
             
