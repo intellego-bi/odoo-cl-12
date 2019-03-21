@@ -97,15 +97,27 @@ class ResUsersInherit(models.Model):
                 for partner in partner_ids:
                     if self.user_type == 'empl':
                         if 'document_number' in self.env['res.partner']._fields:
-                            self.partner_id.write({'employee': bool_emp, 'document_number': self.identification_id, 'vat': cl_vat, 'ref': self.identification_id})
+                            self.partner_id.write({'employee': bool_emp, 
+                                                   'country_id': self.country_id,
+                                                   'document_number': self.identification_id, 
+                                                   'vat': cl_vat, 
+                                                   'ref': self.identification_id})
                         else:
-                            self.partner_id.write({'employee': bool_emp, 'vat': cl_vat, 'ref': self.identification_id})
+                            self.partner_id.write({'employee': bool_emp, 
+                                                   'country_id': self.country_id, 
+                                                   'vat': cl_vat, 
+                                                   'ref': self.identification_id})
                         return
                     else:
                         if 'document_number' in self.env['res.partner']._fields:
-                            self.partner_id.write({'employee': bool_int, 'document_number': self.identification_id, 'vat': cl_vat, 'ref': self.identification_id})
+                            self.partner_id.write({'employee': bool_int, 
+                                                   'country_id': self.country_id, 
+                                                   'document_number': self.identification_id, 
+                                                   'vat': cl_vat})
                         else:
-                            self.partner_id.write({'employee': bool_int, 'vat': cl_vat, 'ref': self.identification_id})
+                            self.partner_id.write({'employee': bool_int, 
+                                                   'country_id': self.country_id, 
+                                                   'vat': cl_vat})
                         return
             else:
                 raise UserError(_('Se han encontrado %s partners') % (len(partner_ids)))
