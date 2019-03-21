@@ -98,25 +98,25 @@ class ResUsersInherit(models.Model):
                     if self.user_type == 'empl':
                         if 'document_number' in self.env['res.partner']._fields:
                             self.partner_id.write({'employee': bool_emp, 
-                                                   'country_id': self.country_id,
+                                                   'country_id': self.country_id.id,
                                                    'document_number': self.identification_id, 
                                                    'vat': cl_vat, 
                                                    'ref': self.identification_id})
                         else:
                             self.partner_id.write({'employee': bool_emp, 
-                                                   'country_id': self.country_id, 
+                                                   'country_id': self.country_id.id, 
                                                    'vat': cl_vat, 
                                                    'ref': self.identification_id})
                         return
                     else:
                         if 'document_number' in self.env['res.partner']._fields:
                             self.partner_id.write({'employee': bool_int, 
-                                                   'country_id': self.country_id, 
+                                                   'country_id': self.country_id.id, 
                                                    'document_number': self.identification_id, 
                                                    'vat': cl_vat})
                         else:
                             self.partner_id.write({'employee': bool_int, 
-                                                   'country_id': self.country_id, 
+                                                   'country_id': self.country_id.id, 
                                                    'vat': cl_vat})
                         return
             else:
