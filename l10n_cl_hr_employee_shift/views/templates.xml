@@ -3,7 +3,7 @@
     <template id="assets_backend" name="project assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <link rel="stylesheet" href="/l10n_cl_hr_employee_shift/static/src/css/shift_dashboard.css"/>
-            <link rel="stylesheet" href="/l10n_cl_hr_employee_shift/static/src/less/shift_dashboard.less"/>
+            <link rel="stylesheet" href="/l10n_cl_hr_employee_shift/static/src/scss/shift_dashboard.scss"/>
         </xpath>
     </template>
 </odoo>
