@@ -15,6 +15,16 @@ class CrmLead(models.Model):
         string='Customer Latitude',
         digits=(16, 5))
 
+    city_id = fields.Many2one('res.city_id', string='Province')
+        
+    @api.onchange('city_id')
+    def _onchange_city_id(self):
+        if self.city_id:
+            self.country_id = self.city_id.state_id.country_id.id
+            self.state_id = self.city_id.state_id.id
+            self.city = self.city_id.name
+        
+        
     @api.onchange('partner_id')
     def onchange_partner_id_geo(self):
         if self.partner_id:
