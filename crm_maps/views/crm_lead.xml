@@ -48,9 +48,10 @@
                 
             </field>
       
-            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='lead']/group[1]/group[1]/div[1]/field[@name='street2']" position="after">
+            <!--<xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='lead']/group[1]/group[1]/div[1]/field[@name='street2']" position="after"> -->
+            <field name="street2" position="after">
               <field name="city_id" placeholder="Comuna" style="width: 100%" options="{'no_open': True, 'no_quick_create': True}"/>
-            </xpath>            
+            </field>            
 
             <field name="city" position="attributes">
                 <attribute name="attrs">{"invisible": [["country_id","=",46]]}</attribute>
@@ -116,9 +117,9 @@
                 </t>
             </field>
             
-            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='lead']/group[1]/group[1]/div[1]/field[@name='street2']" position="after">
+            <field name="street2" position="after">
               <field name="city_id" placeholder="Comuna" style="width: 100%" options="{'no_open': True, 'no_quick_create': True}"/>
-            </xpath>            
+            </field>            
 
             <field name="city" position="attributes">
                 <attribute name="attrs">{"invisible": [["country_id","=",46]]}</attribute>
