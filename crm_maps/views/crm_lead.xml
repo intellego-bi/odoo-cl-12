@@ -36,10 +36,26 @@
             </xpath>
             <field name="street" position="attributes">
                 <attribute name="widget">gplaces_address_autocomplete</attribute>
-                <attribute name="options">{'lat': 'customer_latitude', 'lng': 'customer_longitude'}</attribute>
+                <!-- <attribute name="options">{'lat': 'customer_latitude', 'lng': 'customer_longitude'}</attribute>  -->
+                <!-- the same for address_form widget -->
+                <t t-if="not city_id">
+                    <attribute name="options">{'lat': 'customer_latitude', 'lng': 'customer_longitude', 'fillfields': {'street': ['route', 'street_number'], 'street2': ['locality', 'administrative_area_level_1']}}</attribute>
+                </t>
+
+                <t t-if="city_id">
+                    <attribute name="options">{'lat': 'customer_latitude', 'lng': 'customer_longitude', 'fillfields': {'street': ['route', 'street_number'], 'street2': ['locality', 'administrative_area_level_1'], 'city_id': 'locality'}}</attribute>
+                </t>
+                
             </field>
             <field name="partner_name" position="attributes">
                 <attribute name="widget">gplaces_autocomplete</attribute>
+                <attribute name="options">{
+                    'fillfields': {
+                        'address': {
+                            'street': ['route', 'street_number']
+                        }
+                    }
+                }</attribute>
                 <attribute name="options">{
                 'fillfields': {
                     'geolocation': {
