@@ -15,7 +15,7 @@ class CrmLead(models.Model):
         string='Customer Latitude',
         digits=(16, 5))
 
-    city_id = fields.Many2one('res.city_id', string='Province')
+    city_id = fields.Many2one('res.city', string='Province')
         
     @api.onchange('city_id')
     def _onchange_city_id(self):
