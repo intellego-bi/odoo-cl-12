@@ -47,6 +47,15 @@
                 </t>
                 
             </field>
+      
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='lead']/group[1]/group[1]/div[1]/field[@name='street2']" position="after">
+              <field name="city_id" placeholder="Comuna" style="width: 100%" options="{'no_open': True, 'no_quick_create': True}"/>
+            </xpath>            
+
+            <field name="city" position="attributes">
+                <attribute name="attrs">{"invisible": [["country_id","=",46]]}</attribute>
+            </field>            
+            
             <field name="partner_name" position="attributes">
                 <attribute name="widget">gplaces_autocomplete</attribute>
                 <attribute name="options">{
@@ -66,6 +75,7 @@
             </field>
         </field>
     </record>
+
     <record id="view_crm_opportunity_form" model="ir.ui.view">
         <field name="name">view.crm.opportunity.form</field>
         <field name="model">crm.lead</field>
@@ -105,12 +115,21 @@
                     <attribute name="options">{'lat': 'customer_latitude', 'lng': 'customer_longitude', 'fillfields': {'street': ['route', 'street_number'], 'street2': ['locality', 'administrative_area_level_1'], 'city_id': 'locality'}}</attribute>
                 </t>
             </field>
+            
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='lead']/group[1]/group[1]/div[1]/field[@name='street2']" position="after">
+              <field name="city_id" placeholder="Comuna" style="width: 100%" options="{'no_open': True, 'no_quick_create': True}"/>
+            </xpath>            
+
+            <field name="city" position="attributes">
+                <attribute name="attrs">{"invisible": [["country_id","=",46]]}</attribute>
+            </field>            
+            
             <field name="partner_name" position="attributes">
                 <attribute name="widget">gplaces_autocomplete</attribute>
                 <attribute name="options">{
                     'fillfields': {
                         'address': {
-                            'street': ['route', 'street_number', 'locality']
+                            'street': ['route', 'street_number']
                         }
                     }
                 }</attribute>
