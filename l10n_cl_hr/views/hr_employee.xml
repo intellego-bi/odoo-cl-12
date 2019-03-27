@@ -74,8 +74,13 @@
         <field name="inherit_id" ref="base.res_partner_view_form_private"/>
         <field name="arch" type="xml">
             <field name="street" position="attributes">
-                <attribute name="widget">gplaces_address_autocomplete</attribute>
-                <attribute name="options">{'lat': 'partner_latitude', 'lng': 'partner_longitude'}</attribute>
+               <attribute name="widget">gplaces_address_autocomplete</attribute>
+               <t t-if="not city_id">
+                   <attribute name="options">{'lat': 'partner_latitude', 'lng': 'partner_longitude', 'fillfields': {'street': ['route', 'street_number'], 'street2': ['locality', 'administrative_area_level_1']}}</attribute>
+               </t>
+               <t t-if="city_id">
+                   <attribute name="options">{'lat': 'partner_latitude', 'lng': 'partner_longitude', 'fillfields': {'street': ['route', 'street_number'], 'street2': ['locality', 'administrative_area_level_1'], 'city_id': 'locality'}}</attribute>
+               </t>
             </field>
         </field>
     </record>
