@@ -48,9 +48,9 @@
             <xpath expr="//label[@for='mothers_name']" position="attributes">
                 <attribute name="string">Segundo Apellido</attribute>
             </xpath>
-			<xpath expr="//field[@name='job_title']" position="after">
+			<!--<xpath expr="//field[@name='job_title']" position="after">
                 <field name="address_home_id" string="Contacto para Contabilizar" context="{                                                 'show_address': 1,                                                 'default_type': 'private',                                                 'form_view_ref': 'base.res_partner_view_form_private'}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
-            </xpath>
+            </xpath>-->
 		
             <!--<xpath expr="//field[@name='resource_calendar_id']" position="replace">
                 <field name="resource_calendar_id" select="hr_resource_monthly_cl"/>
@@ -67,4 +67,18 @@
             </xpath>
         </field>
     </record>
+
+    <record id="cl_hr_view_private_address_form" model="ir.ui.view">
+        <field name="name">Google Places Private Address form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_view_form_private"/>
+        <field name="arch" type="xml">
+            <field name="street" position="attributes">
+                <attribute name="widget">gplaces_address_autocomplete</attribute>
+                <attribute name="options">{'lat': 'partner_latitude', 'lng': 'partner_longitude'}</attribute>
+            </field>
+        </field>
+    </record>
+    
+    
 </odoo>
