@@ -12,4 +12,35 @@
         <field name="view_id" ref="web_google_maps.view_res_partner_map"/>
         <field name="act_window_id" ref="contacts.action_contacts"/>
     </record>
+    
+    <record id="cl_view_private_address_form" model="ir.ui.view">
+        <field name="name">Google Places Private Address form</field>
+        <field name="model">res.partner</field>
+        <field name="sequence">90</field>
+        <field name="inherit_id" ref="base.res_partner_view_form_private"/>
+        <field name="arch" type="xml">
+            <field name="street" position="attributes">
+               <attribute name="widget">gplaces_address_autocomplete</attribute>
+               <t t-if="not city_id">
+                   <attribute name="options">{'lat': 'partner_latitude', 'lng': 'partner_longitude', 'fillfields': {'street': ['route', 'street_number'], 'street2': ['locality', 'administrative_area_level_1']}}</attribute>
+               </t>
+               <t t-if="city_id">
+                   <attribute name="options">{'lat': 'partner_latitude', 'lng': 'partner_longitude', 'fillfields': {'street': ['route', 'street_number'], 'street2': ['locality', 'administrative_area_level_1'], 'city_id': 'locality'}}</attribute>
+               </t>
+            </field>
+            <field name="street2" position="after">
+              <field name="city_id" placeholder="Comuna" style="width: 100%" options="{'no_open': True, 'no_quick_create': True}"/>
+            </field>            
+
+            <field name="city" position="attributes">
+                <attribute name="attrs">{"invisible": [["country_id","=",46]]}</attribute>
+            </field>            
+
+            <field name="zip" position="attributes">
+                <attribute name="attrs">{"invisible": [["country_id","=",46]]}</attribute>
+            </field>     
+        </field>
+    </record>    
+    
+    
 </odoo>
