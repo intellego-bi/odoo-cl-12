@@ -86,6 +86,8 @@ class ResUsersInherit(models.Model):
         check_id = self.id
         bool_emp = True
         bool_int = False
+        lati = '-33.30647'
+        long = '-70.71494'
         cl_vat = ('CL' + 
             re.sub('[^1234567890Kk]', '',
             str(self.identification_id))).zfill(9).upper()
@@ -97,16 +99,34 @@ class ResUsersInherit(models.Model):
                 for partner in partner_ids:
                     if self.user_type == 'empl':
                         if 'document_number' in self.env['res.partner']._fields:
-                            self.partner_id.write({'employee': bool_emp, 
-                                                   'country_id': self.country_id.id,
-                                                   'document_number': self.identification_id, 
-                                                   'vat': cl_vat, 
-                                                   'ref': self.identification_id})
+                            if 'partner_latitude' in self.env['res.partner']._fields:
+                                self.partner_id.write({'employee': bool_emp, 
+                                                       'country_id': self.country_id.id,
+                                                       'document_number': self.identification_id, 
+                                                       'vat': cl_vat, 
+                                                       'ref': self.identification_id,
+                                                       'partner_latitude': lati,
+                                                       'partner_longitude': long})
+                            else:
+                                self.partner_id.write({'employee': bool_emp, 
+                                                       'country_id': self.country_id.id,
+                                                       'document_number': self.identification_id, 
+                                                       'vat': cl_vat, 
+                                                       'ref': self.identification_id})
+                            
                         else:
-                            self.partner_id.write({'employee': bool_emp, 
-                                                   'country_id': self.country_id.id, 
-                                                   'vat': cl_vat, 
-                                                   'ref': self.identification_id})
+                            if 'partner_latitude' in self.env['res.partner']._fields:
+                                self.partner_id.write({'employee': bool_emp, 
+                                                       'country_id': self.country_id.id, 
+                                                       'vat': cl_vat, 
+                                                       'ref': self.identification_id,
+                                                       'partner_latitude': lati,
+                                                       'partner_longitude': long})
+                            else:
+                                self.partner_id.write({'employee': bool_emp, 
+                                                       'country_id': self.country_id.id, 
+                                                       'vat': cl_vat, 
+                                                       'ref': self.identification_id})
                         return
                     else:
                         if 'document_number' in self.env['res.partner']._fields:
