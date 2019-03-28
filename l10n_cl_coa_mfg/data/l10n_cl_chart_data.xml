@@ -340,7 +340,7 @@
 		<field name="name">Cuenta de valoración de stock</field>
 		<field name="code">11606030</field>
 		<field name="group_id" ref="cl_bs_1160"/>
-		<field name="reconcile" eval="True" />
+		<field name="reconcile" eval="False" />
 		<field ref="account.data_account_type_current_assets" name="user_type_id" />
 		<field name="chart_template_id" ref="cl_chart_template_coa_mfg" />
 	</record>	
