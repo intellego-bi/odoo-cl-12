@@ -108,7 +108,7 @@ else:
 
         <record id="hr_rule_6" model="hr.salary.rule">
             <field name="name">GRATIFICACION LEGAL</field>
-            <field name="sequence" eval="6"/>
+            <field name="sequence" eval="8"/>
             <field name="code">GRAT</field>
             <field name="category_id" ref="IMPONIBLE"/>
             <field name="condition_select">python</field>
@@ -144,7 +144,7 @@ else:
 
          <record id="hr_rule_8" model="hr.salary.rule">
             <field name="name">COMISIONES</field>
-            <field name="sequence" eval="8"/>
+            <field name="sequence" eval="6"/>
             <field name="code">COMI</field>
             <field name="category_id" ref="IMPONIBLE"/>
             <field name="account_debit" ref="l10n_cl_coa_mfg.1_cl_coa_mfg_41211000"/>
