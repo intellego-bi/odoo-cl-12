@@ -46,7 +46,6 @@ Chilean Payroll & Human Resources.
     , ...
     Report
   """,
-    'active': True,
     'data': [
         'views/hr_chile_menus.xml',
         'views/hr_indicadores_previsionales_view.xml',
