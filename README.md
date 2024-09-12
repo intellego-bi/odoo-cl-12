@@ -9,7 +9,7 @@ Mantendremos este repositorio público en agradecimiento y como retribución al 
 
 ## Maintained by
 <p>
-<img width="200" alt="Logo Intellego-BI" src="https://i2.wp.com/intellego-bi.com/ws/wp-content/uploads/2016/05/Intellego-BI-112x35.jpg" />
+    <img width="280" alt="Logo Intellego-BI" src="https://github.com/intellego-bi/odoo-bi/blob/0e7820f1e14f2dbf40c4f28848327e6e985dd0e4/images/Intellego%20b4%20%20transparente.png" />
 </p>
 
 **Intellego-BI.com** - https://intellego-bi.com
